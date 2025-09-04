@@ -6,6 +6,7 @@ use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Webkul\Security\Filament\Resources\UserResource;
+use Webkul\Security\Models\User;
 
 class ViewUsers extends ViewRecord
 {
@@ -15,11 +16,10 @@ class ViewUsers extends ViewRecord
     {
         $getRecord = $this->record->role;
 
-
         return [
             Actions\EditAction::make(),
             Actions\DeleteAction::make()
-                ->hidden(fn($record) => $record->trashed() || $record->hasRole('admin'))
+                ->visible(fn (User $record) => self::getResource()::canDeleteUser($record))
                 ->successNotification(
                     Notification::make()
                         ->success()
