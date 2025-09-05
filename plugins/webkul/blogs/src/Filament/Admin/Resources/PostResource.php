@@ -12,6 +12,7 @@ use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Str;
 use Webkul\Blog\Filament\Admin\Resources\PostResource\Pages;
 use Webkul\Blog\Models\Post;
@@ -53,7 +54,7 @@ class PostResource extends Resource
                                     ->maxLength(255)
                                     ->placeholder(__('blogs::filament/admin/resources/post.form.sections.general.fields.title-placeholder'))
                                     ->extraInputAttributes(['style' => 'font-size: 1.5rem;height: 3rem;'])
-                                    ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                                    ->afterStateUpdated(fn(string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
                                 Forms\Components\TextInput::make('slug')
                                     ->disabled()
                                     ->dehydrated()
@@ -62,8 +63,9 @@ class PostResource extends Resource
                                     ->unique(Post::class, 'slug', ignoreRecord: true),
                                 Forms\Components\Textarea::make('sub_title')
                                     ->label(__('blogs::filament/admin/resources/post.form.sections.general.fields.sub-title')),
-                                Forms\Components\RichEditor::make('content')
+                                TiptapEditor::make('content')
                                     ->label(__('blogs::filament/admin/resources/post.form.sections.general.fields.content'))
+                                    ->profile('simple')
                                     ->required(),
                                 Forms\Components\FileUpload::make('image')
                                     ->label(__('blogs::filament/admin/resources/post.form.sections.general.fields.banner'))
@@ -92,11 +94,11 @@ class PostResource extends Resource
                                     ->relationship(
                                         name: 'category',
                                         titleAttribute: 'name',
-                                        modifyQueryUsing: fn ($query) => $query->withTrashed(),
+                                        modifyQueryUsing: fn($query) => $query->withTrashed(),
                                     )
                                     ->searchable()
                                     ->getOptionLabelFromRecordUsing(function ($record): string {
-                                        return $record->name.($record->trashed() ? ' (Deleted)' : '');
+                                        return $record->name . ($record->trashed() ? ' (Deleted)' : '');
                                     })
                                     ->disableOptionWhen(function ($label) {
                                         return str_contains($label, ' (Deleted)');
@@ -197,9 +199,9 @@ class PostResource extends Resource
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make()
-                        ->hidden(fn ($record) => $record->trashed()),
+                        ->hidden(fn($record) => $record->trashed()),
                     Tables\Actions\EditAction::make()
-                        ->hidden(fn ($record) => $record->trashed()),
+                        ->hidden(fn($record) => $record->trashed()),
                     Tables\Actions\RestoreAction::make()
                         ->successNotification(
                             Notification::make()
