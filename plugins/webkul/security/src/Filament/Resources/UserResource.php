@@ -122,6 +122,7 @@ class UserResource extends Resource
                                             ->label(__('security::filament/resources/user.form.sections.permissions.fields.roles'))
                                             ->relationship('roles', 'name')
                                             ->multiple()
+                                            ->required()
                                             ->preload()
                                             ->searchable(),
                                         Select::make('resource_permission')
@@ -490,7 +491,7 @@ class UserResource extends Resource
 
     public static function canDeleteUser(User $record): bool
     {
-        return ! $record->is_default;
+        return ! $record->is_default && $record->id !== Auth::id();
     }
 
     public static function getPages(): array
