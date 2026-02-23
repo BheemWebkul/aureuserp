@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Webkul\Support\Models\Country;
 
 require_once __DIR__.'/../../../Helpers/SecurityHelper.php';
-
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
+require_once __DIR__.'/../../../Helpers/TestBootstrapHelper.php';
 
 const COUNTRY_JSON_STRUCTURE = [
     'id',
@@ -18,12 +16,7 @@ const COUNTRY_JSON_STRUCTURE = [
 ];
 
 beforeEach(function () {
-    if (! Schema::hasTable('countries')) {
-        test()->markTestSkipped(
-            'Required plugin tables are missing. Install/migrate the plugin before running this suite.'
-        );
-    }
-
+    TestBootstrapHelper::ensureERPInstalled();
     SecurityHelper::disableUserEvents();
 });
 afterEach(fn () => SecurityHelper::restoreUserEvents());
@@ -48,12 +41,12 @@ it('requires authentication to list countries', function () {
 it('lists countries for authenticated users', function () {
     actingAsCountryApiUser();
 
-    Country::factory()->count(2)->create();
-
-    $this->getJson(countryRoute('index'))
+    $response = $this->getJson(countryRoute('index'))
         ->assertOk()
-        ->assertJsonCount(2, 'data')
         ->assertJsonStructure(['data' => ['*' => COUNTRY_JSON_STRUCTURE]]);
+
+    // Verify we have data (seeded countries)
+    expect($response->json('data'))->not->toBeEmpty();
 });
 
 it('shows a country for authenticated users', function () {

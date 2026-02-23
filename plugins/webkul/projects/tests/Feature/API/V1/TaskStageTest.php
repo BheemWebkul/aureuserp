@@ -8,8 +8,6 @@ use Webkul\Security\Models\User;
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
 require_once __DIR__.'/../../../../../support/tests/Helpers/TestBootstrapHelper.php';
 
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
-
 beforeEach(function () {
     TestBootstrapHelper::ensurePluginInstalled('projects');
 

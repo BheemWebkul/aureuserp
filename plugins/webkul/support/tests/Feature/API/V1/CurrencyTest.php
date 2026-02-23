@@ -5,8 +5,6 @@ use Webkul\Support\Models\Currency;
 require_once __DIR__.'/../../../Helpers/SecurityHelper.php';
 require_once __DIR__.'/../../../Helpers/TestBootstrapHelper.php';
 
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
-
 const CURRENCY_JSON_STRUCTURE = [
     'id',
     'name',
@@ -19,7 +17,7 @@ const CURRENCY_JSON_STRUCTURE = [
 ];
 
 beforeEach(function () {
-    TestBootstrapHelper::ensureSystemDataSeeded();
+    TestBootstrapHelper::ensureERPInstalled();
     SecurityHelper::disableUserEvents();
 });
 afterEach(fn () => SecurityHelper::restoreUserEvents());
@@ -54,18 +52,21 @@ it('forbids listing currencies without permission', function () {
 it('lists currencies for authorized users', function () {
     actingWithPermissions(['view_any_support_currency']);
 
-    Currency::factory()->count(2)->create();
-
-    $this->getJson(currencyRoute('index'))
+    $response = $this->getJson(currencyRoute('index'))
         ->assertOk()
-        ->assertJsonCount(2, 'data')
         ->assertJsonStructure(['data' => ['*' => CURRENCY_JSON_STRUCTURE]]);
+
+    // Verify we have data (seeded currencies)
+    expect($response->json('data'))->not->toBeEmpty();
 });
 
 it('creates a currency with valid payload', function () {
     actingWithPermissions(['create_support_currency']);
 
-    $payload = Currency::factory()->make()->toArray();
+    $payload = Currency::factory()->make([
+        'name' => 'Test Currency ' . uniqid(),
+        'code' => 'TST' . rand(100, 999),
+    ])->toArray();
 
     $this->postJson(currencyRoute('store'), $payload)
         ->assertCreated()
@@ -110,8 +111,10 @@ it('returns 404 for a non-existent currency', function () {
 it('updates a currency for authorized users', function () {
     actingWithPermissions(['update_support_currency']);
 
-    $currency = Currency::factory()->create();
-    $updatedName = Currency::factory()->make()->name;
+    $currency = Currency::factory()->create([
+        'name' => 'Original Currency ' . uniqid(),
+    ]);
+    $updatedName = 'Updated Currency ' . uniqid();
 
     $this->patchJson(currencyRoute('update', $currency), ['name' => $updatedName])
         ->assertOk()

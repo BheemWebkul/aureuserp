@@ -3,10 +3,10 @@
 use Webkul\Partner\Models\Tag;
 
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
-
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
+require_once __DIR__.'/../../../../../support/tests/Helpers/TestBootstrapHelper.php';
 
 beforeEach(function () {
+    TestBootstrapHelper::ensureERPInstalled();
     SecurityHelper::disableUserEvents();
 });
 

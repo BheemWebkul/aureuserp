@@ -3,8 +3,7 @@
 use Webkul\Support\Models\UOMCategory;
 
 require_once __DIR__.'/../../../Helpers/SecurityHelper.php';
-
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
+require_once __DIR__.'/../../../Helpers/TestBootstrapHelper.php';
 
 const UOM_CATEGORY_JSON_STRUCTURE = [
     'id',
@@ -14,6 +13,7 @@ const UOM_CATEGORY_JSON_STRUCTURE = [
 ];
 
 beforeEach(function () {
+    TestBootstrapHelper::ensureERPInstalled();
     SecurityHelper::disableUserEvents();
 });
 
@@ -46,12 +46,17 @@ it('forbids listing uom categories without permission', function () {
 it('lists uom categories for authorized users', function () {
     actingAsUomCategoryApiUser(['view_any_support_u::o::m::category']);
 
-    UOMCategory::factory()->count(2)->create();
+    $categories = UOMCategory::factory()->count(2)->create();
 
-    $this->getJson(uomCategoryRoute('index'))
+    $response = $this->getJson(uomCategoryRoute('index'))
         ->assertOk()
-        ->assertJsonCount(2, 'data')
         ->assertJsonStructure(['data' => ['*' => UOM_CATEGORY_JSON_STRUCTURE]]);
+
+    // Verify our test categories are in the response
+    $responseData = $response->json('data');
+    $responseIds = collect($responseData)->pluck('id')->toArray();
+    
+    expect($responseIds)->toContain($categories[0]->id, $categories[1]->id);
 });
 
 it('creates a uom category with valid payload', function () {

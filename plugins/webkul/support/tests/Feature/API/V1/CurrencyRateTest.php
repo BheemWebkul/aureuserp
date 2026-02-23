@@ -4,8 +4,7 @@ use Webkul\Support\Models\Currency;
 use Webkul\Support\Models\CurrencyRate;
 
 require_once __DIR__.'/../../../Helpers/SecurityHelper.php';
-
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
+require_once __DIR__.'/../../../Helpers/TestBootstrapHelper.php';
 
 const CURRENCY_RATE_JSON_STRUCTURE = [
     'id',
@@ -20,6 +19,7 @@ const CURRENCY_RATE_JSON_STRUCTURE = [
 ];
 
 beforeEach(function () {
+    TestBootstrapHelper::ensureERPInstalled();
     SecurityHelper::disableUserEvents();
 });
 

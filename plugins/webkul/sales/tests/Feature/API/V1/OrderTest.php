@@ -11,8 +11,6 @@ use Webkul\Support\Models\Company;
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
 require_once __DIR__.'/../../../../../support/tests/Helpers/TestBootstrapHelper.php';
 
-// uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
-
 const SALES_ORDER_JSON_STRUCTURE = [
     'id',
     'partner_id',

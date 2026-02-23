@@ -1,12 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Webkul\Support\Models\UOM;
 use Webkul\Support\Models\UOMCategory;
 
 require_once __DIR__.'/../../../Helpers/SecurityHelper.php';
-
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
+require_once __DIR__.'/../../../Helpers/TestBootstrapHelper.php';
 
 const UOM_JSON_STRUCTURE = [
     'id',
@@ -22,12 +20,7 @@ const UOM_JSON_STRUCTURE = [
 ];
 
 beforeEach(function () {
-    if (! Schema::hasTable('unit_of_measures')) {
-        test()->markTestSkipped(
-            'Required plugin tables are missing. Install/migrate the plugin before running this suite.'
-        );
-    }
-
+    TestBootstrapHelper::ensureERPInstalled();
     SecurityHelper::disableUserEvents();
 });
 

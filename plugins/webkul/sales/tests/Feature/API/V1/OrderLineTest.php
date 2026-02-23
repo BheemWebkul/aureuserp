@@ -6,8 +6,6 @@ use Webkul\Sale\Models\OrderLine;
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
 require_once __DIR__.'/../../../../../support/tests/Helpers/TestBootstrapHelper.php';
 
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
-
 const SALES_ORDER_LINE_JSON_STRUCTURE = [
     'id',
     'order_id',

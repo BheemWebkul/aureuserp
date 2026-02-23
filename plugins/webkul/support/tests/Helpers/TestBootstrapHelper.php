@@ -6,11 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class TestBootstrapHelper
 {
-    private static bool $systemDataSeeded = false;
+    private static bool $databaseInitialized = false;
 
     public static function ensurePluginInstalled(string $pluginName): void
     {
-        // Map plugin names to a representative table
         $pluginTables = [
             'projects' => 'projects_projects',
             'sales' => 'sales_orders',
@@ -24,39 +23,32 @@ class TestBootstrapHelper
             throw new InvalidArgumentException("Unknown plugin: {$pluginName}");
         }
 
-        // Check if the plugin's tables already exist
+        static::ensureERPInstalled();
+
         if (Schema::hasTable($table)) {
             return;
         }
 
-        // Ensure base system data exists before installing plugins
-        static::ensureSystemDataSeeded();
-
-        // Install the plugin; --no-interaction prevents prompts when dependencies are already installed
         Artisan::call("{$pluginName}:install", ['--no-interaction' => true]);
     }
 
-    public static function ensureSystemDataSeeded(): void
+    public static function ensureERPInstalled(): void
     {
-        if (static::$systemDataSeeded) {
+        if (static::$databaseInitialized) {
             return;
         }
 
-        // Check if system is already seeded
-        if (Schema::hasTable('currencies') && DB::table('currencies')->exists()) {
-            static::$systemDataSeeded = true;
+        // Refresh database once before all tests
+        Artisan::call('migrate:fresh', ['--force' => true]);
 
-            return;
-        }
-
-        // Install the complete ERP system with all base data
+        // Seed base data once
         Artisan::call('erp:install', [
             '--force' => true,
             '--admin-name' => 'Test Admin',
-            '--admin-email' => 'admin@test.com',
-            '--admin-password' => 'password',
+            '--admin-email' => 'admin@example.com',
+            '--admin-password' => 'admin123',
         ]);
 
-        static::$systemDataSeeded = true;
+        static::$databaseInitialized = true;
     }
 }

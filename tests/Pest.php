@@ -13,7 +13,18 @@
 
 pest()
     ->extend(Tests\TestCase::class)
+    ->use(Illuminate\Foundation\Testing\DatabaseTransactions::class)
     ->in('Feature', '../plugins/*/*/tests/Feature');
+
+/*
+|--------------------------------------------------------------------------
+| Database Transactions
+|--------------------------------------------------------------------------
+|
+| All tests use DatabaseTransactions for data isolation.
+| TestBootstrapHelper handles one-time database setup.
+|
+*/
 
 /*
 |--------------------------------------------------------------------------

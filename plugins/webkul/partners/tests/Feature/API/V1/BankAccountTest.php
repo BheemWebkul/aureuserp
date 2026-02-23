@@ -6,10 +6,10 @@ use Webkul\Partner\Models\Partner;
 use Webkul\Support\Models\Bank;
 
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
-
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
+require_once __DIR__.'/../../../../../support/tests/Helpers/TestBootstrapHelper.php';
 
 beforeEach(function () {
+    TestBootstrapHelper::ensureERPInstalled();
     SecurityHelper::disableUserEvents();
 });
 

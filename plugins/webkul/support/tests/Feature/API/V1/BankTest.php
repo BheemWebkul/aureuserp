@@ -1,13 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Webkul\Support\Models\Bank;
 use Webkul\Support\Models\Country;
 use Webkul\Support\Models\State;
 
 require_once __DIR__.'/../../../Helpers/SecurityHelper.php';
-
-uses(Illuminate\Foundation\Testing\LazilyRefreshDatabase::class);
+require_once __DIR__.'/../../../Helpers/TestBootstrapHelper.php';
 
 const BANK_JSON_STRUCTURE = [
     'id',
@@ -28,11 +26,7 @@ const BANK_JSON_STRUCTURE = [
 ];
 
 beforeEach(function () {
-    if (! Schema::hasTable('banks')) {
-        test()->markTestSkipped(
-            'Required plugin tables are missing. Install/migrate the plugin before running this suite.'
-        );
-    }
+    TestBootstrapHelper::ensureERPInstalled();
 
     SecurityHelper::disableUserEvents();
 });
