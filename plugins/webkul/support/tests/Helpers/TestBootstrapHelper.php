@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class TestBootstrapHelper
 {
-    private static bool $databaseInitialized = false;
+    private static bool $isERPInstalled = true;
 
     public static function ensurePluginInstalled(string $pluginName): void
     {
@@ -34,14 +34,12 @@ class TestBootstrapHelper
 
     public static function ensureERPInstalled(): void
     {
-        if (static::$databaseInitialized) {
+        if (static::$isERPInstalled) {
             return;
         }
 
-        // Refresh database once before all tests
         Artisan::call('migrate:fresh', ['--force' => true]);
 
-        // Seed base data once
         Artisan::call('erp:install', [
             '--force' => true,
             '--admin-name' => 'Test Admin',
@@ -49,6 +47,6 @@ class TestBootstrapHelper
             '--admin-password' => 'admin123',
         ]);
 
-        static::$databaseInitialized = true;
+        static::$isERPInstalled = true;
     }
 }

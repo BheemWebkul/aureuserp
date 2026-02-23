@@ -26,7 +26,7 @@ class TagRequest extends FormRequest
         $tagId = $this->route('tag');
 
         return [
-            'name'  => [...$requiredRule, 'string', 'max:255', 'unique:sales_tags,name,'.($tagId ?: 'NULL').',id,deleted_at,NULL'],
+            'name'  => [...$requiredRule, 'string', 'max:255', 'unique:sales_tags,name,'.($tagId ?: 'NULL').',id'],
             'color' => ['nullable', 'string', 'max:7'],
         ];
     }
