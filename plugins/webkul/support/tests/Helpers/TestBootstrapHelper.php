@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class TestBootstrapHelper
@@ -11,10 +10,11 @@ class TestBootstrapHelper
     public static function ensurePluginInstalled(string $pluginName): void
     {
         $pluginTables = [
-            'projects' => 'projects_projects',
-            'sales' => 'sales_orders',
+            'projects'    => 'projects_projects',
+            'sales'       => 'sales_orders',
+            'purchases'   => 'purchases_orders',
             'inventories' => 'inventories_operations',
-            'accounts' => 'accounts_account_moves',
+            'accounts'    => 'accounts_account_moves',
         ];
 
         $table = $pluginTables[$pluginName] ?? null;
@@ -41,9 +41,9 @@ class TestBootstrapHelper
         Artisan::call('migrate:fresh', ['--force' => true]);
 
         Artisan::call('erp:install', [
-            '--force' => true,
-            '--admin-name' => 'Test Admin',
-            '--admin-email' => 'admin@example.com',
+            '--force'          => true,
+            '--admin-name'     => 'Test Admin',
+            '--admin-email'    => 'admin@example.com',
             '--admin-password' => 'admin123',
         ]);
 

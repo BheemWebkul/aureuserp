@@ -2,6 +2,7 @@
 
 namespace Webkul\Purchase\Http\Controllers\API\V1;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Gate;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\Endpoint;
@@ -15,6 +16,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Webkul\Inventory\Http\Resources\V1\OperationResource;
 use Webkul\Inventory\Models\Operation;
+use Webkul\PluginManager\Package;
 use Webkul\Purchase\Models\PurchaseOrder;
 
 #[Group('Purchase API Management')]
@@ -52,6 +54,10 @@ class PurchaseOrderReceiptController extends Controller
         $purchaseOrderModel = PurchaseOrder::findOrFail($purchaseOrder);
 
         Gate::authorize('view', $purchaseOrderModel);
+
+        if (! Package::isPluginInstalled('inventories')) {
+            return OperationResource::collection(new LengthAwarePaginator([], 0, 10));
+        }
 
         $receipts = QueryBuilder::for($purchaseOrderModel->operations())
             ->allowedFilters([
