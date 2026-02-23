@@ -3,6 +3,7 @@
 namespace Webkul\Sale\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Schema;
 use Webkul\Account\Models\FiscalPosition;
 use Webkul\Account\Models\PaymentTerm;
 use Webkul\Inventory\Models\Warehouse;
@@ -78,7 +79,7 @@ class OrderFactory extends Factory
             'team_id'                 => null,
             'creator_id'              => User::factory(),
             'campaign_id'             => null,
-            'warehouse_id'            => null,
+            ...(Schema::hasColumn('sales_orders', 'warehouse_id') ? ['warehouse_id' => null] : []),
         ];
     }
 

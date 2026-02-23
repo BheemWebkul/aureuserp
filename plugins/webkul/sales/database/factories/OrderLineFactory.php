@@ -3,9 +3,11 @@
 namespace Webkul\Sale\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Schema;
 use Webkul\Inventory\Models\Route;
 use Webkul\Inventory\Models\Warehouse;
 use Webkul\Partner\Models\Partner;
+use Webkul\PluginManager\Package;
 use Webkul\Product\Models\Packaging;
 use Webkul\Product\Models\Product;
 use Webkul\Sale\Enums\OrderState;
@@ -54,7 +56,7 @@ class OrderLineFactory extends Factory
             'display_type'                 => null,
             'virtual_id'                   => null,
             'linked_virtual_id'            => null,
-            'qty_delivered_method'         => QtyDeliveredMethod::STOCK_MOVE,
+            'qty_delivered_method'         => Package::isPluginInstalled('inventories') ? QtyDeliveredMethod::STOCK_MOVE : QtyDeliveredMethod::MANUAL,
             'invoice_status'               => null,
             'analytic_distribution'        => null,
             'name'                         => $this->faker->sentence(3),
@@ -91,9 +93,9 @@ class OrderLineFactory extends Factory
             'product_uom_id'               => UOM::factory(),
             'linked_sale_order_sale_id'    => null,
             'creator_id'                   => User::factory(),
-            'warehouse_id'                 => null,
             'product_packaging_id'         => null,
-            'route_id'                     => null,
+            ...(Schema::hasColumn('sales_order_lines', 'warehouse_id') ? ['warehouse_id' => null] : []),
+            ...(Schema::hasColumn('sales_order_lines', 'route_id') ? ['route_id' => null] : []),
         ];
     }
 

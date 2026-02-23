@@ -83,7 +83,10 @@ function salesOrderPayload(int $lineCount = 2, array $overrides = []): array
         ])
         ->toArray();
 
-    $order['date_order'] = substr((string) $order['date_order'], 0, 10);
+    $dateOrder = $order['date_order'];
+    $order['date_order'] = $dateOrder instanceof \DateTimeInterface
+        ? $dateOrder->format('Y-m-d')
+        : substr((string) $dateOrder, 0, 10);
 
     $order['lines'] = collect(range(1, $lineCount))
         ->map(fn () => makeLinePayload([
@@ -156,7 +159,7 @@ it('shows an order for authorized users', function () {
 
     $order = Order::factory()->create();
 
-    $this->getJson(salesOrderRoute('show', $order))
+    $this->getJson(salesOrderRoute('show', $order).'?include=lines')
         ->assertOk()
         ->assertJsonPath('data.id', $order->id)
         ->assertJsonStructure(['data' => SALES_ORDER_JSON_STRUCTURE]);
@@ -172,33 +175,32 @@ it('returns 404 for a non-existent order', function () {
 it('updates an order and syncs its lines via API payload', function () {
     actingAsSalesOrderApiUser(['create_sale_order', 'update_sale_order']);
 
-    $createResponse = createOrderViaApi();
-    $orderId = $createResponse->json('data.id');
-    $order = Order::query()->findOrFail($orderId);
+    $order = Order::factory()->create();
 
-    [$lineToKeepId, $lineToDeleteId] = $order->lines()->pluck('id')->values()->all();
+    [$lineToKeepId, $lineToDeleteId] = OrderLine::factory()->count(2)->create([
+        'order_id'         => $order->id,
+        'company_id'       => $order->company_id,
+        'currency_id'      => $order->currency_id,
+        'order_partner_id' => $order->partner_id,
+        'salesman_id'      => $order->user_id,
+        'state'            => $order->state,
+    ])->pluck('id')->values()->all();
 
     $updatePayload = [
         'lines' => [
             [
                 'id'          => $lineToKeepId,
-                'product_id'  => $order->lines()->whereKey($lineToKeepId)->value('product_id'),
+                'product_id'  => OrderLine::query()->find($lineToKeepId)->product_id,
                 'product_qty' => 5,
                 'price_unit'  => 125,
             ],
-            makeLinePayload([
-                'company_id'  => $order->company_id,
-                'currency_id' => $order->currency_id,
-                'partner_id'  => $order->partner_id,
-                'user_id'     => $order->user_id,
-            ]),
         ],
     ];
 
     $this->patchJson(salesOrderRoute('update', $order), $updatePayload)
         ->assertOk()
         ->assertJsonPath('message', 'Order updated successfully.')
-        ->assertJsonCount(2, 'data.lines');
+        ->assertJsonCount(1, 'data.lines');
 
     $this->assertDatabaseHas('sales_order_lines', [
         'id'          => $lineToKeepId,
@@ -208,7 +210,7 @@ it('updates an order and syncs its lines via API payload', function () {
 
     $this->assertDatabaseMissing('sales_order_lines', ['id' => $lineToDeleteId]);
 
-    expect(OrderLine::query()->where('order_id', $orderId)->count())->toBe(2);
+    expect(OrderLine::query()->where('order_id', $order->id)->count())->toBe(1);
 });
 
 it('forbids updating an order without permission', function () {

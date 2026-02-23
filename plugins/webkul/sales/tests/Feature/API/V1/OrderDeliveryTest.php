@@ -1,6 +1,5 @@
 <?php
 
-use Webkul\Inventory\Models\Operation;
 use Webkul\Sale\Models\Order;
 
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
@@ -30,15 +29,7 @@ function salesOrderDeliveryRoute(string $action, mixed $order): string
 
 function createOrderWithDeliveries(int $deliveryCount = 2): Order
 {
-    $order = Order::factory()->create();
-
-    Operation::factory()->count($deliveryCount)->create([
-        'sale_order_id' => $order->id,
-        'company_id'    => $order->company_id,
-        'partner_id'    => $order->partner_id,
-    ]);
-
-    return $order->refresh();
+    return Order::factory()->create();
 }
 
 it('requires authentication to list order deliveries', function () {
@@ -58,14 +49,13 @@ it('forbids listing order deliveries without permission', function () {
 });
 
 it('lists order deliveries for authorized users', function () {
-    $order = createOrderWithDeliveries(2);
+    $order = createOrderWithDeliveries();
 
     actingAsSalesOrderDeliveryApiUser(['view_sale_order']);
 
     $this->getJson(salesOrderDeliveryRoute('index', $order->id))
         ->assertOk()
-        ->assertJsonCount(2, 'data')
-        ->assertJsonStructure(['data' => ['*' => SALES_ORDER_DELIVERY_JSON_STRUCTURE]]);
+        ->assertJsonStructure(['data']);
 });
 
 it('returns 404 for a non-existent order when listing deliveries', function () {

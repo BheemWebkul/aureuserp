@@ -3,6 +3,7 @@
 namespace Webkul\Sale\Http\Controllers\API\V1;
 
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Group;
@@ -15,6 +16,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Webkul\Inventory\Http\Resources\V1\OperationResource;
 use Webkul\Inventory\Models\Operation;
+use Webkul\PluginManager\Package;
 use Webkul\Sale\Models\Order;
 
 #[Group('Sales API Management')]
@@ -52,6 +54,10 @@ class OrderDeliveryController extends Controller
         $orderModel = Order::findOrFail($order);
 
         Gate::authorize('view', $orderModel);
+
+        if (! Package::isPluginInstalled('inventories')) {
+            return OperationResource::collection(new LengthAwarePaginator([], 0, 10));
+        }
 
         $deliveries = QueryBuilder::for($orderModel->operations())
             ->allowedFilters([
