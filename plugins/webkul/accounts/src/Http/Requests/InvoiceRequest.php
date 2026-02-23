@@ -63,7 +63,13 @@ class InvoiceRequest extends FormRequest
     public function withValidator($validator): void
     {
         $validator->after(function ($validator) {
-            if (! $this->input('invoice_date_due') && ! $this->input('invoice_payment_term_id')) {
+            $isUpdate = $this->isMethod('PUT') || $this->isMethod('PATCH');
+            $hasDueDate = $this->has('invoice_date_due');
+            $hasPaymentTerm = $this->has('invoice_payment_term_id');
+
+            $shouldCheck = ! $isUpdate || $hasDueDate || $hasPaymentTerm;
+
+            if ($shouldCheck && ! $this->input('invoice_date_due') && ! $this->input('invoice_payment_term_id')) {
                 $validator->errors()->add(
                     'invoice_date_due',
                     'Either invoice due date or payment term must be provided.'
