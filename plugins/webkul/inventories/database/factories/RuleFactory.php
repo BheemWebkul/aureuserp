@@ -5,6 +5,7 @@ namespace Webkul\Inventory\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Webkul\Inventory\Enums\ProcureMethod;
 use Webkul\Inventory\Enums\RuleAction;
+use Webkul\Inventory\Enums\RuleAuto;
 use Webkul\Inventory\Models\Location;
 use Webkul\Inventory\Models\OperationType;
 use Webkul\Inventory\Models\Route;
@@ -30,7 +31,7 @@ class RuleFactory extends Factory
             'group_propagation_option' => null,
             'action'                   => RuleAction::PULL,
             'procure_method'           => ProcureMethod::MAKE_TO_STOCK,
-            'auto'                     => true,
+            'auto'                     => RuleAuto::TRANSPARENT,
             'push_domain'              => null,
             'location_dest_from_rule'  => false,
             'propagate_cancel'         => false,

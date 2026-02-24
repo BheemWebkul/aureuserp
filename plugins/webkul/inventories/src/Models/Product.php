@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Webkul\Account\Models\Product as BaseProduct;
 use Webkul\Field\Traits\HasCustomFields;
+use Webkul\Inventory\Database\Factories\ProductFactory;
 use Webkul\Inventory\Enums\LocationType;
 use Webkul\Inventory\Enums\ProductTracking;
 use Webkul\Security\Models\User;
@@ -14,6 +15,11 @@ use Webkul\Security\Models\User;
 class Product extends BaseProduct
 {
     use HasCustomFields;
+
+    protected static function newFactory(): ProductFactory
+    {
+        return ProductFactory::new();
+    }
 
     public function __construct(array $attributes = [])
     {

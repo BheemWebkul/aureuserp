@@ -29,8 +29,7 @@ class StorageCategoryFactory extends Factory
             'name'               => fake()->word(),
             'sort'               => 0,
             'allow_new_products' => \Webkul\Inventory\Enums\AllowNewProduct::MIXED,
-            'parent_path'        => null,
-            'max_weight'         => null,
+            'max_weight'         => 0.0,
 
             // Relationships
             'company_id' => \Webkul\Support\Models\Company::factory(),

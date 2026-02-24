@@ -42,6 +42,7 @@ class ProductController extends Controller
     #[Endpoint('List products', 'Retrieve a paginated list of products with filtering and sorting')]
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> parent, variants, uom, uomPO, category, attributes, attribute_values, tags, company, creator, propertyAccountIncome, propertyAccountExpense, routes, responsible', required: false, example: 'category,tags,routes')]
     #[QueryParam('filter[id]', 'string', 'Comma-separated list of IDs to filter by', required: false)]
+    #[QueryParam('filter[name]', 'string', 'Filter by product name (partial match)', required: false, example: 'Widget')]
     #[QueryParam('filter[type]', 'string', 'Filter by product type values', required: false, example: 'goods')]
     #[QueryParam('filter[enable_sales]', 'boolean', 'Filter by sales enabled', required: false, example: 'true')]
     #[QueryParam('filter[enable_purchase]', 'boolean', 'Filter by purchase enabled', required: false, example: 'true')]
@@ -59,6 +60,7 @@ class ProductController extends Controller
         $products = QueryBuilder::for(Product::class)
             ->allowedFilters([
                 AllowedFilter::exact('id'),
+                AllowedFilter::partial('name'),
                 AllowedFilter::exact('type'),
                 AllowedFilter::exact('enable_sales'),
                 AllowedFilter::exact('enable_purchase'),
