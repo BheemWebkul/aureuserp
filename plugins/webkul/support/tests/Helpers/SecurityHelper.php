@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\Sanctum;
 use Spatie\Permission\PermissionRegistrar;
 use Webkul\Security\Enums\PermissionType;
@@ -61,7 +62,7 @@ class SecurityHelper
         return User::withoutEvents(
             fn (): User => User::query()->create([
                 'name'     => fake()->name(),
-                'email'    => fake()->unique()->safeEmail(),
+                'email'    => 'test-user-'.Str::uuid()->toString().'@example.test',
                 'password' => Hash::make('password'),
             ])
         );

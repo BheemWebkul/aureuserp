@@ -44,7 +44,6 @@ jobs:
       - name: Setting Environment
         run: |
           cp .env.example .env
-          rm -f .env.testing
           sed -i "s|^\(APP_ENV=\s*\).*$|\1testing|" .env
           sed -i "s|^\(DB_CONNECTION=\s*\).*$|\1mysql|" .env
           sed -i "s|^#\?\s*DB_HOST=.*|DB_HOST=127.0.0.1|" .env
@@ -52,7 +51,6 @@ jobs:
           sed -i "s|^#\?\s*DB_DATABASE=.*|DB_DATABASE=aureuserp|" .env
           sed -i "s|^#\?\s*DB_USERNAME=.*|DB_USERNAME=root|" .env
           sed -i "s|^#\?\s*DB_PASSWORD=.*|DB_PASSWORD=root|" .env
-          sed -i "s|^#\?\s*DB_SOCKET=.*|DB_SOCKET=|" .env
           echo "=== Final .env configuration ==="
           cat .env
 
