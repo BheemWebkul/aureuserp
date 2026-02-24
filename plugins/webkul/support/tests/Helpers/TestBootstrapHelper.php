@@ -15,6 +15,7 @@ class TestBootstrapHelper
             'purchases'   => 'purchases_orders',
             'inventories' => 'inventories_operations',
             'accounts'    => 'accounts_account_moves',
+            'products'    => 'products_products',
         ];
 
         $table = $pluginTables[$pluginName] ?? null;
