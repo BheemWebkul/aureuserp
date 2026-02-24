@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 
 class TestBootstrapHelper
 {
-    private static bool $isERPInstalled = true;
+    private static bool $isERPInstalled = false;
 
     public static function ensurePluginInstalled(string $pluginName): void
     {
