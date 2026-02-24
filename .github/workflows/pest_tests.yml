@@ -45,11 +45,12 @@ jobs:
         run: |
           cp .env.example .env
           sed -i "s|^\(APP_ENV=\s*\).*$|\1testing|" .env
-          sed -i "s|^\(DB_HOST=\s*\).*$|\1127.0.0.1|" .env
-          sed -i "s|^\(DB_PORT=\s*\).*$|\1${{ job.services.mysql.ports['3306'] }}|" .env
-          sed -i "s|^\(DB_DATABASE=\s*\).*$|\aureuserp|" .env
-          sed -i "s|^\(DB_USERNAME=\s*\).*$|\1root|" .env
-          sed -i "s|^\(DB_PASSWORD=\s*\).*$|\1root|" .env
+          sed -i "s|^#\?\s*DB_HOST=.*|DB_HOST=127.0.0.1|" .env
+          sed -i "s|^#\?\s*DB_PORT=.*|DB_PORT=${{ job.services.mysql.ports[3306] }}|" .env
+          sed -i "s|^#\?\s*DB_DATABASE=.*|DB_DATABASE=aureuserp|" .env
+          sed -i "s|^#\?\s*DB_USERNAME=.*|DB_USERNAME=root|" .env
+          sed -i "s|^#\?\s*DB_PASSWORD=.*|DB_PASSWORD=root|" .env
+          echo "=== Final .env configuration ==="
           cat .env
 
       - name: Running AureusERP Installer
