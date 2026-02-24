@@ -53,7 +53,12 @@ jobs:
           cat .env
 
       - name: Running AureusERP Installer
-        run: php artisan erp:install --no-interaction
+        run: |
+          php artisan erp:install \
+            --force \
+            --admin-name="Example" \
+            --admin-email="admin@example.com" \
+            --admin-password="admin123"
 
       - name: Running Pest Test
         run: vendor/bin/pest --colors=always
