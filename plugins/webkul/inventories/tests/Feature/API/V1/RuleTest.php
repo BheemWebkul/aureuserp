@@ -7,6 +7,7 @@ use Webkul\Inventory\Models\Route;
 use Webkul\Inventory\Models\Rule;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
+use Webkul\Support\Models\Company;
 
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
 require_once __DIR__.'/../../../../../support/tests/Helpers/TestBootstrapHelper.php';
@@ -57,7 +58,7 @@ function inventoryRulePayload(array $overrides = []): array
     $destination = Location::factory()->create();
     $route = Route::factory()->create();
     $opType = OperationType::factory()->create();
-    $company = \Webkul\Support\Models\Company::factory()->create();
+    $company = Company::factory()->create();
 
     return array_replace_recursive([
         'name'                    => 'Test Rule',

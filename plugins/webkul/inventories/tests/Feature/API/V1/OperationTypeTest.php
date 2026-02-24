@@ -6,6 +6,7 @@ use Webkul\Inventory\Models\Location;
 use Webkul\Inventory\Models\OperationType;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
+use Webkul\Support\Models\Company;
 
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
 require_once __DIR__.'/../../../../../support/tests/Helpers/TestBootstrapHelper.php';
@@ -54,7 +55,7 @@ function inventoryOperationTypePayload(array $overrides = []): array
 {
     $source = Location::factory()->create();
     $destination = Location::factory()->create();
-    $company = \Webkul\Support\Models\Company::factory()->create();
+    $company = Company::factory()->create();
 
     return array_replace_recursive([
         'name'                    => 'Test Operation',
