@@ -83,10 +83,9 @@ function salesOrderPayload(int $lineCount = 2, array $overrides = []): array
         ])
         ->toArray();
 
-    $dateOrder = $order['date_order'];
-    $order['date_order'] = $dateOrder instanceof \DateTimeInterface
-        ? $dateOrder->format('Y-m-d')
-        : substr((string) $dateOrder, 0, 10);
+    $order['date_order'] = $order['date_order']?->format('Y-m-d');
+
+    $order['validity_date'] = $order['validity_date']?->format('Y-m-d');
 
     $order['lines'] = collect(range(1, $lineCount))
         ->map(fn () => makeLinePayload([
