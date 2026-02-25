@@ -16,9 +16,9 @@ class PaymentFactory extends Factory
         return [
             'company_id' => Company::factory(),
             'created_by' => User::factory(),
-            'name'       => $this->faker->words(3, true),
-            'amount'     => $this->faker->randomFloat(2, 10, 1000),
-            'date'       => $this->faker->date(),
+            'name'       => fake()->words(3, true),
+            'amount'     => fake()->randomFloat(2, 10, 1000),
+            'date'       => fake()->date(),
         ];
     }
 }

@@ -29,11 +29,11 @@ class PaymentTokenFactory extends Factory
             'partner_id'        => Partner::factory(),
             'created_by'        => User::factory(),
             'payment_details'   => [
-                'token' => $this->faker->uuid(),
+                'token' => fake()->uuid(),
                 'type'  => 'card',
-                'last4' => $this->faker->numerify('####'),
+                'last4' => fake()->numerify('####'),
             ],
-            'provider_reference_id' => $this->faker->uuid(),
+            'provider_reference_id' => fake()->uuid(),
             'is_active'             => true,
         ];
     }

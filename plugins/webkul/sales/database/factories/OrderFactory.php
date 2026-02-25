@@ -38,24 +38,24 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
-        $amountUntaxed = $this->faker->randomFloat(4, 100, 10000);
+        $amountUntaxed = fake()->randomFloat(4, 100, 10000);
         $amountTax = $amountUntaxed * 0.15;
         $amountTotal = $amountUntaxed + $amountTax;
         $partner = Partner::factory();
 
         return [
-            'access_token'            => $this->faker->uuid(),
+            'access_token'            => fake()->uuid(),
             'state'                   => OrderState::DRAFT,
-            'client_order_ref'        => $this->faker->optional()->numerify('PO-####'),
-            'origin'                  => $this->faker->optional()->numerify('SO-####'),
-            'reference'               => $this->faker->optional()->word(),
+            'client_order_ref'        => fake()->optional()->numerify('PO-####'),
+            'origin'                  => fake()->optional()->numerify('SO-####'),
+            'reference'               => fake()->optional()->word(),
             'signed_by'               => null,
             'invoice_status'          => InvoiceStatus::TO_INVOICE,
-            'validity_date'           => $this->faker->optional()->dateTimeBetween('now', '+30 days'),
-            'note'                    => $this->faker->optional()->paragraph(),
+            'validity_date'           => fake()->optional()->dateTimeBetween('now', '+30 days'),
+            'note'                    => fake()->optional()->paragraph(),
             'locked'                  => false,
             'commitment_date'         => null,
-            'date_order'              => $this->faker->dateTimeBetween('-30 days', 'now'),
+            'date_order'              => fake()->dateTimeBetween('-30 days', 'now'),
             'signed_on'               => null,
             'prepayment_percent'      => null,
             'require_signature'       => false,

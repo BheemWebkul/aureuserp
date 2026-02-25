@@ -30,7 +30,7 @@ class TaxFactory extends Factory
             'amount_type'                      => AmountType::PERCENT,
             'price_include_override'           => TaxIncludeOverride::DEFAULT,
             'tax_exigibility'                  => 'on_invoice',
-            'name'                             => $this->faker->words(2, true),
+            'name'                             => fake()->words(2, true),
             'description'                      => null,
             'invoice_label'                    => null,
             'invoice_legal_notes'              => null,

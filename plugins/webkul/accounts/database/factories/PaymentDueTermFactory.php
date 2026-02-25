@@ -30,7 +30,7 @@ class PaymentDueTermFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'value'        => DueTermValue::FIXED,
-            'value_amount' => $this->faker->randomFloat(2, 100, 1000),
+            'value_amount' => fake()->randomFloat(2, 100, 1000),
         ]);
     }
 

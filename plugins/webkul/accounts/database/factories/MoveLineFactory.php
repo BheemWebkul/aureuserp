@@ -30,8 +30,8 @@ class MoveLineFactory extends Factory
      */
     public function definition(): array
     {
-        $amount = $this->faker->randomFloat(2, 0, 1000);
-        $isDebit = $this->faker->boolean();
+        $amount = fake()->randomFloat(2, 0, 1000);
+        $isDebit = fake()->boolean();
 
         return [
             'sort'                     => 0,
@@ -56,10 +56,10 @@ class MoveLineFactory extends Factory
             'move_name'                => null,
             'parent_state'             => MoveState::DRAFT,
             'reference'                => null,
-            'name'                     => $this->faker->sentence(3),
+            'name'                     => fake()->sentence(3),
             'matching_number'          => null,
             'display_type'             => null,
-            'date'                     => $this->faker->date(),
+            'date'                     => fake()->date(),
             'invoice_date'             => null,
             'date_maturity'            => null,
             'discount_date'            => null,
@@ -116,8 +116,8 @@ class MoveLineFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'product_id' => Product::factory(),
             'uom_id'     => UOM::factory(),
-            'quantity'   => $this->faker->numberBetween(1, 10),
-            'price_unit' => $this->faker->randomFloat(2, 10, 100),
+            'quantity'   => fake()->numberBetween(1, 10),
+            'price_unit' => fake()->randomFloat(2, 10, 100),
         ]);
     }
 

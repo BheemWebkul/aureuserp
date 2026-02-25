@@ -14,7 +14,7 @@ class UtmStageFactory extends Factory
     {
         return [
             'sort'       => 0,
-            'name'       => $this->faker->words(2, true),
+            'name'       => fake()->words(2, true),
             'created_by' => User::factory(),
         ];
     }

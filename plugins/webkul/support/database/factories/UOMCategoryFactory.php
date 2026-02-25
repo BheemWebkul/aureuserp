@@ -23,7 +23,7 @@ class UOMCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'       => $this->faker->words(2, true),
+            'name'       => fake()->words(2, true),
             'creator_id' => User::factory(),
         ];
     }

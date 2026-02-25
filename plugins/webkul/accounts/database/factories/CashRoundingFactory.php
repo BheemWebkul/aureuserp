@@ -18,7 +18,7 @@ class CashRoundingFactory extends Factory
         return [
             'strategy'          => RoundingStrategy::BIGGEST_TAX,
             'rounding_method'   => RoundingMethod::HALF_UP,
-            'name'              => $this->faker->words(2, true),
+            'name'              => fake()->words(2, true),
             'rounding'          => 0.05,
             'profit_account_id' => Account::factory(),
             'loss_account_id'   => Account::factory(),

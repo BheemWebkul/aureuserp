@@ -27,8 +27,8 @@ class LeaveFactory extends Factory
      */
     public function definition(): array
     {
-        $requestDateFrom = $this->faker->dateTimeBetween('now', '+30 days');
-        $requestDateTo = $this->faker->dateTimeBetween($requestDateFrom, '+7 days');
+        $requestDateFrom = fake()->dateTimeBetween('now', '+30 days');
+        $requestDateTo = fake()->dateTimeBetween($requestDateFrom, '+7 days');
         $numberOfDays = $requestDateFrom->diff($requestDateTo)->days + 1;
 
         return [
@@ -44,7 +44,7 @@ class LeaveFactory extends Factory
             'first_approver_id'        => null,
             'second_approver_id'       => null,
             'creator_id'               => User::factory(),
-            'private_name'             => $this->faker->sentence(3),
+            'private_name'             => fake()->sentence(3),
             'attachment'               => null,
             'state'                    => State::CONFIRM,
             'duration_display'         => $numberOfDays.' '.($numberOfDays > 1 ? 'days' : 'day'),

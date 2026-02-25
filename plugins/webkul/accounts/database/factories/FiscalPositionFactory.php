@@ -23,7 +23,7 @@ class FiscalPositionFactory extends Factory
             'zip_from'         => null,
             'zip_to'           => null,
             'foreign_vat'      => null,
-            'name'             => $this->faker->words(2, true),
+            'name'             => fake()->words(2, true),
             'notes'            => null,
             'auto_reply'       => false,
             'vat_required'     => false,
@@ -34,7 +34,7 @@ class FiscalPositionFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'vat_required' => true,
-            'foreign_vat'  => $this->faker->bothify('??##########'),
+            'foreign_vat'  => fake()->bothify('??##########'),
         ]);
     }
 }

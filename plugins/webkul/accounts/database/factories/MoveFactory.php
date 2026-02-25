@@ -54,7 +54,7 @@ class MoveFactory extends Factory
             'creator_id'                        => User::factory(),
             'sequence_prefix'                   => null,
             'access_token'                      => null,
-            'name'                              => $this->faker->optional()->bothify('MISC/####/####'),
+            'name'                              => fake()->optional()->bothify('MISC/####/####'),
             'reference'                         => null,
             'state'                             => MoveState::DRAFT,
             'move_type'                         => MoveType::ENTRY,
@@ -67,7 +67,7 @@ class MoveFactory extends Factory
             'invoice_partner_display_name'      => null,
             'invoice_origin'                    => null,
             'incoterm_location'                 => null,
-            'date'                              => $this->faker->date(),
+            'date'                              => fake()->date(),
             'auto_post_until'                   => null,
             'invoice_date'                      => null,
             'invoice_date_due'                  => null,
@@ -104,8 +104,8 @@ class MoveFactory extends Factory
 
     public function invoice(): static
     {
-        $invoiceDate = $this->faker->dateTimeBetween('-30 days', 'now');
-        $dueDate = $this->faker->dateTimeBetween($invoiceDate, '+30 days');
+        $invoiceDate = fake()->dateTimeBetween('-30 days', 'now');
+        $dueDate = fake()->dateTimeBetween($invoiceDate, '+30 days');
         $partner = Partner::factory();
 
         return $this->state(fn (array $attributes) => [
@@ -128,8 +128,8 @@ class MoveFactory extends Factory
 
     public function vendorBill(): static
     {
-        $invoiceDate = $this->faker->dateTimeBetween('-30 days', 'now');
-        $dueDate = $this->faker->dateTimeBetween($invoiceDate, '+30 days');
+        $invoiceDate = fake()->dateTimeBetween('-30 days', 'now');
+        $dueDate = fake()->dateTimeBetween($invoiceDate, '+30 days');
         $partner = Partner::factory();
 
         return $this->state(fn (array $attributes) => [
@@ -145,7 +145,7 @@ class MoveFactory extends Factory
 
     public function refund(): static
     {
-        $invoiceDate = $this->faker->dateTimeBetween('-30 days', 'now');
+        $invoiceDate = fake()->dateTimeBetween('-30 days', 'now');
         $partner = Partner::factory();
 
         return $this->state(fn (array $attributes) => [
@@ -182,8 +182,8 @@ class MoveFactory extends Factory
 
     public function partiallyPaid(): static
     {
-        $total = $this->faker->randomFloat(2, 100, 1000);
-        $paid = $this->faker->randomFloat(2, 10, $total - 10);
+        $total = fake()->randomFloat(2, 100, 1000);
+        $paid = fake()->randomFloat(2, 10, $total - 10);
 
         return $this->state(fn (array $attributes) => [
             'payment_state'   => PaymentState::PARTIAL,

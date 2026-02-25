@@ -17,10 +17,10 @@ class UtmCampaignFactory extends Factory
         return [
             'user_id'          => User::factory(),
             'stage_id'         => UtmStage::factory(),
-            'color'            => $this->faker->numberBetween(1, 10),
+            'color'            => fake()->numberBetween(1, 10),
             'created_by'       => User::factory(),
-            'name'             => $this->faker->words(2, true),
-            'title'            => $this->faker->sentence(4),
+            'name'             => fake()->words(2, true),
+            'title'            => fake()->sentence(4),
             'is_active'        => true,
             'is_auto_campaign' => false,
             'company_id'       => Company::factory(),

@@ -39,7 +39,7 @@ class ReconcileFactory extends Factory
             'match_transaction_type_parameters' => null,
             'payment_tolerance_type'            => 'percentage',
             'decimal_separator'                 => '.',
-            'name'                              => $this->faker->words(3, true),
+            'name'                              => fake()->words(3, true),
             'auto_reconcile'                    => true,
             'to_check'                          => false,
             'match_text_location_label'         => true,

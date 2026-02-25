@@ -23,8 +23,8 @@ class EmployeeCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'    => $this->faker->name,
-            'color'   => $this->faker->hexColor,
+            'name'    => fake()->name,
+            'color'   => fake()->hexColor,
             'user_id' => User::factory(),
         ];
     }
