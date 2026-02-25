@@ -28,7 +28,7 @@ class EmployeeResumeFactory extends Factory
             'description'                  => fake()->optional()->paragraph(),
             'employee_id'                  => Employee::factory(),
             'employee_resume_line_type_id' => EmployeeResumeLineType::factory(),
-            'creator_id'                   => User::factory(),
+            'creator_id'                   => User::query()->value('id') ?? User::factory(),
             'user_id'                      => null,
         ];
     }

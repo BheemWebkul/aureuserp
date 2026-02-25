@@ -34,7 +34,7 @@ class PartialReconcileFactory extends Factory
             'debit_currency_id'      => Currency::factory(),
             'credit_currency_id'     => Currency::factory(),
             'company_id'             => Company::factory(),
-            'created_by'             => User::factory(),
+            'creator_id'             => User::query()->value('id') ?? User::factory(),
             'max_date'               => fake()->date(),
             'amount'                 => $amount,
             'debit_amount_currency'  => $amount,

@@ -35,9 +35,9 @@ class RequisitionFactory extends Factory
             'type'        => RequisitionType::BLANKET_ORDER,
             'state'       => RequisitionState::DRAFT,
             'currency_id' => Currency::factory(),
-            'partner_id'  => Partner::factory(),
+            'partner_id'  => Partner::query()->value('id') ?? Partner::factory(),
             'company_id'  => Company::factory(),
-            'creator_id'  => User::factory(),
+            'creator_id'  => User::query()->value('id') ?? User::factory(),
         ];
     }
 

@@ -26,7 +26,7 @@ class ActivityPlanTemplateFactory extends Factory
             'plan_id'          => null,
             'activity_type_id' => ActivityType::factory(),
             'responsible_id'   => null,
-            'creator_id'       => User::factory(),
+            'creator_id'       => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

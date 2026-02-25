@@ -25,7 +25,7 @@ class ReconcileFactory extends Factory
             'sort'                              => 0,
             'company_id'                        => Company::factory(),
             'past_months_limit'                 => 18,
-            'created_by'                        => User::factory(),
+            'creator_id'                        => User::query()->value('id') ?? User::factory(),
             'rule_type'                         => 'invoice_matching',
             'matching_order'                    => 'new_first',
             'counter_part_type'                 => 'general',

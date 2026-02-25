@@ -58,7 +58,7 @@ function creditNoteRoute(string $action, mixed $creditNote = null): string
 
 function makeCreditNoteLinePayload(array $overrides = []): array
 {
-    $product = Product::factory()->create(['is_configurable' => false]);
+    $product = Product::factory()->withAccounts()->create(['is_configurable' => false]);
     $uom = UOM::factory()->create();
 
     return array_merge([

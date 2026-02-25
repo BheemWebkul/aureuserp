@@ -63,7 +63,7 @@ class MoveFactory extends Factory
             'product_packaging_id'    => null,
             'scrap_id'                => null,
             'company_id'              => Company::factory(),
-            'creator_id'              => User::factory(),
+            'creator_id'              => User::query()->value('id') ?? User::factory(),
             'purchase_order_line_id'  => null,
             'sale_order_line_id'      => null,
         ];
@@ -86,7 +86,7 @@ class MoveFactory extends Factory
     public function withPartner(): static
     {
         return $this->state(fn (array $attributes) => [
-            'partner_id' => Partner::factory(),
+            'partner_id' => Partner::query()->value('id') ?? Partner::factory(),
         ]);
     }
 

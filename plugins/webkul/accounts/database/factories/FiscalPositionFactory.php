@@ -19,7 +19,7 @@ class FiscalPositionFactory extends Factory
             'company_id'       => Company::factory(),
             'country_id'       => Country::factory(),
             'country_group_id' => null,
-            'creator_id'       => User::factory(),
+            'creator_id'       => User::query()->value('id') ?? User::factory(),
             'zip_from'         => null,
             'zip_to'           => null,
             'foreign_vat'      => null,

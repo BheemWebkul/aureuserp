@@ -51,7 +51,7 @@ class MoveFactory extends Factory
             'invoice_incoterm_id'               => null,
             'invoice_cash_rounding_id'          => null,
             'preferred_payment_method_line_id'  => null,
-            'creator_id'                        => User::factory(),
+            'creator_id'                        => User::query()->value('id') ?? User::factory(),
             'sequence_prefix'                   => null,
             'access_token'                      => null,
             'name'                              => fake()->optional()->bothify('MISC/####/####'),
@@ -106,7 +106,7 @@ class MoveFactory extends Factory
     {
         $invoiceDate = fake()->dateTimeBetween('-30 days', 'now');
         $dueDate = fake()->dateTimeBetween($invoiceDate, '+30 days');
-        $partner = Partner::factory();
+        $partner = Partner::query()->value('id') ?? Partner::factory();
 
         return $this->state(fn (array $attributes) => [
             'move_type'             => MoveType::OUT_INVOICE,
@@ -130,7 +130,7 @@ class MoveFactory extends Factory
     {
         $invoiceDate = fake()->dateTimeBetween('-30 days', 'now');
         $dueDate = fake()->dateTimeBetween($invoiceDate, '+30 days');
-        $partner = Partner::factory();
+        $partner = Partner::query()->value('id') ?? Partner::factory();
 
         return $this->state(fn (array $attributes) => [
             'move_type'             => MoveType::IN_INVOICE,
@@ -146,7 +146,7 @@ class MoveFactory extends Factory
     public function refund(): static
     {
         $invoiceDate = fake()->dateTimeBetween('-30 days', 'now');
-        $partner = Partner::factory();
+        $partner = Partner::query()->value('id') ?? Partner::factory();
 
         return $this->state(fn (array $attributes) => [
             'move_type'             => MoveType::OUT_REFUND,

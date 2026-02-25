@@ -24,7 +24,7 @@ class TaxFactory extends Factory
             'tax_group_id'                     => TaxGroup::factory(),
             'cash_basis_transition_account_id' => null,
             'country_id'                       => null,
-            'creator_id'                       => User::factory(),
+            'creator_id'                       => User::query()->value('id') ?? User::factory(),
             'type_tax_use'                     => TypeTaxUse::SALE,
             'tax_scope'                        => 'consu',
             'amount_type'                      => AmountType::PERCENT,

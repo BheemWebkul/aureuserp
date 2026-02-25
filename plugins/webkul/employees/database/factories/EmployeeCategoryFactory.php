@@ -25,7 +25,7 @@ class EmployeeCategoryFactory extends Factory
         return [
             'name'    => fake()->name,
             'color'   => fake()->hexColor,
-            'user_id' => User::factory(),
+            'user_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

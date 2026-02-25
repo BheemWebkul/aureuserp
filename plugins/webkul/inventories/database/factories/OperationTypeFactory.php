@@ -57,7 +57,7 @@ class OperationTypeFactory extends Factory
             'destination_location_id'  => Location::factory(),
             'warehouse_id'             => Warehouse::factory(),
             'company_id'               => Company::factory(),
-            'creator_id'               => User::factory(),
+            'creator_id'               => User::query()->value('id') ?? User::factory(),
         ];
     }
 

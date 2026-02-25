@@ -31,7 +31,7 @@ class CalendarFactory extends Factory
             'two_weeks_calendar'        => 0,
             'flexible_hours'            => 0,
             'full_time_required_hours'  => 0,
-            'user_id'                   => User::factory(),
+            'user_id'                   => User::query()->value('id') ?? User::factory(),
             'company_id'                => Company::factory(),
         ];
     }

@@ -26,7 +26,7 @@ class JournalFactory extends Factory
             'profit_account_id'        => null,
             'loss_account_id'          => null,
             'bank_account_id'          => null,
-            'creator_id'               => User::factory(),
+            'creator_id'               => User::query()->value('id') ?? User::factory(),
             'color'                    => fake()->numberBetween(1, 10),
             'access_token'             => null,
             'code'                     => strtoupper(fake()->unique()->lexify('??')),

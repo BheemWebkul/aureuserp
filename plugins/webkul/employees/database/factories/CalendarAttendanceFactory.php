@@ -35,7 +35,7 @@ class CalendarAttendanceFactory extends Factory
             'hour_to'           => fake()->time(),
             'durations_days'    => fake()->randomNumber(),
             'calendar_id'       => fake()->randomNumber(),
-            'user_id'           => User::factory(),
+            'user_id'           => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

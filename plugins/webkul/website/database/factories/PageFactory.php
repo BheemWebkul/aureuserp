@@ -39,7 +39,7 @@ class PageFactory extends Factory
             'meta_title'        => $title,
             'meta_keywords'     => implode(', ', fake()->words(5)),
             'meta_description'  => fake()->sentence(15),
-            'creator_id'        => User::factory(),
+            'creator_id'        => User::query()->value('id') ?? User::factory(),
         ];
     }
 

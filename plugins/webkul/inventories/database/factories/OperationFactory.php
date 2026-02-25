@@ -36,7 +36,7 @@ class OperationFactory extends Factory
             'closed_at'          => null,
 
             // Relationships
-            'user_id'                 => User::factory(),
+            'user_id'                 => User::query()->value('id') ?? User::factory(),
             'owner_id'                => null,
             'operation_type_id'       => OperationType::factory(),
             'source_location_id'      => Location::factory(),
@@ -45,7 +45,7 @@ class OperationFactory extends Factory
             'return_id'               => null,
             'partner_id'              => null,
             'company_id'              => Company::factory(),
-            'creator_id'              => User::factory(),
+            'creator_id'              => User::query()->value('id') ?? User::factory(),
             'sale_order_id'           => null,
         ];
     }
@@ -68,7 +68,7 @@ class OperationFactory extends Factory
     public function withPartner(): static
     {
         return $this->state(fn (array $attributes) => [
-            'partner_id' => Partner::factory(),
+            'partner_id' => Partner::query()->value('id') ?? Partner::factory(),
         ]);
     }
 

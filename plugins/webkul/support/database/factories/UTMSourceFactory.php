@@ -17,7 +17,7 @@ class UTMSourceFactory extends Factory
     {
         return [
             'name'       => fake()->words(2, true),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

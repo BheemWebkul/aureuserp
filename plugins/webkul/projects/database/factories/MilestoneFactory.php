@@ -32,7 +32,7 @@ class MilestoneFactory extends Factory
             'is_completed' => fake()->boolean(),
             'completed_at' => fake()->date(),
             'project_id'   => Project::factory(),
-            'creator_id'   => User::factory(),
+            'creator_id'   => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

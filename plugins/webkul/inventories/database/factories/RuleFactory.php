@@ -46,7 +46,7 @@ class RuleFactory extends Factory
             'warehouse_id'            => null,
             'propagate_warehouse_id'  => null,
             'company_id'              => Company::factory(),
-            'creator_id'              => User::factory(),
+            'creator_id'              => User::query()->value('id') ?? User::factory(),
         ];
     }
 

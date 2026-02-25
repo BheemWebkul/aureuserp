@@ -22,7 +22,7 @@ class CashRoundingFactory extends Factory
             'rounding'          => 0.05,
             'profit_account_id' => Account::factory(),
             'loss_account_id'   => Account::factory(),
-            'creator_id'        => User::factory(),
+            'creator_id'        => User::query()->value('id') ?? User::factory(),
         ];
     }
 

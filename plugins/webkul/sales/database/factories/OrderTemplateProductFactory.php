@@ -37,7 +37,7 @@ class OrderTemplateProductFactory extends Factory
             'company_id'        => Company::factory(),
             'product_id'        => Product::factory(),
             'product_uom_id'    => UOM::factory(),
-            'creator_id'        => User::factory(),
+            'creator_id'        => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

@@ -28,7 +28,7 @@ class BankStatementFactory extends Factory
         return [
             'company_id'       => Company::factory(),
             'journal_id'       => Journal::factory(),
-            'created_by'       => User::factory(),
+            'creator_id'       => User::query()->value('id') ?? User::factory(),
             'name'             => fake()->words(2, true),
             'reference'        => fake()->optional()->bothify('STMT-####'),
             'first_line_index' => 0,

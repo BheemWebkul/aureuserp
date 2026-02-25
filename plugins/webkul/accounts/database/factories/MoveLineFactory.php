@@ -9,8 +9,8 @@ use Webkul\Account\Models\Account;
 use Webkul\Account\Models\Journal;
 use Webkul\Account\Models\Move;
 use Webkul\Account\Models\MoveLine;
+use Webkul\Account\Models\Product;
 use Webkul\Partner\Models\Partner;
-use Webkul\Product\Models\Product;
 use Webkul\Security\Models\User;
 use Webkul\Support\Models\Company;
 use Webkul\Support\Models\Currency;
@@ -52,7 +52,7 @@ class MoveLineFactory extends Factory
             'statement_line_id'        => null,
             'product_id'               => null,
             'uom_id'                   => null,
-            'created_by'               => User::factory(),
+            'creator_id'               => User::query()->value('id') ?? User::factory(),
             'move_name'                => null,
             'parent_state'             => MoveState::DRAFT,
             'reference'                => null,
@@ -89,7 +89,7 @@ class MoveLineFactory extends Factory
     public function withPartner(): static
     {
         return $this->state(fn (array $attributes) => [
-            'partner_id' => Partner::factory(),
+            'partner_id' => Partner::query()->value('id') ?? Partner::factory(),
         ]);
     }
 
@@ -114,7 +114,7 @@ class MoveLineFactory extends Factory
     public function withProduct(): static
     {
         return $this->state(fn (array $attributes) => [
-            'product_id' => Product::factory(),
+            'product_id' => Product::factory()->withAccounts(),
             'uom_id'     => UOM::factory(),
             'quantity'   => fake()->numberBetween(1, 10),
             'price_unit' => fake()->randomFloat(2, 10, 100),

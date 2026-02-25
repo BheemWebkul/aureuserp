@@ -53,7 +53,7 @@ class OrderLineFactory extends Factory
             'qty_received'        => 0,
             'qty_received_manual' => 0,
             'qty_to_invoice'      => 0,
-            'creator_id'          => User::factory(),
+            'creator_id'          => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

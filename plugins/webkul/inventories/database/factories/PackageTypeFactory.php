@@ -34,7 +34,7 @@ class PackageTypeFactory extends Factory
 
             // Relationships
             'company_id' => \Webkul\Support\Models\Company::factory(),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 

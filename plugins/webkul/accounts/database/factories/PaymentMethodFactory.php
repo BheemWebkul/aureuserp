@@ -25,7 +25,7 @@ class PaymentMethodFactory extends Factory
             'code'         => strtoupper(fake()->unique()->lexify('???')),
             'payment_type' => PaymentType::RECEIVE,
             'name'         => fake()->words(2, true),
-            'created_by'   => User::factory(),
+            'creator_id'   => User::query()->value('id') ?? User::factory(),
         ];
     }
 

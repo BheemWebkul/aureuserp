@@ -26,8 +26,8 @@ class PaymentTokenFactory extends Factory
         return [
             'company_id'        => Company::factory(),
             'payment_method_id' => PaymentMethod::factory(),
-            'partner_id'        => Partner::factory(),
-            'created_by'        => User::factory(),
+            'partner_id'        => Partner::query()->value('id') ?? Partner::factory(),
+            'creator_id'        => User::query()->value('id') ?? User::factory(),
             'payment_details'   => [
                 'token' => fake()->uuid(),
                 'type'  => 'card',

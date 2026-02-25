@@ -30,7 +30,7 @@ class RequisitionLineFactory extends Factory
             'product_id' => Product::factory(),
             'qty'        => fake()->numberBetween(1, 100),
             'price_unit' => fake()->randomFloat(2, 10, 1000),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

@@ -43,7 +43,7 @@ class LocationFactory extends Factory
             'storage_category_id' => null,
             'warehouse_id'        => null,
             'company_id'          => Company::factory(),
-            'creator_id'          => User::factory(),
+            'creator_id'          => User::query()->value('id') ?? User::factory(),
         ];
     }
 

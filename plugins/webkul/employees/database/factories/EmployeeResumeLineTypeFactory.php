@@ -18,7 +18,7 @@ class EmployeeResumeLineTypeFactory extends Factory
         return [
             'sort'       => fake()->numberBetween(1, 100),
             'name'       => fake()->words(2, true),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

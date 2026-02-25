@@ -15,7 +15,7 @@ class PaymentFactory extends Factory
     {
         return [
             'company_id' => Company::factory(),
-            'created_by' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
             'name'       => fake()->words(3, true),
             'amount'     => fake()->randomFloat(2, 10, 1000),
             'date'       => fake()->date(),

@@ -26,7 +26,7 @@ class EmploymentTypeFactory extends Factory
         return [
             'name'       => fake()->name,
             'country_id' => Country::factory(),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
             'code'       => fake()->word,
             'sequence'   => fake()->numberBetween(1, 100),
             'sort'       => fake()->numberBetween(1, 100),

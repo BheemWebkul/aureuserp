@@ -28,7 +28,7 @@ class TagFactory extends Factory
         return [
             'name'       => fake()->name(),
             'color'      => fake()->hexColor(),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

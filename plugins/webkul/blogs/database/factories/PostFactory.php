@@ -43,8 +43,8 @@ class PostFactory extends Factory
             'meta_keywords'    => implode(', ', fake()->words(5)),
             'meta_description' => fake()->sentence(15),
             'category_id'      => Category::factory(),
-            'author_id'        => User::factory(),
-            'creator_id'       => User::factory(),
+            'author_id'        => User::query()->value('id') ?? User::factory(),
+            'creator_id'       => User::query()->value('id') ?? User::factory(),
             'last_editor_id'   => null,
         ];
     }

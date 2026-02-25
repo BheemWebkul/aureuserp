@@ -21,7 +21,7 @@ class CurrencyRateFactory extends Factory
             'name'        => fake()->date(),
             'rate'        => fake()->randomFloat(6, 0.5, 2),
             'currency_id' => Currency::factory(),
-            'creator_id'  => User::factory(),
+            'creator_id'  => User::query()->value('id') ?? User::factory(),
             'company_id'  => Company::factory(),
         ];
     }

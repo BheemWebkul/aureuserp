@@ -15,7 +15,7 @@ class IncotermFactory extends Factory
         return [
             'code'       => strtoupper(fake()->unique()->lexify('???')),
             'name'       => fake()->words(3, true),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

@@ -26,7 +26,7 @@ class LeaveMandatoryDayFactory extends Factory
 
         return [
             'company_id' => Company::factory(),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
             'color'      => fake()->numberBetween(1, 10),
             'name'       => fake()->words(3, true),
             'start_date' => $startDate->format('Y-m-d'),

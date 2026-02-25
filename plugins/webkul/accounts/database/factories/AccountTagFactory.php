@@ -17,7 +17,7 @@ class AccountTagFactory extends Factory
         return [
             'color'         => fake()->hexColor,
             'country_id'    => null,
-            'creator_id'    => User::factory(),
+            'creator_id'    => User::query()->value('id') ?? User::factory(),
             'applicability' => Applicability::TAXES,
             'name'          => fake()->word,
             'tax_negate'    => false,

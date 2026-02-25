@@ -25,7 +25,7 @@ class CalendarLeavesFactory extends Factory
             'date_from'   => $dateFrom,
             'date_to'     => $dateTo,
             'calendar_id' => Calendar::factory(),
-            'creator_id'  => User::factory(),
+            'creator_id'  => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

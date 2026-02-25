@@ -41,7 +41,7 @@ class OrderFactory extends Factory
         $amountUntaxed = fake()->randomFloat(4, 100, 10000);
         $amountTax = $amountUntaxed * 0.15;
         $amountTotal = $amountUntaxed + $amountTax;
-        $partner = Partner::factory();
+        $partner = Partner::query()->value('id') ?? Partner::factory();
 
         return [
             'access_token'            => fake()->uuid(),
@@ -75,9 +75,9 @@ class OrderFactory extends Factory
             'sale_order_template_id'  => null,
             'payment_term_id'         => null,
             'currency_id'             => Currency::factory(),
-            'user_id'                 => User::factory(),
+            'user_id'                 => User::query()->value('id') ?? User::factory(),
             'team_id'                 => null,
-            'creator_id'              => User::factory(),
+            'creator_id'              => User::query()->value('id') ?? User::factory(),
             'campaign_id'             => null,
             ...(Schema::hasColumn('sales_orders', 'warehouse_id') ? ['warehouse_id' => null] : []),
         ];
@@ -139,7 +139,7 @@ class OrderFactory extends Factory
     public function withSeparateShipping(): static
     {
         return $this->state(fn (array $attributes) => [
-            'partner_shipping_id' => Partner::factory(),
+            'partner_shipping_id' => Partner::query()->value('id') ?? Partner::factory(),
         ]);
     }
 

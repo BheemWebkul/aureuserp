@@ -21,6 +21,7 @@ class ProductSupplierFactory extends Factory
      * @var string
      */
     protected $model = ProductSupplier::class;
+
     /**
      * Define the model's default state.
      *
@@ -39,9 +40,9 @@ class ProductSupplierFactory extends Factory
             'price'        => fake()->randomFloat(2, 10, 1000),
             'discount'     => fake()->randomFloat(2, 0, 50),
             'product_id'   => Product::factory(),
-            'partner_id'   => Partner::factory(),
+            'partner_id'   => Partner::query()->value('id') ?? Partner::factory(),
             'currency_id'  => Currency::factory(),
-            'creator_id'   => User::factory(),
+            'creator_id'   => User::query()->value('id') ?? User::factory(),
             'company_id'   => Company::factory(),
         ];
     }

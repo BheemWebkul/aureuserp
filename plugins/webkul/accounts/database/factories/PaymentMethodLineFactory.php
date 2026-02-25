@@ -29,7 +29,7 @@ class PaymentMethodLineFactory extends Factory
             'payment_account_id' => Account::factory(),
             'journal_id'         => Journal::factory(),
             'name'               => fake()->words(2, true),
-            'creator_id'         => User::factory(),
+            'creator_id'         => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

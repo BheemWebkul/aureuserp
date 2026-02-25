@@ -28,7 +28,7 @@ class UOMFactory extends Factory
             'name'        => fake()->word(),
             'factor'      => fake()->randomFloat(2, 0.1, 10),
             'category_id' => UOMCategory::factory(),
-            'creator_id'  => User::factory(),
+            'creator_id'  => User::query()->value('id') ?? User::factory(),
         ];
     }
 

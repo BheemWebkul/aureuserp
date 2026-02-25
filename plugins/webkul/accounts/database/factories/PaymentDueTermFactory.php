@@ -17,7 +17,7 @@ class PaymentDueTermFactory extends Factory
     {
         return [
             'payment_id'      => PaymentTerm::factory(),
-            'creator_id'      => User::factory(),
+            'creator_id'      => User::query()->value('id') ?? User::factory(),
             'value'           => DueTermValue::PERCENT,
             'value_amount'    => 100.0,
             'delay_type'      => DelayType::DAYS_AFTER,

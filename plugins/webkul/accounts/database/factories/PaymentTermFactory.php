@@ -17,7 +17,7 @@ class PaymentTermFactory extends Factory
             'company_id'          => Company::factory(),
             'sort'                => fake()->randomNumber(),
             'discount_days'       => fake()->randomElement([0, 10, 15, 30]),
-            'creator_id'          => User::factory(),
+            'creator_id'          => User::query()->value('id') ?? User::factory(),
             'early_pay_discount'  => fake()->boolean(),
             'name'                => fake()->sentence(3),
             'note'                => fake()->optional()->text(200),

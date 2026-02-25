@@ -30,7 +30,7 @@ class LeaveAccrualPlanFactory extends Factory
             'time_off_type_id'        => LeaveType::factory(),
             'company_id'              => Company::factory(),
             'carryover_day'           => CarryoverDay::DAY_1,
-            'creator_id'              => User::factory(),
+            'creator_id'              => User::query()->value('id') ?? User::factory(),
             'name'                    => fake()->words(3, true),
             'transition_mode'         => 'immediately',
             'accrued_gain_time'       => AccruedGainTime::START,

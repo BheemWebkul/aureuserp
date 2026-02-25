@@ -36,7 +36,7 @@ class EmployeeJobPositionFactory extends Factory
             'department_id'      => Department::factory(),
             'company_id'         => Company::factory(),
             'open_date'          => fake()->date(),
-            'creator_id'         => User::factory(),
+            'creator_id'         => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

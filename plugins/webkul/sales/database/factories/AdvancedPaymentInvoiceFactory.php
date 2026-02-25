@@ -37,7 +37,7 @@ class AdvancedPaymentInvoiceFactory extends Factory
             'amount'                 => $amount,
             'currency_id'            => Currency::factory(),
             'company_id'             => Company::factory(),
-            'creator_id'             => User::factory(),
+            'creator_id'             => User::query()->value('id') ?? User::factory(),
         ];
     }
 

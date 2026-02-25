@@ -43,7 +43,7 @@ class OrderOptionFactory extends Factory
             'product_id' => Product::factory(),
             'line_id'    => null,
             'uom_id'     => UOM::factory(),
-            'creator_id' => User::factory(),
+            'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 

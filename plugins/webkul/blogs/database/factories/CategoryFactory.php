@@ -36,7 +36,7 @@ class CategoryFactory extends Factory
             'meta_title'       => $name,
             'meta_keywords'    => implode(', ', fake()->words(5)),
             'meta_description' => fake()->sentence(12),
-            'creator_id'       => User::factory(),
+            'creator_id'       => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

@@ -58,7 +58,7 @@ function refundRoute(string $action, mixed $refund = null): string
 
 function makeRefundLinePayload(array $overrides = []): array
 {
-    $product = Product::factory()->create(['is_configurable' => false]);
+    $product = Product::factory()->withAccounts()->create(['is_configurable' => false]);
     $uom = UOM::factory()->create();
 
     return array_merge([

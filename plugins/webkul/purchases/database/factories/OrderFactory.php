@@ -38,10 +38,10 @@ class OrderFactory extends Factory
             'total_amount'    => 0,
             'total_cc_amount' => 0,
             'currency_rate'   => 1.0,
-            'partner_id'      => Partner::factory(),
+            'partner_id'      => Partner::query()->value('id') ?? Partner::factory(),
             'currency_id'     => Currency::factory(),
             'company_id'      => Company::factory(),
-            'creator_id'      => User::factory(),
+            'creator_id'      => User::query()->value('id') ?? User::factory(),
         ];
     }
 

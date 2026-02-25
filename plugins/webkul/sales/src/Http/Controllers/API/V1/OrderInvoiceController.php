@@ -41,7 +41,7 @@ class OrderInvoiceController extends Controller
         'invoiceUser',
         'invoiceIncoterm',
         'invoiceCashRounding',
-        'createdBy',
+        'creator',
         'source',
         'medium',
         'paymentMethodLine',
@@ -49,7 +49,7 @@ class OrderInvoiceController extends Controller
 
     #[Endpoint('List order invoices', 'Retrieve a paginated list of invoices for a specific order')]
     #[UrlParam('order_id', 'integer', 'The order ID', required: true, example: 1)]
-    #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> campaign, journal, company, originPayment, taxCashBasisOriginMove, autoPostOrigin, invoicePaymentTerm, partner, commercialPartner, partnerShipping, partnerBank, fiscalPosition, currency, reversedEntry, invoiceUser, invoiceIncoterm, invoiceCashRounding, createdBy, source, medium, paymentMethodLine', required: false, example: 'journal,partner')]
+    #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> campaign, journal, company, originPayment, taxCashBasisOriginMove, autoPostOrigin, invoicePaymentTerm, partner, commercialPartner, partnerShipping, partnerBank, fiscalPosition, currency, reversedEntry, invoiceUser, invoiceIncoterm, invoiceCashRounding, creator, source, medium, paymentMethodLine', required: false, example: 'journal,partner')]
     #[QueryParam('filter[id]', 'string', 'Comma-separated list of invoice IDs to filter by', required: false, example: 'No-example')]
     #[QueryParam('filter[state]', 'string', 'Filter by invoice state', required: false, example: 'posted')]
     #[QueryParam('filter[payment_state]', 'string', 'Filter by payment state', required: false, example: 'paid')]

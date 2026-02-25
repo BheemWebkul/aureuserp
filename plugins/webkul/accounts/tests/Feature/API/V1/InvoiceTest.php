@@ -60,7 +60,7 @@ function invoiceRoute(string $action, mixed $invoice = null): string
 
 function makeInvoiceLinePayload(array $overrides = []): array
 {
-    $product = Product::factory()->create(['is_configurable' => false]);
+    $product = Product::factory()->withAccounts()->create(['is_configurable' => false]);
     $uom = UOM::factory()->create();
 
     return array_merge([

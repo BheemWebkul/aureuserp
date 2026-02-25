@@ -25,7 +25,7 @@ class WorkLocationFactory extends Factory
     {
         return [
             'company_id'      => Company::factory(),
-            'user_id'         => User::factory(),
+            'user_id'         => User::query()->value('id') ?? User::factory(),
             'name'            => fake()->name,
             'location_type'   => fake()->word,
             'location_number' => fake()->numberBetween(1, 100),

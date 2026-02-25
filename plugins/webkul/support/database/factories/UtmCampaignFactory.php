@@ -15,10 +15,10 @@ class UtmCampaignFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'          => User::factory(),
+            'user_id'          => User::query()->value('id') ?? User::factory(),
             'stage_id'         => UtmStage::factory(),
             'color'            => fake()->numberBetween(1, 10),
-            'created_by'       => User::factory(),
+            'creator_id'       => User::query()->value('id') ?? User::factory(),
             'name'             => fake()->words(2, true),
             'title'            => fake()->sentence(4),
             'is_active'        => true,

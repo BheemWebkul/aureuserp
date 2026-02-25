@@ -22,7 +22,7 @@ class TableViewFavoriteFactory extends Factory
             'filterable_type' => null,
 
             // Relationships
-            'user_id' => User::factory(),
+            'user_id' => User::query()->value('id') ?? User::factory(),
         ];
     }
 

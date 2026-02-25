@@ -34,8 +34,8 @@ class TaskStageFactory extends Factory
             'is_collapsed' => false,
             'project_id'   => Project::factory(),
             'company_id'   => Company::factory(),
-            'user_id'      => User::factory(),
-            'creator_id'   => User::factory(),
+            'user_id'      => User::query()->value('id') ?? User::factory(),
+            'creator_id'   => User::query()->value('id') ?? User::factory(),
         ];
     }
 }

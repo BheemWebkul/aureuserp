@@ -33,7 +33,7 @@ class BankStatementLineFactory extends Factory
             'partner_id'          => null,
             'currency_id'         => Currency::factory(),
             'foreign_currency_id' => null,
-            'created_by'          => User::factory(),
+            'creator_id'          => User::query()->value('id') ?? User::factory(),
             'account_number'      => fake()->optional()->numerify('############'),
             'partner_name'        => fake()->optional()->company(),
             'transaction_type'    => null,
@@ -50,7 +50,7 @@ class BankStatementLineFactory extends Factory
     public function withPartner(): static
     {
         return $this->state(fn (array $attributes) => [
-            'partner_id' => Partner::factory(),
+            'partner_id' => Partner::query()->value('id') ?? Partner::factory(),
         ]);
     }
 
