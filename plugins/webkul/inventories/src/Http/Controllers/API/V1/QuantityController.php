@@ -17,6 +17,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Webkul\Inventory\Enums\LocationType;
 use Webkul\Inventory\Filament\Clusters\Products\Resources\ProductResource as ProductFilamentResource;
+use Webkul\Inventory\Http\Requests\ProductQuantityCountRequest;
 use Webkul\Inventory\Http\Requests\ProductQuantityRequest;
 use Webkul\Inventory\Http\Resources\V1\ProductQuantityResource;
 use Webkul\Inventory\Models\Location;
@@ -141,17 +142,14 @@ class QuantityController extends Controller
     #[Response(status: 404, description: 'Quantity not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"counted_quantity": ["The counted quantity field is required."]}}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
-    public function update(ProductQuantityRequest $request, string $id)
+    public function update(ProductQuantityCountRequest $request, string $id)
     {
         Gate::authorize('create', ProductQuantity::class);
 
         $quantity = ProductQuantity::findOrFail($id);
         $data = $request->validated();
-
-        if (array_key_exists('counted_quantity', $data)) {
-            $data['inventory_quantity_set'] = true;
-            $data['inventory_diff_quantity'] = $data['counted_quantity'] - $quantity->quantity;
-        }
+        $data['inventory_quantity_set'] = true;
+        $data['inventory_diff_quantity'] = $data['counted_quantity'] - $quantity->quantity;
 
         $quantity->update($data);
 

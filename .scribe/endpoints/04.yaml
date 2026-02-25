@@ -678,6 +678,12 @@ endpoints:
         description: 'Project deleted successfully'
       -
         custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
         status: 404
         content: '{"message":"Resource not found."}'
         headers: []
@@ -737,6 +743,12 @@ endpoints:
         description: ''
       -
         custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
         status: 404
         content: '{"message":"Resource not found."}'
         headers: []
@@ -794,6 +806,12 @@ endpoints:
         content: '{"message":"Project permanently deleted."}'
         headers: []
         description: 'Project permanently deleted'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
       -
         custom: []
         status: 404
@@ -1191,6 +1209,12 @@ endpoints:
         description: ''
       -
         custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
         status: 404
         content: '{"message":"Resource not found."}'
         headers: []
@@ -1416,6 +1440,12 @@ endpoints:
         description: ''
       -
         custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
         status: 404
         content: '{"message":"Resource not found."}'
         headers: []
@@ -1481,6 +1511,12 @@ endpoints:
         description: 'Task deleted successfully'
       -
         custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
         status: 404
         content: '{"message":"Resource not found."}'
         headers: []
@@ -1540,6 +1576,12 @@ endpoints:
         description: ''
       -
         custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
+      -
+        custom: []
         status: 404
         content: '{"message":"Resource not found."}'
         headers: []
@@ -1597,6 +1639,12 @@ endpoints:
         content: '{"message":"Task permanently deleted."}'
         headers: []
         description: 'Task permanently deleted'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
       -
         custom: []
         status: 404
@@ -1668,6 +1716,12 @@ endpoints:
         content: '{"data":[{"id":1,"name":"To Do","is_active":true,"is_collapsed":false,"sort":1,"company_id":null,"creator_id":1,"created_at":"2025-04-07T13:13:48.000000Z","updated_at":"2025-04-07T13:13:48.000000Z","deleted_at":null},{"id":1,"name":"To Do","is_active":true,"is_collapsed":false,"sort":1,"company_id":null,"creator_id":1,"created_at":"2025-04-07T13:13:48.000000Z","updated_at":"2025-04-07T13:13:48.000000Z","deleted_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -1721,6 +1775,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"To Do","is_active":true,"is_collapsed":false,"sort":1,"company_id":null,"creator_id":1,"created_at":"2025-04-07T13:13:48.000000Z","updated_at":"2025-04-07T13:13:48.000000Z","deleted_at":null},"message":"Project stage created successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -1786,6 +1846,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"To Do","is_active":true,"is_collapsed":false,"sort":1,"company_id":null,"creator_id":1,"created_at":"2025-04-07T13:13:48.000000Z","updated_at":"2025-04-07T13:13:48.000000Z","deleted_at":null}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
       -
         custom: []
         status: 404
@@ -1858,6 +1924,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"To Do","is_active":true,"is_collapsed":false,"sort":1,"company_id":null,"creator_id":1,"created_at":"2025-04-07T13:13:48.000000Z","updated_at":"2025-04-07T13:13:48.000000Z","deleted_at":null},"message":"Project stage updated successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -1911,6 +1983,12 @@ endpoints:
         content: '{"message":"Project stage deleted successfully."}'
         headers: []
         description: 'Project stage deleted successfully'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -1964,6 +2042,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"To Do","is_active":true,"is_collapsed":false,"sort":1,"company_id":null,"creator_id":1,"created_at":"2025-04-07T13:13:48.000000Z","updated_at":"2025-04-07T13:13:48.000000Z","deleted_at":null},"message":"Project stage restored successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2017,6 +2101,12 @@ endpoints:
         content: '{"message":"Project stage permanently deleted."}'
         headers: []
         description: 'Project stage permanently deleted'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2082,6 +2172,12 @@ endpoints:
         content: '{"data":[{"id":1,"name":"In Progress ","is_active":true,"is_collapsed":false,"sort":1,"project_id":4,"company_id":null,"user_id":null,"creator_id":1,"created_at":"2025-09-23T12:51:39.000000Z","updated_at":"2025-09-23T12:52:59.000000Z","deleted_at":null},{"id":1,"name":"In Progress ","is_active":true,"is_collapsed":false,"sort":1,"project_id":4,"company_id":null,"user_id":null,"creator_id":1,"created_at":"2025-09-23T12:51:39.000000Z","updated_at":"2025-09-23T12:52:59.000000Z","deleted_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2147,6 +2243,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"In Progress ","is_active":true,"is_collapsed":false,"sort":1,"project_id":4,"company_id":null,"user_id":null,"creator_id":1,"created_at":"2025-09-23T12:51:39.000000Z","updated_at":"2025-09-23T12:52:59.000000Z","deleted_at":null},"message":"Task stage created successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2212,6 +2314,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"In Progress ","is_active":true,"is_collapsed":false,"sort":1,"project_id":4,"company_id":null,"user_id":null,"creator_id":1,"created_at":"2025-09-23T12:51:39.000000Z","updated_at":"2025-09-23T12:52:59.000000Z","deleted_at":null}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
       -
         custom: []
         status: 404
@@ -2296,6 +2404,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"In Progress ","is_active":true,"is_collapsed":false,"sort":1,"project_id":4,"company_id":null,"user_id":null,"creator_id":1,"created_at":"2025-09-23T12:51:39.000000Z","updated_at":"2025-09-23T12:52:59.000000Z","deleted_at":null},"message":"Task stage updated successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2349,6 +2463,12 @@ endpoints:
         content: '{"message":"Task stage deleted successfully."}'
         headers: []
         description: 'Task stage deleted successfully'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2402,6 +2522,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"In Progress ","is_active":true,"is_collapsed":false,"sort":1,"project_id":4,"company_id":null,"user_id":null,"creator_id":1,"created_at":"2025-09-23T12:51:39.000000Z","updated_at":"2025-09-23T12:52:59.000000Z","deleted_at":null},"message":"Task stage restored successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2455,6 +2581,12 @@ endpoints:
         content: '{"message":"Task stage permanently deleted."}'
         headers: []
         description: 'Task stage permanently deleted'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2520,6 +2652,12 @@ endpoints:
         content: '{"data":[{"id":1,"name":"Research and Development","deadline":"2025-04-19T00:00:00.000000Z","is_completed":false,"completed_at":null,"project_id":1,"creator_id":1,"created_at":"2025-04-11T11:04:47.000000Z","updated_at":"2025-04-11T11:04:47.000000Z"},{"id":1,"name":"Research and Development","deadline":"2025-04-19T00:00:00.000000Z","is_completed":false,"completed_at":null,"project_id":1,"creator_id":1,"created_at":"2025-04-11T11:04:47.000000Z","updated_at":"2025-04-11T11:04:47.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2609,6 +2747,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"Research and Development","deadline":"2025-04-19T00:00:00.000000Z","is_completed":false,"completed_at":null,"project_id":1,"creator_id":1,"created_at":"2025-04-11T11:04:47.000000Z","updated_at":"2025-04-11T11:04:47.000000Z"},"message":"Milestone created successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2674,6 +2818,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"Research and Development","deadline":"2025-04-19T00:00:00.000000Z","is_completed":false,"completed_at":null,"project_id":1,"creator_id":1,"created_at":"2025-04-11T11:04:47.000000Z","updated_at":"2025-04-11T11:04:47.000000Z"}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
       -
         custom: []
         status: 404
@@ -2782,6 +2932,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"Research and Development","deadline":"2025-04-19T00:00:00.000000Z","is_completed":false,"completed_at":null,"project_id":1,"creator_id":1,"created_at":"2025-04-11T11:04:47.000000Z","updated_at":"2025-04-11T11:04:47.000000Z"},"message":"Milestone updated successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2835,6 +2991,12 @@ endpoints:
         content: '{"message":"Milestone deleted successfully."}'
         headers: []
         description: 'Milestone deleted successfully'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2900,6 +3062,12 @@ endpoints:
         content: '{"data":[{"id":1,"name":"Urgent Work","color":"#ff8f17","creator_id":null,"created_at":"2025-04-11T11:01:07.000000Z","updated_at":"2025-04-11T11:01:07.000000Z","deleted_at":null},{"id":1,"name":"Urgent Work","color":"#ff8f17","creator_id":null,"created_at":"2025-04-11T11:01:07.000000Z","updated_at":"2025-04-11T11:01:07.000000Z","deleted_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -2965,6 +3133,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"Urgent Work","color":"#ff8f17","creator_id":null,"created_at":"2025-04-11T11:01:07.000000Z","updated_at":"2025-04-11T11:01:07.000000Z","deleted_at":null},"message":"Tag created successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -3030,6 +3204,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"Urgent Work","color":"#ff8f17","creator_id":null,"created_at":"2025-04-11T11:01:07.000000Z","updated_at":"2025-04-11T11:01:07.000000Z","deleted_at":null}}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
       -
         custom: []
         status: 404
@@ -3114,6 +3294,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"Urgent Work","color":"#ff8f17","creator_id":null,"created_at":"2025-04-11T11:01:07.000000Z","updated_at":"2025-04-11T11:01:07.000000Z","deleted_at":null},"message":"Tag updated successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -3167,6 +3353,12 @@ endpoints:
         content: '{"message":"Tag deleted successfully."}'
         headers: []
         description: 'Tag deleted successfully'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -3220,6 +3412,12 @@ endpoints:
         content: '{"data":{"id":1,"name":"Urgent Work","color":"#ff8f17","creator_id":null,"created_at":"2025-04-11T11:01:07.000000Z","updated_at":"2025-04-11T11:01:07.000000Z","deleted_at":null},"message":"Tag restored successfully."}'
         headers: []
         description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
@@ -3273,6 +3471,12 @@ endpoints:
         content: '{"message":"Tag permanently deleted."}'
         headers: []
         description: 'Tag permanently deleted'
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
