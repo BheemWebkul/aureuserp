@@ -18,8 +18,8 @@ class AttachmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'               => fake()->word().'.pdf',
-            'original_file_name' => fake()->word().'.pdf',
+            'name'               => fake()->word(2, true).'.pdf',
+            'original_file_name' => fake()->word(2, true).'.pdf',
             'file_path'          => 'attachments/'.fake()->uuid().'.pdf',
             'file_size'          => fake()->numberBetween(1000, 5000000),
             'mime_type'          => 'application/pdf',
@@ -35,8 +35,8 @@ class AttachmentFactory extends Factory
     public function image(): static
     {
         return $this->state(fn (array $attributes) => [
-            'name'               => fake()->word().'.jpg',
-            'original_file_name' => fake()->word().'.jpg',
+            'name'               => fake()->word(2, true).'.jpg',
+            'original_file_name' => fake()->word(2, true).'.jpg',
             'file_path'          => 'attachments/'.fake()->uuid().'.jpg',
             'mime_type'          => 'image/jpeg',
         ]);

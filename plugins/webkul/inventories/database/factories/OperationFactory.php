@@ -22,7 +22,7 @@ class OperationFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'               => fake()->word(),
+            'name'               => fake()->word(2, true),
             'origin'             => null,
             'move_type'          => MoveType::DIRECT,
             'state'              => OperationState::DRAFT,

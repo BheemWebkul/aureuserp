@@ -64,7 +64,7 @@ class MoveLineFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'lot_id'   => Lot::factory(),
-            'lot_name' => fake()->word(),
+            'lot_name' => fake()->word(2, true),
         ]);
     }
 

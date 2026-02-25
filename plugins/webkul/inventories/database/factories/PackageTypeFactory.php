@@ -21,7 +21,7 @@ class PackageTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'                 => fake()->word(),
+            'name'                 => fake()->word(2, true),
             'sort'                 => 0,
             'barcode'              => null,
             'height'               => null,

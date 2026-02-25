@@ -17,7 +17,7 @@ use Webkul\Inventory\Http\Requests\PackageRequest;
 use Webkul\Inventory\Http\Resources\V1\PackageResource;
 use Webkul\Inventory\Models\Package;
 
-#[Group('InventoryAPI Management')]
+#[Group('Inventory API Management')]
 #[Subgroup('Packages', 'Manage inventory packages')]
 #[Authenticated]
 class PackageController extends Controller

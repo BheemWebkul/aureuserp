@@ -27,7 +27,7 @@ class MoveFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'                => fake()->word(),
+            'name'                => fake()->word(2, true),
             'state'               => MoveState::DRAFT,
             'origin'              => null,
             'procure_method'      => ProcureMethod::MAKE_TO_STOCK,

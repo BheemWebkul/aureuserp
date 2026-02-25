@@ -21,7 +21,7 @@ class LocationFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'                       => fake()->word(),
+            'name'                       => fake()->word(2, true),
             'full_name'                  => fake()->words(2, true),
             'type'                       => LocationType::INTERNAL,
             'description'                => null,

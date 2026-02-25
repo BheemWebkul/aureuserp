@@ -53,9 +53,9 @@ class StageFactory extends Factory
     public function withLegend(): static
     {
         return $this->state(fn (array $attributes) => [
-            'legend_blocked' => fake()->word(),
-            'legend_done'    => fake()->word(),
-            'legend_normal'  => fake()->word(),
+            'legend_blocked' => fake()->word(2, true),
+            'legend_done'    => fake()->word(2, true),
+            'legend_normal'  => fake()->word(2, true),
         ]);
     }
 

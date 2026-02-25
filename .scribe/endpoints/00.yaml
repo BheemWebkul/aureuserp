@@ -3474,7 +3474,7 @@ endpoints:
       include:
         custom: []
         name: include
-        description: 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> company, country, countryGroup, createdBy, taxes, accounts'
+        description: 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> company, country, countryGroup, creator, taxes, accounts'
         required: false
         example: company
         type: string
@@ -3570,7 +3570,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"company_id":238,"country_id":276,"country_group_id":null,"creator_id":685,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},{"id":null,"company_id":239,"country_id":277,"country_group_id":null,"creator_id":686,"name":"tenetur ratione","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"company_id":483,"country_id":296,"country_group_id":null,"creator_id":1,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},{"id":null,"company_id":484,"country_id":297,"country_group_id":null,"creator_id":1,"name":"veritatis excepturi","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -3837,7 +3837,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"company_id":240,"country_id":278,"country_group_id":null,"creator_id":687,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position created successfully."}'
+        content: '{"data":{"id":null,"company_id":485,"country_id":298,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position created successfully."}'
         headers: []
         description: ''
       -
@@ -3897,7 +3897,7 @@ endpoints:
       include:
         custom: []
         name: include
-        description: 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> company, country, countryGroup, createdBy, taxes, accounts'
+        description: 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> company, country, countryGroup, creator, taxes, accounts'
         required: false
         example: 'company,taxes'
         type: string
@@ -3914,7 +3914,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"company_id":241,"country_id":279,"country_group_id":null,"creator_id":688,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"company_id":486,"country_id":299,"country_group_id":null,"creator_id":1,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -
@@ -4200,7 +4200,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"company_id":242,"country_id":280,"country_group_id":null,"creator_id":689,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position updated successfully."}'
+        content: '{"data":{"id":null,"company_id":487,"country_id":300,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position updated successfully."}'
         headers: []
         description: ''
       -
@@ -4409,7 +4409,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"name":"nihil et","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":102,"loss_account_id":103,"creator_id":692,"created_at":null,"updated_at":null},{"id":null,"name":"voluptatum dicta","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":104,"loss_account_id":105,"creator_id":695,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"name":"optio velit","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":142,"loss_account_id":143,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"name":"fugiat animi","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":144,"loss_account_id":145,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -4533,7 +4533,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":106,"loss_account_id":107,"creator_id":698,"created_at":null,"updated_at":null},"message":"Cash rounding created successfully."}'
+        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":146,"loss_account_id":147,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding created successfully."}'
         headers: []
         description: ''
       -
@@ -4610,7 +4610,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":108,"loss_account_id":109,"creator_id":701,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":148,"loss_account_id":149,"creator_id":1,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -
@@ -4753,7 +4753,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":110,"loss_account_id":111,"creator_id":704,"created_at":null,"updated_at":null},"message":"Cash rounding updated successfully."}'
+        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":150,"loss_account_id":151,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding updated successfully."}'
         headers: []
         description: ''
       -
@@ -5871,7 +5871,7 @@ endpoints:
         name: 'invoice_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -5958,7 +5958,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: false
+          use_in_tax_closing: true
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -6421,7 +6421,7 @@ endpoints:
         name: 'invoice_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -6508,7 +6508,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: true
+          use_in_tax_closing: false
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -7266,7 +7266,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -7693,7 +7693,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},"message":"Product created successfully."}'
+        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},"message":"Product created successfully."}'
         headers: []
         description: ''
       -
@@ -7770,7 +7770,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1}}'
+        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true}}'
         headers: []
         description: ''
       -
@@ -8216,7 +8216,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},"message":"Product updated successfully."}'
+        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},"message":"Product updated successfully."}'
         headers: []
         description: ''
       -
@@ -8352,7 +8352,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},"message":"Product restored successfully."}'
+        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"category":{"id":11,"name":"Electronic''s Devices","full_name":"All \/ Electronic''s Devices","parent_path":"\/1\/","parent_id":1,"creator_id":1,"created_at":"2025-04-08T03:34:44.000000Z","updated_at":"2025-04-08T03:34:44.000000Z"},"tags":[],"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},"message":"Product restored successfully."}'
         headers: []
         description: ''
       -
@@ -8591,7 +8591,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -8650,7 +8650,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":[{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1}],"message":"Product variants synced successfully."}'
+        content: '{"data":[{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true}],"message":"Product variants synced successfully."}'
         headers: []
         description: ''
       -
@@ -8733,7 +8733,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1}}'
+        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true}}'
         headers: []
         description: ''
       -
@@ -9191,7 +9191,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},"message":"Product variant updated successfully."}'
+        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},"message":"Product variant updated successfully."}'
         headers: []
         description: ''
       -
@@ -9351,7 +9351,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":1,"purchase_ok":1},"message":"Product variant restored successfully."}'
+        content: '{"data":{"id":1,"type":"goods","name":"Big Vision 4K Action Camera","service_tracking":"none","reference":"Action-01","barcode":"BV4K-0001","price":150,"cost":100,"volume":0,"weight":1.2,"description":"<p>A high-quality 4k action camera designed for everyday use.<\/p><p>The <strong>4K Action Camera<\/strong> is crafted with premium materials, ensuring durability and functionality. Perfect for those who value quality and innovation in their everyday essentials.<\/p>","description_purchase":null,"description_sale":null,"enable_sales":false,"enable_purchase":false,"is_favorite":false,"is_configurable":true,"images":["01JR9QKPXFKP1S054PZDM17MEP.png","01JR9QKPXPX1TJKCH0DMZ29M12.png"],"sort":null,"parent_id":null,"uom_id":1,"uom_po_id":1,"category_id":11,"creator_id":1,"company_id":1,"created_at":"2025-04-08T03:37:55.000000Z","updated_at":"2025-09-23T07:28:33.000000Z","deleted_at":null,"property_account_income_id":null,"property_account_expense_id":null,"image":null,"service_type":null,"sale_line_warn":null,"expense_policy":null,"invoice_policy":null,"sale_line_warn_msg":null,"sales_ok":true,"purchase_ok":true},"message":"Product variant restored successfully."}'
         headers: []
         description: ''
       -
@@ -13814,7 +13814,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-20T08:26:20'
+        example: '2026-02-25T10:35:36'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -13823,7 +13823,7 @@ endpoints:
     cleanBodyParameters:
       reason: b
       journal_id: 16
-      date: '2026-02-20T08:26:20'
+      date: '2026-02-25T10:35:36'
     fileParameters: []
     responses:
       -
@@ -16919,7 +16919,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-20T08:26:20'
+        example: '2026-02-25T10:35:36'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -16928,7 +16928,7 @@ endpoints:
     cleanBodyParameters:
       reason: b
       journal_id: 16
-      date: '2026-02-20T08:26:20'
+      date: '2026-02-25T10:35:36'
     fileParameters: []
     responses:
       -

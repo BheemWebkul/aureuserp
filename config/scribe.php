@@ -186,13 +186,13 @@ return [
         'order' => [
             'Security API Management',
             'Inventory API Management',
-            'Sales API Management',
             'Support API Management',
             'Partner API Management',
             'Product API Management',
+            'Purchase API Management',
+            'Sales API Management',
             'Account API Management',
             'Project API Management',
-            'Purchase API Management',
         ],
     ],
 
