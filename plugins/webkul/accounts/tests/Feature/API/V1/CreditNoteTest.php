@@ -4,8 +4,8 @@ use Webkul\Account\Enums\MoveState;
 use Webkul\Account\Enums\MoveType;
 use Webkul\Account\Models\Journal;
 use Webkul\Account\Models\Move;
+use Webkul\Account\Models\Partner;
 use Webkul\Account\Models\Product;
-use Webkul\Partner\Models\Partner;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
 use Webkul\Support\Models\Company;
@@ -73,7 +73,7 @@ function creditNotePayload(int $lineCount = 1, array $overrides = []): array
 {
     $currency = Currency::first() ?? Currency::factory()->create();
     $company = Company::factory()->create(['currency_id' => $currency->id]);
-    $partner = Partner::factory()->create();
+    $partner = Partner::factory()->withAccounts()->create();
     $journal = Journal::factory()->sale()->create(['currency_id' => $currency->id, 'company_id' => $company->id]);
 
     if (auth()->check()) {
