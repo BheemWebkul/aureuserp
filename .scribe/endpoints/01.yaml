@@ -248,7 +248,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -471,7 +471,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1007,7 +1007,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1283,7 +1283,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1742,7 +1742,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1965,7 +1965,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -2506,7 +2506,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -2835,7 +2835,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -3320,7 +3320,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -3569,7 +3569,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -3957,7 +3957,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -4145,7 +4145,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -4460,7 +4460,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -4693,7 +4693,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -4924,7 +4924,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -5085,7 +5085,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -5877,7 +5877,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -6397,7 +6397,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -6794,7 +6794,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -6979,7 +6979,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -7270,7 +7270,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -7455,7 +7455,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -7911,7 +7911,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7922,7 +7922,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7955,7 +7955,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -7977,7 +7977,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: false
+          is_picked: true
     fileParameters: []
     responses:
       -
@@ -7989,7 +7989,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -8297,7 +8297,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8308,7 +8308,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8381,7 +8381,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -8502,6 +8502,12 @@ endpoints:
         content: null
         headers: []
         description: 'Receipt not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only confirmed or assigned operations can check availability.'
     responseFields: []
     auth:
       - headers
@@ -8561,6 +8567,12 @@ endpoints:
         content: null
         headers: []
         description: 'Receipt not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only draft operations can be set to todo.'
     responseFields: []
     auth:
       - headers
@@ -8620,6 +8632,12 @@ endpoints:
         content: null
         headers: []
         description: 'Receipt not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be validated.'
     responseFields: []
     auth:
       - headers
@@ -8679,6 +8697,12 @@ endpoints:
         content: null
         headers: []
         description: 'Receipt not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be canceled.'
     responseFields: []
     auth:
       - headers
@@ -8738,6 +8762,12 @@ endpoints:
         content: null
         headers: []
         description: 'Receipt not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only done operations can be returned.'
     responseFields: []
     auth:
       - headers
@@ -9132,7 +9162,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -9143,7 +9173,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -9176,7 +9206,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -9198,7 +9228,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: false
+          is_picked: true
     fileParameters: []
     responses:
       -
@@ -9210,7 +9240,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -9518,7 +9548,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -9529,7 +9559,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -9562,7 +9592,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -9584,7 +9614,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: true
+          is_picked: false
     fileParameters: []
     responses:
       -
@@ -9602,7 +9632,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -9723,6 +9753,12 @@ endpoints:
         content: null
         headers: []
         description: 'Delivery not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only confirmed or assigned operations can check availability.'
     responseFields: []
     auth:
       - headers
@@ -9782,6 +9818,12 @@ endpoints:
         content: null
         headers: []
         description: 'Delivery not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only draft operations can be set to todo.'
     responseFields: []
     auth:
       - headers
@@ -9841,6 +9883,12 @@ endpoints:
         content: null
         headers: []
         description: 'Delivery not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be validated.'
     responseFields: []
     auth:
       - headers
@@ -9900,6 +9948,12 @@ endpoints:
         content: null
         headers: []
         description: 'Delivery not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be canceled.'
     responseFields: []
     auth:
       - headers
@@ -9959,6 +10013,12 @@ endpoints:
         content: null
         headers: []
         description: 'Delivery not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only done operations can be returned.'
     responseFields: []
     auth:
       - headers
@@ -10353,7 +10413,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -10364,7 +10424,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -10397,7 +10457,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -10419,7 +10479,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: false
+          is_picked: true
     fileParameters: []
     responses:
       -
@@ -10431,7 +10491,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -10739,7 +10799,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -10750,7 +10810,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -10783,7 +10843,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -10805,7 +10865,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: false
+          is_picked: true
     fileParameters: []
     responses:
       -
@@ -10823,7 +10883,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -10944,6 +11004,12 @@ endpoints:
         content: null
         headers: []
         description: 'Internal transfer not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only confirmed or assigned operations can check availability.'
     responseFields: []
     auth:
       - headers
@@ -11003,6 +11069,12 @@ endpoints:
         content: null
         headers: []
         description: 'Internal transfer not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only draft operations can be set to todo.'
     responseFields: []
     auth:
       - headers
@@ -11062,6 +11134,12 @@ endpoints:
         content: null
         headers: []
         description: 'Internal transfer not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be validated.'
     responseFields: []
     auth:
       - headers
@@ -11121,6 +11199,12 @@ endpoints:
         content: null
         headers: []
         description: 'Internal transfer not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be canceled.'
     responseFields: []
     auth:
       - headers
@@ -11180,6 +11264,12 @@ endpoints:
         content: null
         headers: []
         description: 'Internal transfer not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only done operations can be returned.'
     responseFields: []
     auth:
       - headers
@@ -11574,7 +11664,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11585,7 +11675,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11618,7 +11708,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -11640,7 +11730,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: true
+          is_picked: false
     fileParameters: []
     responses:
       -
@@ -11652,7 +11742,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -11960,7 +12050,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11971,7 +12061,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:56'
+        example: '2026-02-25T13:34:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -12044,7 +12134,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: null
+        content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -12165,6 +12255,12 @@ endpoints:
         content: null
         headers: []
         description: 'Dropship not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only confirmed or assigned operations can check availability.'
     responseFields: []
     auth:
       - headers
@@ -12224,6 +12320,12 @@ endpoints:
         content: null
         headers: []
         description: 'Dropship not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only draft operations can be set to todo.'
     responseFields: []
     auth:
       - headers
@@ -12283,6 +12385,12 @@ endpoints:
         content: null
         headers: []
         description: 'Dropship not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be validated.'
     responseFields: []
     auth:
       - headers
@@ -12342,6 +12450,12 @@ endpoints:
         content: null
         headers: []
         description: 'Dropship not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only non-done and non-canceled operations can be canceled.'
     responseFields: []
     auth:
       - headers
@@ -12401,6 +12515,12 @@ endpoints:
         content: null
         headers: []
         description: 'Dropship not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Only done operations can be returned.'
     responseFields: []
     auth:
       - headers

@@ -20,8 +20,8 @@ use Webkul\Account\Enums\MoveType;
 use Webkul\Account\Enums\PaymentState;
 use Webkul\Account\Enums\PaymentType;
 use Webkul\Account\Facades\Account as AccountFacade;
-use Webkul\Account\Http\Requests\MovePaymentRequest;
 use Webkul\Account\Http\Requests\InvoiceRequest;
+use Webkul\Account\Http\Requests\MovePaymentRequest;
 use Webkul\Account\Http\Resources\V1\MoveResource;
 use Webkul\Account\Models\PaymentRegister;
 use Webkul\Account\Models\Refund;
@@ -255,7 +255,7 @@ class CreditNoteController extends Controller
     #[Endpoint('Confirm credit note', 'Confirm a draft credit note and move it to posted state')]
     #[UrlParam('id', 'integer', 'The credit note ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Credit note confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft credit notes can be confirmed."}')]
+    #[Response(status: 422, description: 'Only draft credit notes can be confirmed.', content: '{"message": "Only draft credit notes can be confirmed."}')]
     #[Response(status: 404, description: 'Credit note not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirm(string $id)
@@ -287,7 +287,7 @@ class CreditNoteController extends Controller
     #[Endpoint('Cancel credit note', 'Cancel a draft credit note')]
     #[UrlParam('id', 'integer', 'The credit note ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Credit note cancelled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft credit notes can be cancelled."}')]
+    #[Response(status: 422, description: 'Only draft credit notes can be cancelled.', content: '{"message": "Only draft credit notes can be cancelled."}')]
     #[Response(status: 404, description: 'Credit note not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancel(string $id)
@@ -381,7 +381,7 @@ class CreditNoteController extends Controller
     #[Endpoint('Reset credit note to draft', 'Reset a posted or cancelled credit note to draft')]
     #[UrlParam('id', 'integer', 'The credit note ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Credit note reset to draft successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only posted or cancelled credit notes can be reset to draft."}')]
+    #[Response(status: 422, description: 'Only posted or cancelled credit notes can be reset to draft.', content: '{"message": "Only posted or cancelled credit notes can be reset to draft."}')]
     #[Response(status: 404, description: 'Credit note not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function resetToDraft(string $id)
@@ -411,7 +411,7 @@ class CreditNoteController extends Controller
     #[Endpoint('Set credit note as checked', 'Mark a credit note as checked')]
     #[UrlParam('id', 'integer', 'The credit note ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Credit note marked as checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only non-draft and unchecked credit notes can be marked as checked."}')]
+    #[Response(status: 422, description: 'Only non-draft and unchecked credit notes can be marked as checked.', content: '{"message": "Only non-draft and unchecked credit notes can be marked as checked."}')]
     #[Response(status: 404, description: 'Credit note not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function setAsChecked(string $id)

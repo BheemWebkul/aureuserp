@@ -61,7 +61,7 @@ class WarehouseController extends Controller
 
     #[Endpoint('Create warehouse', 'Create a new warehouse')]
     #[ResponseFromApiResource(WarehouseResource::class, Warehouse::class, status: 201, additional: ['message' => 'Warehouse created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(WarehouseRequest $request)
     {
         Gate::authorize('create', Warehouse::class);
@@ -102,7 +102,7 @@ class WarehouseController extends Controller
     #[UrlParam('id', 'integer', 'The warehouse ID', required: true, example: 1)]
     #[ResponseFromApiResource(WarehouseResource::class, Warehouse::class, additional: ['message' => 'Warehouse updated successfully.'])]
     #[Response(status: 404, description: 'Warehouse not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(WarehouseRequest $request, string $id)
     {
         $warehouse = Warehouse::findOrFail($id);

@@ -20,8 +20,8 @@ use Webkul\Account\Enums\MoveType;
 use Webkul\Account\Enums\PaymentState;
 use Webkul\Account\Enums\PaymentType;
 use Webkul\Account\Facades\Account as AccountFacade;
-use Webkul\Account\Http\Requests\MovePaymentRequest;
 use Webkul\Account\Http\Requests\BillRequest;
+use Webkul\Account\Http\Requests\MovePaymentRequest;
 use Webkul\Account\Http\Resources\V1\MoveResource;
 use Webkul\Account\Models\PaymentRegister;
 use Webkul\Account\Models\Refund;
@@ -112,7 +112,7 @@ class RefundController extends Controller
             $invoiceLines = $data['invoice_lines'];
             unset($data['invoice_lines']);
 
-            $data["move_type"] = MoveType::IN_REFUND;
+            $data['move_type'] = MoveType::IN_REFUND;
             $data['state'] = MoveState::DRAFT;
 
             $refund = Refund::create($data);
@@ -255,7 +255,7 @@ class RefundController extends Controller
     #[Endpoint('Confirm refund', 'Confirm a draft refund and move it to posted state')]
     #[UrlParam('id', 'integer', 'The refund ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Refund confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft refunds can be confirmed."}')]
+    #[Response(status: 422, description: 'Only draft refunds can be confirmed.', content: '{"message": "Only draft refunds can be confirmed."}')]
     #[Response(status: 404, description: 'Refund not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirm(string $id)
@@ -287,7 +287,7 @@ class RefundController extends Controller
     #[Endpoint('Cancel refund', 'Cancel a draft refund')]
     #[UrlParam('id', 'integer', 'The refund ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Refund cancelled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft refunds can be cancelled."}')]
+    #[Response(status: 422, description: 'Only draft refunds can be cancelled.', content: '{"message": "Only draft refunds can be cancelled."}')]
     #[Response(status: 404, description: 'Refund not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancel(string $id)
@@ -381,7 +381,7 @@ class RefundController extends Controller
     #[Endpoint('Reset refund to draft', 'Reset a posted or cancelled refund to draft')]
     #[UrlParam('id', 'integer', 'The refund ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Refund reset to draft successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only posted or cancelled refunds can be reset to draft."}')]
+    #[Response(status: 422, description: 'Only posted or cancelled refunds can be reset to draft.', content: '{"message": "Only posted or cancelled refunds can be reset to draft."}')]
     #[Response(status: 404, description: 'Refund not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function resetToDraft(string $id)
@@ -411,7 +411,7 @@ class RefundController extends Controller
     #[Endpoint('Set refund as checked', 'Mark a refund as checked')]
     #[UrlParam('id', 'integer', 'The refund ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Refund::class, additional: ['message' => 'Refund marked as checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only non-draft and unchecked refunds can be marked as checked."}')]
+    #[Response(status: 422, description: 'Only non-draft and unchecked refunds can be marked as checked.', content: '{"message": "Only non-draft and unchecked refunds can be marked as checked."}')]
     #[Response(status: 404, description: 'Refund not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function setAsChecked(string $id)

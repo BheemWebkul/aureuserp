@@ -69,7 +69,7 @@ class RuleController extends Controller
 
     #[Endpoint('Create rule', 'Create a new rule')]
     #[ResponseFromApiResource(RuleResource::class, Rule::class, status: 201, additional: ['message' => 'Rule created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(RuleRequest $request)
     {
         Gate::authorize('create', Rule::class);
@@ -102,7 +102,7 @@ class RuleController extends Controller
     #[UrlParam('id', 'integer', 'The rule ID', required: true, example: 1)]
     #[ResponseFromApiResource(RuleResource::class, Rule::class, additional: ['message' => 'Rule updated successfully.'])]
     #[Response(status: 404, description: 'Rule not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(RuleRequest $request, string $id)
     {
         $rule = Rule::findOrFail($id);

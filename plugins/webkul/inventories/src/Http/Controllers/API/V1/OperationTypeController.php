@@ -61,7 +61,7 @@ class OperationTypeController extends Controller
 
     #[Endpoint('Create operation type', 'Create a new operation type')]
     #[ResponseFromApiResource(OperationTypeResource::class, OperationType::class, status: 201, additional: ['message' => 'Operation type created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(OperationTypeRequest $request)
     {
         Gate::authorize('create', OperationType::class);
@@ -94,7 +94,7 @@ class OperationTypeController extends Controller
     #[UrlParam('id', 'integer', 'The operation type ID', required: true, example: 1)]
     #[ResponseFromApiResource(OperationTypeResource::class, OperationType::class, additional: ['message' => 'Operation type updated successfully.'])]
     #[Response(status: 404, description: 'Operation type not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(OperationTypeRequest $request, string $id)
     {
         $operationType = OperationType::findOrFail($id);

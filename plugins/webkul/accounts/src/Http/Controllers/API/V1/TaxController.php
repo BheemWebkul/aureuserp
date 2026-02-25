@@ -160,7 +160,7 @@ class TaxController extends Controller
     #[UrlParam('id', 'integer', 'The tax ID', required: true, example: 1)]
     #[ResponseFromApiResource(TaxResource::class, Tax::class, additional: ['message' => 'Tax updated successfully.'])]
     #[Response(status: 404, description: 'Tax not found', content: '{"message": "Resource not found."}')]
-    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid."}')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(TaxRequest $request, string $id)
     {

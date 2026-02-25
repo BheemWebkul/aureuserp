@@ -55,7 +55,7 @@ class PackageTypeController extends Controller
 
     #[Endpoint('Create package type', 'Create a new package type')]
     #[ResponseFromApiResource(PackageTypeResource::class, PackageType::class, status: 201, additional: ['message' => 'Package type created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(PackageTypeRequest $request)
     {
         Gate::authorize('create', PackageType::class);
@@ -88,7 +88,7 @@ class PackageTypeController extends Controller
     #[UrlParam('id', 'integer', 'The package type ID', required: true, example: 1)]
     #[ResponseFromApiResource(PackageTypeResource::class, PackageType::class, additional: ['message' => 'Package type updated successfully.'])]
     #[Response(status: 404, description: 'Package type not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(PackageTypeRequest $request, string $id)
     {
         $packageType = PackageType::findOrFail($id);

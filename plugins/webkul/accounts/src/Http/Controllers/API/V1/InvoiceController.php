@@ -258,7 +258,7 @@ class InvoiceController extends Controller
     #[Endpoint('Confirm invoice', 'Confirm a draft invoice and move it to posted state')]
     #[UrlParam('id', 'integer', 'The invoice ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Invoice::class, additional: ['message' => 'Invoice confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft invoices can be confirmed."}')]
+    #[Response(status: 422, description: 'Only draft invoices can be confirmed.', content: '{"message": "Only draft invoices can be confirmed."}')]
     #[Response(status: 404, description: 'Invoice not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirm(string $id)
@@ -290,7 +290,7 @@ class InvoiceController extends Controller
     #[Endpoint('Cancel invoice', 'Cancel a draft invoice')]
     #[UrlParam('id', 'integer', 'The invoice ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Invoice::class, additional: ['message' => 'Invoice cancelled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft invoices can be cancelled."}')]
+    #[Response(status: 422, description: 'Only draft invoices can be cancelled.', content: '{"message": "Only draft invoices can be cancelled."}')]
     #[Response(status: 404, description: 'Invoice not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancel(string $id)
@@ -384,7 +384,7 @@ class InvoiceController extends Controller
     #[Endpoint('Reverse invoice', 'Create a credit note by reversing a posted invoice')]
     #[UrlParam('id', 'integer', 'The invoice ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Invoice::class, additional: ['message' => 'Invoice reversed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only posted invoices can be reversed."}')]
+    #[Response(status: 422, description: 'Only posted invoices can be reversed.', content: '{"message": "Only posted invoices can be reversed."}')]
     #[Response(status: 404, description: 'Invoice not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function reverse(Request $request, string $id)
@@ -446,7 +446,7 @@ class InvoiceController extends Controller
     #[Endpoint('Reset invoice to draft', 'Reset a posted or cancelled invoice to draft')]
     #[UrlParam('id', 'integer', 'The invoice ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Invoice::class, additional: ['message' => 'Invoice reset to draft successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only posted or cancelled invoices can be reset to draft."}')]
+    #[Response(status: 422, description: 'Only posted or cancelled invoices can be reset to draft.', content: '{"message": "Only posted or cancelled invoices can be reset to draft."}')]
     #[Response(status: 404, description: 'Invoice not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function resetToDraft(string $id)
@@ -476,7 +476,7 @@ class InvoiceController extends Controller
     #[Endpoint('Set invoice as checked', 'Mark an invoice as checked')]
     #[UrlParam('id', 'integer', 'The invoice ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Invoice::class, additional: ['message' => 'Invoice marked as checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only non-draft and unchecked invoices can be marked as checked."}')]
+    #[Response(status: 422, description: 'Only non-draft and unchecked invoices can be marked as checked.', content: '{"message": "Only non-draft and unchecked invoices can be marked as checked."}')]
     #[Response(status: 404, description: 'Invoice not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function setAsChecked(string $id)

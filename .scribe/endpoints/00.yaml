@@ -391,7 +391,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1090,7 +1090,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"value": ["The value field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1544,7 +1544,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"code": ["The code field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -2347,7 +2347,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -3373,7 +3373,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -3570,7 +3570,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"company_id":793,"country_id":321,"country_group_id":null,"creator_id":1,"name":"dolorum possimus","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},{"id":null,"company_id":794,"country_id":322,"country_group_id":null,"creator_id":1,"name":"consequuntur est","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"company_id":855,"country_id":326,"country_group_id":null,"creator_id":1,"name":"voluptatem qui","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},{"id":null,"company_id":856,"country_id":327,"country_group_id":null,"creator_id":1,"name":"repellat ea","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -3837,7 +3837,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"company_id":795,"country_id":323,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position created successfully."}'
+        content: '{"data":{"id":null,"company_id":857,"country_id":328,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position created successfully."}'
         headers: []
         description: ''
       -
@@ -3914,7 +3914,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"company_id":796,"country_id":324,"country_group_id":null,"creator_id":1,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"company_id":858,"country_id":329,"country_group_id":null,"creator_id":1,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -
@@ -4200,7 +4200,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"company_id":797,"country_id":325,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position updated successfully."}'
+        content: '{"data":{"id":null,"company_id":859,"country_id":330,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position updated successfully."}'
         headers: []
         description: ''
       -
@@ -4218,7 +4218,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -4409,7 +4409,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":192,"loss_account_id":193,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"name":"enim non","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":194,"loss_account_id":195,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":202,"loss_account_id":203,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"name":"enim non","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":204,"loss_account_id":205,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -4533,7 +4533,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":196,"loss_account_id":197,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding created successfully."}'
+        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":206,"loss_account_id":207,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding created successfully."}'
         headers: []
         description: ''
       -
@@ -4610,7 +4610,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":198,"loss_account_id":199,"creator_id":1,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":208,"loss_account_id":209,"creator_id":1,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -
@@ -4753,7 +4753,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":200,"loss_account_id":201,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding updated successfully."}'
+        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":210,"loss_account_id":211,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding updated successfully."}'
         headers: []
         description: ''
       -
@@ -4771,7 +4771,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -5261,7 +5261,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -5871,7 +5871,7 @@ endpoints:
         name: 'invoice_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -5928,7 +5928,7 @@ endpoints:
         name: 'refund_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -5958,7 +5958,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: false
+          use_in_tax_closing: true
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -5969,7 +5969,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: true
+          use_in_tax_closing: false
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -6421,7 +6421,7 @@ endpoints:
         name: 'invoice_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -6478,7 +6478,7 @@ endpoints:
         name: 'refund_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -6508,7 +6508,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: true
+          use_in_tax_closing: false
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -6519,7 +6519,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: false
+          use_in_tax_closing: true
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -6548,7 +6548,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message": "The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -13500,7 +13500,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft invoices can be confirmed."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft invoices can be confirmed.'
     responseFields: []
     auth:
       - headers
@@ -13571,7 +13571,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft invoices can be cancelled."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft invoices can be cancelled.'
     responseFields: []
     auth:
       - headers
@@ -13814,7 +13814,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-25T11:50:54'
+        example: '2026-02-25T13:34:40'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -13823,7 +13823,7 @@ endpoints:
     cleanBodyParameters:
       reason: b
       journal_id: 16
-      date: '2026-02-25T11:50:54'
+      date: '2026-02-25T13:34:40'
     fileParameters: []
     responses:
       -
@@ -13849,7 +13849,7 @@ endpoints:
         status: 422
         content: '{"message": "Only posted invoices can be reversed."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only posted invoices can be reversed.'
     responseFields: []
     auth:
       - headers
@@ -13920,7 +13920,7 @@ endpoints:
         status: 422
         content: '{"message": "Only posted or cancelled invoices can be reset to draft."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only posted or cancelled invoices can be reset to draft.'
     responseFields: []
     auth:
       - headers
@@ -13991,7 +13991,7 @@ endpoints:
         status: 422
         content: '{"message": "Only non-draft and unchecked invoices can be marked as checked."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only non-draft and unchecked invoices can be marked as checked.'
     responseFields: []
     auth:
       - headers
@@ -15097,7 +15097,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft credit notes can be confirmed."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft credit notes can be confirmed.'
     responseFields: []
     auth:
       - headers
@@ -15168,7 +15168,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft credit notes can be cancelled."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft credit notes can be cancelled.'
     responseFields: []
     auth:
       - headers
@@ -15410,7 +15410,7 @@ endpoints:
         status: 422
         content: '{"message": "Only posted or cancelled credit notes can be reset to draft."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only posted or cancelled credit notes can be reset to draft.'
     responseFields: []
     auth:
       - headers
@@ -15481,7 +15481,7 @@ endpoints:
         status: 422
         content: '{"message": "Only non-draft and unchecked credit notes can be marked as checked."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only non-draft and unchecked credit notes can be marked as checked.'
     responseFields: []
     auth:
       - headers
@@ -16605,7 +16605,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft bills can be confirmed."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft bills can be confirmed.'
     responseFields: []
     auth:
       - headers
@@ -16676,7 +16676,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft bills can be cancelled."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft bills can be cancelled.'
     responseFields: []
     auth:
       - headers
@@ -16919,7 +16919,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-25T11:50:54'
+        example: '2026-02-25T13:34:40'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -16928,7 +16928,7 @@ endpoints:
     cleanBodyParameters:
       reason: b
       journal_id: 16
-      date: '2026-02-25T11:50:54'
+      date: '2026-02-25T13:34:40'
     fileParameters: []
     responses:
       -
@@ -16954,7 +16954,7 @@ endpoints:
         status: 422
         content: '{"message": "Only posted bills can be reversed."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only posted bills can be reversed.'
     responseFields: []
     auth:
       - headers
@@ -17025,7 +17025,7 @@ endpoints:
         status: 422
         content: '{"message": "Only posted or cancelled bills can be reset to draft."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only posted or cancelled bills can be reset to draft.'
     responseFields: []
     auth:
       - headers
@@ -17096,7 +17096,7 @@ endpoints:
         status: 422
         content: '{"message": "Only non-draft and unchecked bills can be marked as checked."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only non-draft and unchecked bills can be marked as checked.'
     responseFields: []
     auth:
       - headers
@@ -18226,7 +18226,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft refunds can be confirmed."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft refunds can be confirmed.'
     responseFields: []
     auth:
       - headers
@@ -18297,7 +18297,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft refunds can be cancelled."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft refunds can be cancelled.'
     responseFields: []
     auth:
       - headers
@@ -18539,7 +18539,7 @@ endpoints:
         status: 422
         content: '{"message": "Only posted or cancelled refunds can be reset to draft."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only posted or cancelled refunds can be reset to draft.'
     responseFields: []
     auth:
       - headers
@@ -18610,7 +18610,7 @@ endpoints:
         status: 422
         content: '{"message": "Only non-draft and unchecked refunds can be marked as checked."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only non-draft and unchecked refunds can be marked as checked.'
     responseFields: []
     auth:
       - headers

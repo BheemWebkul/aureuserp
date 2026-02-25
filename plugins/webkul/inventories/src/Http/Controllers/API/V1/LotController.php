@@ -63,7 +63,7 @@ class LotController extends Controller
 
     #[Endpoint('Create lot', 'Create a new lot')]
     #[ResponseFromApiResource(LotResource::class, Lot::class, status: 201, additional: ['message' => 'Lot created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(LotRequest $request)
     {
         Gate::authorize('create', Lot::class);
@@ -96,7 +96,7 @@ class LotController extends Controller
     #[UrlParam('id', 'integer', 'The lot ID', required: true, example: 1)]
     #[ResponseFromApiResource(LotResource::class, Lot::class, additional: ['message' => 'Lot updated successfully.'])]
     #[Response(status: 404, description: 'Lot not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(LotRequest $request, string $id)
     {
         $lot = Lot::findOrFail($id);

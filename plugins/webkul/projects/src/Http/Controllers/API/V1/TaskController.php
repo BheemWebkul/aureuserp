@@ -73,7 +73,7 @@ class TaskController extends Controller
 
     #[Endpoint('Create task', 'Create a new task')]
     #[ResponseFromApiResource(TaskResource::class, Task::class, status: 201, additional: ['message' => 'Task created successfully.'])]
-    #[Response(status: 422, description: 'Validation error', content: '{"message":"The given data was invalid."}')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"title": ["The title field is required."]}}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message":"Unauthenticated."}')]
     public function store(TaskRequest $request)
     {
@@ -135,7 +135,7 @@ class TaskController extends Controller
     #[Endpoint('Update task', 'Update an existing task')]
     #[UrlParam('id', 'integer', 'The task ID', required: true, example: 1)]
     #[ResponseFromApiResource(TaskResource::class, Task::class, additional: ['message' => 'Task updated successfully.'])]
-    #[Response(status: 422, description: 'Validation error', content: '{"message":"The given data was invalid."}')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"title": ["The title field is required."]}}')]
     #[Response(status: 404, description: 'Task not found', content: '{"message":"Resource not found."}')]
     public function update(TaskRequest $request, string $id)
     {

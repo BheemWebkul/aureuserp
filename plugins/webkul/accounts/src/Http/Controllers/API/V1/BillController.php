@@ -115,7 +115,7 @@ class BillController extends Controller
             $invoiceLines = $data['invoice_lines'];
             unset($data['invoice_lines']);
 
-            $data["move_type"] = MoveType::IN_INVOICE;
+            $data['move_type'] = MoveType::IN_INVOICE;
             $data['state'] = MoveState::DRAFT;
 
             $invoice = Bill::create($data);
@@ -258,7 +258,7 @@ class BillController extends Controller
     #[Endpoint('Confirm bill', 'Confirm a draft bill and move it to posted state')]
     #[UrlParam('id', 'integer', 'The bill ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Bill::class, additional: ['message' => 'Bill confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft bills can be confirmed."}')]
+    #[Response(status: 422, description: 'Only draft bills can be confirmed.', content: '{"message": "Only draft bills can be confirmed."}')]
     #[Response(status: 404, description: 'Bill not found', content: '{"message": "Resource not found."}')]
     public function confirm(string $id)
     {
@@ -289,7 +289,7 @@ class BillController extends Controller
     #[Endpoint('Cancel bill', 'Cancel a draft bill')]
     #[UrlParam('id', 'integer', 'The bill ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Bill::class, additional: ['message' => 'Bill cancelled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft bills can be cancelled."}')]
+    #[Response(status: 422, description: 'Only draft bills can be cancelled.', content: '{"message": "Only draft bills can be cancelled."}')]
     #[Response(status: 404, description: 'Bill not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancel(string $id)
@@ -383,7 +383,7 @@ class BillController extends Controller
     #[Endpoint('Reverse bill', 'Create a vendor refund by reversing a posted bill')]
     #[UrlParam('id', 'integer', 'The bill ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Bill::class, additional: ['message' => 'Bill reversed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only posted bills can be reversed."}')]
+    #[Response(status: 422, description: 'Only posted bills can be reversed.', content: '{"message": "Only posted bills can be reversed."}')]
     #[Response(status: 404, description: 'Bill not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function reverse(Request $request, string $id)
@@ -445,7 +445,7 @@ class BillController extends Controller
     #[Endpoint('Reset bill to draft', 'Reset a posted or cancelled bill to draft')]
     #[UrlParam('id', 'integer', 'The bill ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Bill::class, additional: ['message' => 'Bill reset to draft successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only posted or cancelled bills can be reset to draft."}')]
+    #[Response(status: 422, description: 'Only posted or cancelled bills can be reset to draft.', content: '{"message": "Only posted or cancelled bills can be reset to draft."}')]
     #[Response(status: 404, description: 'Bill not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function resetToDraft(string $id)
@@ -475,7 +475,7 @@ class BillController extends Controller
     #[Endpoint('Set bill as checked', 'Mark a bill as checked')]
     #[UrlParam('id', 'integer', 'The bill ID', required: true, example: 1)]
     #[ResponseFromApiResource(MoveResource::class, Bill::class, additional: ['message' => 'Bill marked as checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only non-draft and unchecked bills can be marked as checked."}')]
+    #[Response(status: 422, description: 'Only non-draft and unchecked bills can be marked as checked.', content: '{"message": "Only non-draft and unchecked bills can be marked as checked."}')]
     #[Response(status: 404, description: 'Bill not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function setAsChecked(string $id)

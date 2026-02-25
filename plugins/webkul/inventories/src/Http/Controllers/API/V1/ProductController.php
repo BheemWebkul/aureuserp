@@ -79,7 +79,7 @@ class ProductController extends Controller
 
     #[Endpoint('Create product', 'Create a new inventory product')]
     #[ResponseFromApiResource(ProductResource::class, Product::class, status: 201, additional: ['message' => 'Product created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(ProductRequest $request)
     {
         Gate::authorize('create', Product::class);
@@ -125,7 +125,7 @@ class ProductController extends Controller
     #[UrlParam('id', 'integer', 'The product ID', required: true, example: 1)]
     #[ResponseFromApiResource(ProductResource::class, Product::class, additional: ['message' => 'Product updated successfully.'])]
     #[Response(status: 404, description: 'Product not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(ProductRequest $request, string $id)
     {
         $product = Product::findOrFail($id);

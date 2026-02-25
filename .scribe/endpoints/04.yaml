@@ -310,7 +310,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message":"The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -620,7 +620,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message":"The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1121,7 +1121,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message":"The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"title": ["The title field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []
@@ -1423,7 +1423,7 @@ endpoints:
       -
         custom: []
         status: 422
-        content: '{"message":"The given data was invalid."}'
+        content: '{"message": "The given data was invalid.", "errors": {"title": ["The title field is required."]}}'
         headers: []
         description: 'Validation error'
     responseFields: []

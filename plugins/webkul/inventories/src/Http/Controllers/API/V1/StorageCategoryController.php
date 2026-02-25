@@ -56,7 +56,7 @@ class StorageCategoryController extends Controller
 
     #[Endpoint('Create storage category', 'Create a new storage category')]
     #[ResponseFromApiResource(StorageCategoryResource::class, StorageCategory::class, status: 201, additional: ['message' => 'Storage category created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(StorageCategoryRequest $request)
     {
         Gate::authorize('create', StorageCategory::class);
@@ -89,7 +89,7 @@ class StorageCategoryController extends Controller
     #[UrlParam('id', 'integer', 'The storage category ID', required: true, example: 1)]
     #[ResponseFromApiResource(StorageCategoryResource::class, StorageCategory::class, additional: ['message' => 'Storage category updated successfully.'])]
     #[Response(status: 404, description: 'Storage category not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(StorageCategoryRequest $request, string $id)
     {
         $storageCategory = StorageCategory::findOrFail($id);

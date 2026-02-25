@@ -5,7 +5,6 @@ namespace Webkul\Purchase\Http\Controllers\API\V1;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
-use Webkul\Account\Enums\MoveState;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Group;
@@ -16,6 +15,7 @@ use Knuckles\Scribe\Attributes\Subgroup;
 use Knuckles\Scribe\Attributes\UrlParam;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use Webkul\Account\Enums\MoveState;
 use Webkul\Account\Facades\Tax as TaxFacade;
 use Webkul\PluginManager\Package;
 use Webkul\Product\Models\Product;
@@ -183,7 +183,7 @@ class PurchaseOrderController extends Controller
     #[Endpoint('Confirm purchase order', 'Confirm a request for quotation into a purchase order')]
     #[UrlParam('id', 'integer', 'The purchase order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, PurchaseOrder::class, additional: ['message' => 'Purchase order confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft or sent purchase orders can be confirmed."}')]
+    #[Response(status: 422, description: 'Only draft or sent purchase orders can be confirmed.', content: '{"message": "Only draft or sent purchase orders can be confirmed."}')]
     #[Response(status: 404, description: 'Purchase order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirm(string $id)
@@ -207,7 +207,7 @@ class PurchaseOrderController extends Controller
     #[Endpoint('Cancel purchase order', 'Cancel a purchase order')]
     #[UrlParam('id', 'integer', 'The purchase order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, PurchaseOrder::class, additional: ['message' => 'Purchase order canceled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only non-locked and non-canceled purchase orders can be canceled."}')]
+    #[Response(status: 422, description: 'Only non-locked and non-canceled purchase orders can be canceled.', content: '{"message": "Only non-locked and non-canceled purchase orders can be canceled."}')]
     #[Response(status: 404, description: 'Purchase order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancel(string $id)
@@ -243,7 +243,7 @@ class PurchaseOrderController extends Controller
     #[Endpoint('Set purchase order to draft', 'Move a canceled purchase order back to draft')]
     #[UrlParam('id', 'integer', 'The purchase order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, PurchaseOrder::class, additional: ['message' => 'Purchase order set to draft successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only canceled purchase orders can be set to draft."}')]
+    #[Response(status: 422, description: 'Only canceled purchase orders can be set to draft.', content: '{"message": "Only canceled purchase orders can be set to draft."}')]
     #[Response(status: 404, description: 'Purchase order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function draft(string $id)
@@ -267,7 +267,7 @@ class PurchaseOrderController extends Controller
     #[Endpoint('Toggle purchase order lock', 'Toggle lock state between purchase and done')]
     #[UrlParam('id', 'integer', 'The purchase order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, PurchaseOrder::class, additional: ['message' => 'Purchase order lock state updated successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only purchase or done orders can toggle lock state."}')]
+    #[Response(status: 422, description: 'Only purchase or done orders can toggle lock state.', content: '{"message": "Only purchase or done orders can toggle lock state."}')]
     #[Response(status: 404, description: 'Purchase order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function toggleLock(string $id)
@@ -293,7 +293,7 @@ class PurchaseOrderController extends Controller
     #[Endpoint('Confirm purchase order receipt date', 'Mark purchase order receipt reminder as confirmed')]
     #[UrlParam('id', 'integer', 'The purchase order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, PurchaseOrder::class, additional: ['message' => 'Purchase order receipt date confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only unconfirmed purchase or done orders can confirm receipt date."}')]
+    #[Response(status: 422, description: 'Only unconfirmed purchase or done orders can confirm receipt date.', content: '{"message": "Only unconfirmed purchase or done orders can confirm receipt date."}')]
     #[Response(status: 404, description: 'Purchase order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirmReceiptDate(string $id)

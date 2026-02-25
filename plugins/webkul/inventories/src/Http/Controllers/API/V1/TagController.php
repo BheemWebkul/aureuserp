@@ -52,7 +52,7 @@ class TagController extends Controller
 
     #[Endpoint('Create tag', 'Create a new tag')]
     #[ResponseFromApiResource(TagResource::class, Tag::class, status: 201, additional: ['message' => 'Tag created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(TagRequest $request)
     {
         Gate::authorize('create', Tag::class);
@@ -85,7 +85,7 @@ class TagController extends Controller
     #[UrlParam('id', 'integer', 'The tag ID', required: true, example: 1)]
     #[ResponseFromApiResource(TagResource::class, Tag::class, additional: ['message' => 'Tag updated successfully.'])]
     #[Response(status: 404, description: 'Tag not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(TagRequest $request, string $id)
     {
         $tag = Tag::findOrFail($id);

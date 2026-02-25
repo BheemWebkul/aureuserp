@@ -71,7 +71,7 @@ class ProjectController extends Controller
 
     #[Endpoint('Create project', 'Create a new project')]
     #[ResponseFromApiResource(ProjectResource::class, Project::class, status: 201, additional: ['message' => 'Project created successfully.'])]
-    #[Response(status: 422, description: 'Validation error', content: '{"message":"The given data was invalid."}')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message":"Unauthenticated."}')]
     public function store(ProjectRequest $request)
     {
@@ -118,7 +118,7 @@ class ProjectController extends Controller
     #[Endpoint('Update project', 'Update an existing project')]
     #[UrlParam('id', 'integer', 'The project ID', required: true, example: 1)]
     #[ResponseFromApiResource(ProjectResource::class, Project::class, additional: ['message' => 'Project updated successfully.'])]
-    #[Response(status: 422, description: 'Validation error', content: '{"message":"The given data was invalid."}')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     #[Response(status: 404, description: 'Project not found', content: '{"message":"Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message":"Unauthenticated."}')]
     public function update(ProjectRequest $request, string $id)

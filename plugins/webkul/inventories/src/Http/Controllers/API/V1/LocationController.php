@@ -72,7 +72,7 @@ class LocationController extends Controller
 
     #[Endpoint('Create location', 'Create a new location')]
     #[ResponseFromApiResource(LocationResource::class, Location::class, status: 201, additional: ['message' => 'Location created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(LocationRequest $request)
     {
         Gate::authorize('create', Location::class);
@@ -105,7 +105,7 @@ class LocationController extends Controller
     #[UrlParam('id', 'integer', 'The location ID', required: true, example: 1)]
     #[ResponseFromApiResource(LocationResource::class, Location::class, additional: ['message' => 'Location updated successfully.'])]
     #[Response(status: 404, description: 'Location not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(LocationRequest $request, string $id)
     {
         $location = Location::findOrFail($id);

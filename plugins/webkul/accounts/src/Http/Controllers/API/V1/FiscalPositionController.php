@@ -128,7 +128,7 @@ class FiscalPositionController extends Controller
     #[UrlParam('id', 'integer', 'The fiscal position ID', required: true, example: 1)]
     #[ResponseFromApiResource(FiscalPositionResource::class, FiscalPosition::class, additional: ['message' => 'Fiscal position updated successfully.'])]
     #[Response(status: 404, description: 'Fiscal position not found', content: '{"message": "Resource not found."}')]
-    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid."}')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(FiscalPositionRequest $request, string $id)
     {

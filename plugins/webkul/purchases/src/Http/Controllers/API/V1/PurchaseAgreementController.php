@@ -151,7 +151,7 @@ class PurchaseAgreementController extends Controller
     #[Endpoint('Confirm purchase agreement', 'Confirm a draft purchase agreement')]
     #[UrlParam('id', 'integer', 'The purchase agreement ID', required: true, example: 1)]
     #[ResponseFromApiResource(RequisitionResource::class, Requisition::class, additional: ['message' => 'Purchase agreement confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft purchase agreements can be confirmed."}')]
+    #[Response(status: 422, description: 'Only draft purchase agreements can be confirmed.', content: '{"message": "Only draft purchase agreements can be confirmed."}')]
     #[Response(status: 404, description: 'Purchase agreement not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirm(string $id)
@@ -177,7 +177,7 @@ class PurchaseAgreementController extends Controller
     #[Endpoint('Close purchase agreement', 'Close a confirmed purchase agreement')]
     #[UrlParam('id', 'integer', 'The purchase agreement ID', required: true, example: 1)]
     #[ResponseFromApiResource(RequisitionResource::class, Requisition::class, additional: ['message' => 'Purchase agreement closed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only confirmed purchase agreements can be closed."}')]
+    #[Response(status: 422, description: 'Only confirmed purchase agreements can be closed.', content: '{"message": "Only confirmed purchase agreements can be closed."}')]
     #[Response(status: 404, description: 'Purchase agreement not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function close(string $id)
@@ -203,7 +203,7 @@ class PurchaseAgreementController extends Controller
     #[Endpoint('Cancel purchase agreement', 'Cancel a draft or confirmed purchase agreement')]
     #[UrlParam('id', 'integer', 'The purchase agreement ID', required: true, example: 1)]
     #[ResponseFromApiResource(RequisitionResource::class, Requisition::class, additional: ['message' => 'Purchase agreement canceled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft or confirmed purchase agreements can be canceled."}')]
+    #[Response(status: 422, description: 'Only draft or confirmed purchase agreements can be canceled.', content: '{"message": "Only draft or confirmed purchase agreements can be canceled."}')]
     #[Response(status: 404, description: 'Purchase agreement not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancel(string $id)

@@ -65,7 +65,7 @@ class RouteController extends Controller
 
     #[Endpoint('Create route', 'Create a new route')]
     #[ResponseFromApiResource(RouteResource::class, Route::class, status: 201, additional: ['message' => 'Route created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function store(RouteRequest $request)
     {
         Gate::authorize('create', Route::class);
@@ -106,7 +106,7 @@ class RouteController extends Controller
     #[UrlParam('id', 'integer', 'The route ID', required: true, example: 1)]
     #[ResponseFromApiResource(RouteResource::class, Route::class, additional: ['message' => 'Route updated successfully.'])]
     #[Response(status: 404, description: 'Route not found')]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
     public function update(RouteRequest $request, string $id)
     {
         $route = Route::findOrFail($id);

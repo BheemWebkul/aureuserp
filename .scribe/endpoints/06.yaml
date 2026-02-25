@@ -206,7 +206,7 @@ endpoints:
         name: commitment_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:59'
+        example: '2026-02-25T13:34:46'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -473,7 +473,7 @@ endpoints:
       payment_term_id: 1
       date_order: '2026-02-18'
       validity_date: '2026-02-28'
-      commitment_date: '2026-02-25T11:50:59'
+      commitment_date: '2026-02-25T13:34:46'
       client_order_ref: b
       origin: 'n'
       note: 'Delivery within 7 business days.'
@@ -689,7 +689,7 @@ endpoints:
         name: commitment_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T11:50:59'
+        example: '2026-02-25T13:34:46'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -956,7 +956,7 @@ endpoints:
       payment_term_id: 1
       date_order: '2026-02-18'
       validity_date: '2026-02-28'
-      commitment_date: '2026-02-25T11:50:59'
+      commitment_date: '2026-02-25T13:34:46'
       client_order_ref: b
       origin: 'n'
       note: 'Delivery within 7 business days.'
@@ -1272,7 +1272,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft or sent orders can be confirmed."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft or sent orders can be confirmed.'
     responseFields: []
     auth:
       - headers
@@ -1381,7 +1381,7 @@ endpoints:
         status: 422
         content: '{"message": "Only draft, sent, or sale orders can be canceled."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only draft, sent, or sale orders can be canceled.'
     responseFields: []
     auth:
       - headers
@@ -1452,7 +1452,7 @@ endpoints:
         status: 422
         content: '{"message": "Only canceled orders can be set as quotation."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only canceled orders can be set as quotation.'
     responseFields: []
     auth:
       - headers
@@ -1523,7 +1523,7 @@ endpoints:
         status: 422
         content: '{"message": "Only sale orders can toggle lock state."}'
         headers: []
-        description: 'Invalid state transition'
+        description: 'Only sale orders can toggle lock state.'
     responseFields: []
     auth:
       - headers

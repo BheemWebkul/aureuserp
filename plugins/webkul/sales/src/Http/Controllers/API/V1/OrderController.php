@@ -4,9 +4,9 @@ namespace Webkul\Sale\Http\Controllers\API\V1;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Arr;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Group;
@@ -184,7 +184,7 @@ class OrderController extends Controller
     #[Endpoint('Confirm order', 'Confirm a quotation and convert it to a sale order')]
     #[UrlParam('id', 'integer', 'The order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, Order::class, with: ['partner', 'lines'], additional: ['message' => 'Order confirmed successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft or sent orders can be confirmed."}')]
+    #[Response(status: 422, description: 'Only draft or sent orders can be confirmed.', content: '{"message": "Only draft or sent orders can be confirmed."}')]
     #[Response(status: 404, description: 'Order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirm(string $id)
@@ -214,7 +214,7 @@ class OrderController extends Controller
     #[Endpoint('Cancel order', 'Cancel a sale order')]
     #[UrlParam('id', 'integer', 'The order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, Order::class, with: ['partner', 'lines'], additional: ['message' => 'Order canceled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only draft, sent, or sale orders can be canceled."}')]
+    #[Response(status: 422, description: 'Only draft, sent, or sale orders can be canceled.', content: '{"message": "Only draft, sent, or sale orders can be canceled."}')]
     #[Response(status: 404, description: 'Order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancel(Request $request, string $id)
@@ -230,9 +230,9 @@ class OrderController extends Controller
         }
 
         $data = $request->validate([
-            'partners' => ['nullable', 'array'],
-            'partners.*' => ['integer', 'exists:partners_partners,id'],
-            'subject' => ['required_with:partners_partners', 'string', 'max:255'],
+            'partners'    => ['nullable', 'array'],
+            'partners.*'  => ['integer', 'exists:partners_partners,id'],
+            'subject'     => ['required_with:partners_partners', 'string', 'max:255'],
             'description' => ['required_with:partners_partners', 'string'],
         ]);
 
@@ -245,7 +245,7 @@ class OrderController extends Controller
     #[Endpoint('Set order as quotation', 'Set a canceled sale order back to quotation')]
     #[UrlParam('id', 'integer', 'The order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, Order::class, with: ['partner', 'lines'], additional: ['message' => 'Order set as quotation successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only canceled orders can be set as quotation."}')]
+    #[Response(status: 422, description: 'Only canceled orders can be set as quotation.', content: '{"message": "Only canceled orders can be set as quotation."}')]
     #[Response(status: 404, description: 'Order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function setAsQuotation(string $id)
@@ -269,7 +269,7 @@ class OrderController extends Controller
     #[Endpoint('Toggle sale order lock', 'Toggle lock status for a confirmed sale order')]
     #[UrlParam('id', 'integer', 'The order ID', required: true, example: 1)]
     #[ResponseFromApiResource(OrderResource::class, Order::class, with: ['partner', 'lines'], additional: ['message' => 'Order lock state updated successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition', content: '{"message": "Only sale orders can toggle lock state."}')]
+    #[Response(status: 422, description: 'Only sale orders can toggle lock state.', content: '{"message": "Only sale orders can toggle lock state."}')]
     #[Response(status: 404, description: 'Order not found', content: '{"message": "Resource not found."}')]
     #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function toggleLock(string $id)
@@ -378,18 +378,18 @@ class OrderController extends Controller
                 : null;
 
             $payload = array_merge([
-                'name' => $product?->name ?? 'Line Item',
-                'state' => $order->state?->value,
-                'product_uom_id' => $lineData['product_uom_id'] ?? $product?->uom_id,
-                'company_id' => $order->company_id,
-                'currency_id' => $order->currency_id,
+                'name'             => $product?->name ?? 'Line Item',
+                'state'            => $order->state?->value,
+                'product_uom_id'   => $lineData['product_uom_id'] ?? $product?->uom_id,
+                'company_id'       => $order->company_id,
+                'currency_id'      => $order->currency_id,
                 'order_partner_id' => $order->partner_id,
-                'salesman_id' => $order->user_id,
-                'product_qty' => $lineData['product_qty'] ?? 0,
-                'product_uom_qty' => $lineData['product_qty'] ?? 0,
-                'price_unit' => $lineData['price_unit'] ?? 0,
-                'discount' => $lineData['discount'] ?? 0,
-                'customer_lead' => $lineData['customer_lead'] ?? 0,
+                'salesman_id'      => $order->user_id,
+                'product_qty'      => $lineData['product_qty'] ?? 0,
+                'product_uom_qty'  => $lineData['product_qty'] ?? 0,
+                'price_unit'       => $lineData['price_unit'] ?? 0,
+                'discount'         => $lineData['discount'] ?? 0,
+                'customer_lead'    => $lineData['customer_lead'] ?? 0,
             ], $lineData);
 
             if ($lineId) {
