@@ -95,12 +95,17 @@ class DeliveryController extends OperationController
     #[Endpoint('Check delivery availability', 'Compute and refresh delivery availability')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery availability checked successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function checkAvailability(string $id)
     {
         $delivery = $this->findOperationById($id);
 
         Gate::authorize('update', $delivery);
+
+        if ($response = $this->ensureCanCheckAvailability($delivery)) {
+            return $response;
+        }
 
         return (new DeliveryResource($this->checkAvailabilityById($id)))
             ->additional(['message' => 'Delivery availability checked successfully.']);
@@ -109,12 +114,17 @@ class DeliveryController extends OperationController
     #[Endpoint('Mark delivery as todo', 'Reset delivery allocation status')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery set to todo successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function todo(string $id)
     {
         $delivery = $this->findOperationById($id);
 
         Gate::authorize('update', $delivery);
+
+        if ($response = $this->ensureCanTodo($delivery)) {
+            return $response;
+        }
 
         return (new DeliveryResource($this->todoById($id)))
             ->additional(['message' => 'Delivery set to todo successfully.']);
@@ -123,12 +133,17 @@ class DeliveryController extends OperationController
     #[Endpoint('Validate delivery', 'Validate delivery and complete stock moves')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery validated successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function validateTransfer(string $id)
     {
         $delivery = $this->findOperationById($id);
 
         Gate::authorize('update', $delivery);
+
+        if ($response = $this->ensureCanValidate($delivery)) {
+            return $response;
+        }
 
         return (new DeliveryResource($this->validateById($id)))
             ->additional(['message' => 'Delivery validated successfully.']);
@@ -137,12 +152,17 @@ class DeliveryController extends OperationController
     #[Endpoint('Cancel delivery', 'Cancel delivery and related moves')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery canceled successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function cancelTransfer(string $id)
     {
         $delivery = $this->findOperationById($id);
 
         Gate::authorize('update', $delivery);
+
+        if ($response = $this->ensureCanCancel($delivery)) {
+            return $response;
+        }
 
         return (new DeliveryResource($this->cancelById($id)))
             ->additional(['message' => 'Delivery canceled successfully.']);
@@ -151,12 +171,17 @@ class DeliveryController extends OperationController
     #[Endpoint('Return delivery', 'Create a return operation from this delivery')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery return created successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function returnTransfer(string $id)
     {
         $delivery = $this->findOperationById($id);
 
         Gate::authorize('update', $delivery);
+
+        if ($response = $this->ensureCanReturn($delivery)) {
+            return $response;
+        }
 
         return (new DeliveryResource($this->returnById($id)))
             ->additional(['message' => 'Delivery return created successfully.']);

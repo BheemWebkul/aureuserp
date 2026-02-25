@@ -95,12 +95,17 @@ class DropshipController extends OperationController
     #[Endpoint('Check dropship availability', 'Compute and refresh dropship availability')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship availability checked successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function checkAvailability(string $id)
     {
         $dropship = $this->findOperationById($id);
 
         Gate::authorize('update', $dropship);
+
+        if ($response = $this->ensureCanCheckAvailability($dropship)) {
+            return $response;
+        }
 
         return (new DropshipResource($this->checkAvailabilityById($id)))
             ->additional(['message' => 'Dropship availability checked successfully.']);
@@ -109,12 +114,17 @@ class DropshipController extends OperationController
     #[Endpoint('Mark dropship as todo', 'Reset dropship allocation status')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship set to todo successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function todo(string $id)
     {
         $dropship = $this->findOperationById($id);
 
         Gate::authorize('update', $dropship);
+
+        if ($response = $this->ensureCanTodo($dropship)) {
+            return $response;
+        }
 
         return (new DropshipResource($this->todoById($id)))
             ->additional(['message' => 'Dropship set to todo successfully.']);
@@ -123,12 +133,17 @@ class DropshipController extends OperationController
     #[Endpoint('Validate dropship', 'Validate dropship and complete stock moves')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship validated successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function validateTransfer(string $id)
     {
         $dropship = $this->findOperationById($id);
 
         Gate::authorize('update', $dropship);
+
+        if ($response = $this->ensureCanValidate($dropship)) {
+            return $response;
+        }
 
         return (new DropshipResource($this->validateById($id)))
             ->additional(['message' => 'Dropship validated successfully.']);
@@ -137,12 +152,17 @@ class DropshipController extends OperationController
     #[Endpoint('Cancel dropship', 'Cancel dropship and related moves')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship canceled successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function cancelTransfer(string $id)
     {
         $dropship = $this->findOperationById($id);
 
         Gate::authorize('update', $dropship);
+
+        if ($response = $this->ensureCanCancel($dropship)) {
+            return $response;
+        }
 
         return (new DropshipResource($this->cancelById($id)))
             ->additional(['message' => 'Dropship canceled successfully.']);
@@ -151,12 +171,17 @@ class DropshipController extends OperationController
     #[Endpoint('Return dropship', 'Create a return operation from this dropship')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship return created successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function returnTransfer(string $id)
     {
         $dropship = $this->findOperationById($id);
 
         Gate::authorize('update', $dropship);
+
+        if ($response = $this->ensureCanReturn($dropship)) {
+            return $response;
+        }
 
         return (new DropshipResource($this->returnById($id)))
             ->additional(['message' => 'Dropship return created successfully.']);

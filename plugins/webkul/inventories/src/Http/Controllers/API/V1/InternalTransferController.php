@@ -95,12 +95,17 @@ class InternalTransferController extends OperationController
     #[Endpoint('Check internal transfer availability', 'Compute and refresh internal transfer availability')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer availability checked successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function checkAvailability(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
 
         Gate::authorize('update', $internalTransfer);
+
+        if ($response = $this->ensureCanCheckAvailability($internalTransfer)) {
+            return $response;
+        }
 
         return (new InternalTransferResource($this->checkAvailabilityById($id)))
             ->additional(['message' => 'Internal transfer availability checked successfully.']);
@@ -109,12 +114,17 @@ class InternalTransferController extends OperationController
     #[Endpoint('Mark internal transfer as todo', 'Reset internal transfer allocation status')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer set to todo successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function todo(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
 
         Gate::authorize('update', $internalTransfer);
+
+        if ($response = $this->ensureCanTodo($internalTransfer)) {
+            return $response;
+        }
 
         return (new InternalTransferResource($this->todoById($id)))
             ->additional(['message' => 'Internal transfer set to todo successfully.']);
@@ -123,12 +133,17 @@ class InternalTransferController extends OperationController
     #[Endpoint('Validate internal transfer', 'Validate internal transfer and complete stock moves')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer validated successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function validateTransfer(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
 
         Gate::authorize('update', $internalTransfer);
+
+        if ($response = $this->ensureCanValidate($internalTransfer)) {
+            return $response;
+        }
 
         return (new InternalTransferResource($this->validateById($id)))
             ->additional(['message' => 'Internal transfer validated successfully.']);
@@ -137,12 +152,17 @@ class InternalTransferController extends OperationController
     #[Endpoint('Cancel internal transfer', 'Cancel internal transfer and related moves')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer canceled successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function cancelTransfer(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
 
         Gate::authorize('update', $internalTransfer);
+
+        if ($response = $this->ensureCanCancel($internalTransfer)) {
+            return $response;
+        }
 
         return (new InternalTransferResource($this->cancelById($id)))
             ->additional(['message' => 'Internal transfer canceled successfully.']);
@@ -151,12 +171,17 @@ class InternalTransferController extends OperationController
     #[Endpoint('Return internal transfer', 'Create a return operation from this internal transfer')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer return created successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function returnTransfer(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
 
         Gate::authorize('update', $internalTransfer);
+
+        if ($response = $this->ensureCanReturn($internalTransfer)) {
+            return $response;
+        }
 
         return (new InternalTransferResource($this->returnById($id)))
             ->additional(['message' => 'Internal transfer return created successfully.']);

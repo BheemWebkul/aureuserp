@@ -95,12 +95,17 @@ class ReceiptController extends OperationController
     #[Endpoint('Check receipt availability', 'Compute and refresh receipt availability')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt availability checked successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function checkAvailability(string $id)
     {
         $receipt = $this->findOperationById($id);
 
         Gate::authorize('update', $receipt);
+
+        if ($response = $this->ensureCanCheckAvailability($receipt)) {
+            return $response;
+        }
 
         return (new ReceiptResource($this->checkAvailabilityById($id)))
             ->additional(['message' => 'Receipt availability checked successfully.']);
@@ -109,12 +114,17 @@ class ReceiptController extends OperationController
     #[Endpoint('Mark receipt as todo', 'Reset receipt allocation status')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt set to todo successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function todo(string $id)
     {
         $receipt = $this->findOperationById($id);
 
         Gate::authorize('update', $receipt);
+
+        if ($response = $this->ensureCanTodo($receipt)) {
+            return $response;
+        }
 
         return (new ReceiptResource($this->todoById($id)))
             ->additional(['message' => 'Receipt set to todo successfully.']);
@@ -123,12 +133,17 @@ class ReceiptController extends OperationController
     #[Endpoint('Validate receipt', 'Validate receipt and complete stock moves')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt validated successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function validateTransfer(string $id)
     {
         $receipt = $this->findOperationById($id);
 
         Gate::authorize('update', $receipt);
+
+        if ($response = $this->ensureCanValidate($receipt)) {
+            return $response;
+        }
 
         return (new ReceiptResource($this->validateById($id)))
             ->additional(['message' => 'Receipt validated successfully.']);
@@ -137,12 +152,17 @@ class ReceiptController extends OperationController
     #[Endpoint('Cancel receipt', 'Cancel receipt and related moves')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt canceled successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function cancelTransfer(string $id)
     {
         $receipt = $this->findOperationById($id);
 
         Gate::authorize('update', $receipt);
+
+        if ($response = $this->ensureCanCancel($receipt)) {
+            return $response;
+        }
 
         return (new ReceiptResource($this->cancelById($id)))
             ->additional(['message' => 'Receipt canceled successfully.']);
@@ -151,12 +171,17 @@ class ReceiptController extends OperationController
     #[Endpoint('Return receipt', 'Create a return operation from this receipt')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt return created successfully.'])]
+    #[Response(status: 422, description: 'Invalid state transition')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function returnTransfer(string $id)
     {
         $receipt = $this->findOperationById($id);
 
         Gate::authorize('update', $receipt);
+
+        if ($response = $this->ensureCanReturn($receipt)) {
+            return $response;
+        }
 
         return (new ReceiptResource($this->returnById($id)))
             ->additional(['message' => 'Receipt return created successfully.']);

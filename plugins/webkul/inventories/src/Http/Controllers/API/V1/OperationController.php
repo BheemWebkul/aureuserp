@@ -2,6 +2,7 @@
 
 namespace Webkul\Inventory\Http\Controllers\API\V1;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -144,6 +145,70 @@ class OperationController extends Controller
         $newOperation = Inventory::returnTransfer($operation);
 
         return $newOperation->refresh()->load($this->allowedIncludes);
+    }
+
+    protected function ensureCanCheckAvailability(Operation $operation): ?JsonResponse
+    {
+        if (! in_array($operation->state, [OperationState::CONFIRMED, OperationState::ASSIGNED], true)) {
+            return $this->actionValidationError('Only confirmed or assigned operations can check availability.');
+        }
+
+        $hasEligibleMoves = $operation->moves()
+            ->whereIn('state', [MoveState::CONFIRMED, MoveState::PARTIALLY_ASSIGNED])
+            ->exists();
+
+        if (! $hasEligibleMoves) {
+            return $this->actionValidationError('No operation moves are eligible for availability check.');
+        }
+
+        return null;
+    }
+
+    protected function ensureCanTodo(Operation $operation): ?JsonResponse
+    {
+        if ($operation->state !== OperationState::DRAFT) {
+            return $this->actionValidationError('Only draft operations can be set to todo.');
+        }
+
+        if (! $operation->moves()->exists()) {
+            return $this->actionValidationError('Cannot set operation to todo without moves.');
+        }
+
+        return null;
+    }
+
+    protected function ensureCanValidate(Operation $operation): ?JsonResponse
+    {
+        if (in_array($operation->state, [OperationState::DONE, OperationState::CANCELED], true)) {
+            return $this->actionValidationError('Only non-done and non-canceled operations can be validated.');
+        }
+
+        return null;
+    }
+
+    protected function ensureCanCancel(Operation $operation): ?JsonResponse
+    {
+        if (in_array($operation->state, [OperationState::DONE, OperationState::CANCELED], true)) {
+            return $this->actionValidationError('Only non-done and non-canceled operations can be canceled.');
+        }
+
+        return null;
+    }
+
+    protected function ensureCanReturn(Operation $operation): ?JsonResponse
+    {
+        if ($operation->state !== OperationState::DONE) {
+            return $this->actionValidationError('Only done operations can be returned.');
+        }
+
+        return null;
+    }
+
+    protected function actionValidationError(string $message): JsonResponse
+    {
+        return response()->json([
+            'message' => $message,
+        ], 422);
     }
 
     protected function createOperation(OperationRequest $request)
