@@ -43,7 +43,7 @@ class ReceiptController extends OperationController
 
     #[Endpoint('Create receipt', 'Create a new receipt')]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, status: 201, additional: ['message' => 'Receipt created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     public function store(OperationRequest $request)
     {
         Gate::authorize('create', Receipt::class);
@@ -68,7 +68,7 @@ class ReceiptController extends OperationController
     #[Endpoint('Update receipt', 'Update an existing receipt')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt updated successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function update(OperationRequest $request, string $id)
     {
@@ -95,7 +95,7 @@ class ReceiptController extends OperationController
     #[Endpoint('Check receipt availability', 'Compute and refresh receipt availability')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt availability checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only confirmed or assigned operations can check availability.')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function checkAvailability(string $id)
     {
@@ -114,7 +114,7 @@ class ReceiptController extends OperationController
     #[Endpoint('Mark receipt as todo', 'Reset receipt allocation status')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt set to todo successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only draft operations can be set to todo.')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function todo(string $id)
     {
@@ -133,7 +133,7 @@ class ReceiptController extends OperationController
     #[Endpoint('Validate receipt', 'Validate receipt and complete stock moves')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt validated successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be validated.')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function validateTransfer(string $id)
     {
@@ -152,7 +152,7 @@ class ReceiptController extends OperationController
     #[Endpoint('Cancel receipt', 'Cancel receipt and related moves')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt canceled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be canceled.')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function cancelTransfer(string $id)
     {
@@ -171,7 +171,7 @@ class ReceiptController extends OperationController
     #[Endpoint('Return receipt', 'Create a return operation from this receipt')]
     #[UrlParam('id', 'integer', 'The receipt ID', required: true, example: 1)]
     #[ResponseFromApiResource(ReceiptResource::class, Receipt::class, additional: ['message' => 'Receipt return created successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only done operations can be returned.')]
     #[Response(status: 404, description: 'Receipt not found')]
     public function returnTransfer(string $id)
     {

@@ -43,7 +43,7 @@ class InternalTransferController extends OperationController
 
     #[Endpoint('Create internal transfer', 'Create a new internal transfer')]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, status: 201, additional: ['message' => 'Internal transfer created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     public function store(OperationRequest $request)
     {
         Gate::authorize('create', InternalTransfer::class);
@@ -68,7 +68,7 @@ class InternalTransferController extends OperationController
     #[Endpoint('Update internal transfer', 'Update an existing internal transfer')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer updated successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function update(OperationRequest $request, string $id)
     {
@@ -95,7 +95,7 @@ class InternalTransferController extends OperationController
     #[Endpoint('Check internal transfer availability', 'Compute and refresh internal transfer availability')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer availability checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only confirmed or assigned operations can check availability.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function checkAvailability(string $id)
     {
@@ -114,7 +114,7 @@ class InternalTransferController extends OperationController
     #[Endpoint('Mark internal transfer as todo', 'Reset internal transfer allocation status')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer set to todo successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only draft operations can be set to todo.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function todo(string $id)
     {
@@ -133,7 +133,7 @@ class InternalTransferController extends OperationController
     #[Endpoint('Validate internal transfer', 'Validate internal transfer and complete stock moves')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer validated successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be validated.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function validateTransfer(string $id)
     {
@@ -152,7 +152,7 @@ class InternalTransferController extends OperationController
     #[Endpoint('Cancel internal transfer', 'Cancel internal transfer and related moves')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer canceled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be canceled.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function cancelTransfer(string $id)
     {
@@ -171,7 +171,7 @@ class InternalTransferController extends OperationController
     #[Endpoint('Return internal transfer', 'Create a return operation from this internal transfer')]
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer return created successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only done operations can be returned.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
     public function returnTransfer(string $id)
     {

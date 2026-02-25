@@ -43,7 +43,7 @@ class DropshipController extends OperationController
 
     #[Endpoint('Create dropship', 'Create a new dropship operation')]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, status: 201, additional: ['message' => 'Dropship created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     public function store(OperationRequest $request)
     {
         Gate::authorize('create', Dropship::class);
@@ -68,7 +68,7 @@ class DropshipController extends OperationController
     #[Endpoint('Update dropship', 'Update an existing dropship operation')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship updated successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function update(OperationRequest $request, string $id)
     {
@@ -95,7 +95,7 @@ class DropshipController extends OperationController
     #[Endpoint('Check dropship availability', 'Compute and refresh dropship availability')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship availability checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only confirmed or assigned operations can check availability.')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function checkAvailability(string $id)
     {
@@ -114,7 +114,7 @@ class DropshipController extends OperationController
     #[Endpoint('Mark dropship as todo', 'Reset dropship allocation status')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship set to todo successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only draft operations can be set to todo.')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function todo(string $id)
     {
@@ -133,7 +133,7 @@ class DropshipController extends OperationController
     #[Endpoint('Validate dropship', 'Validate dropship and complete stock moves')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship validated successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be validated.')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function validateTransfer(string $id)
     {
@@ -152,7 +152,7 @@ class DropshipController extends OperationController
     #[Endpoint('Cancel dropship', 'Cancel dropship and related moves')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship canceled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be canceled.')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function cancelTransfer(string $id)
     {
@@ -171,7 +171,7 @@ class DropshipController extends OperationController
     #[Endpoint('Return dropship', 'Create a return operation from this dropship')]
     #[UrlParam('id', 'integer', 'The dropship ID', required: true, example: 1)]
     #[ResponseFromApiResource(DropshipResource::class, Dropship::class, additional: ['message' => 'Dropship return created successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only done operations can be returned.')]
     #[Response(status: 404, description: 'Dropship not found')]
     public function returnTransfer(string $id)
     {

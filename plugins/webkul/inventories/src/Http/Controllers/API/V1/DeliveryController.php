@@ -43,7 +43,7 @@ class DeliveryController extends OperationController
 
     #[Endpoint('Create delivery', 'Create a new delivery')]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, status: 201, additional: ['message' => 'Delivery created successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     public function store(OperationRequest $request)
     {
         Gate::authorize('create', Delivery::class);
@@ -68,7 +68,7 @@ class DeliveryController extends OperationController
     #[Endpoint('Update delivery', 'Update an existing delivery')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery updated successfully.'])]
-    #[Response(status: 422, description: 'Validation error')]
+    #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function update(OperationRequest $request, string $id)
     {
@@ -95,7 +95,7 @@ class DeliveryController extends OperationController
     #[Endpoint('Check delivery availability', 'Compute and refresh delivery availability')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery availability checked successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only confirmed or assigned operations can check availability.')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function checkAvailability(string $id)
     {
@@ -114,7 +114,7 @@ class DeliveryController extends OperationController
     #[Endpoint('Mark delivery as todo', 'Reset delivery allocation status')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery set to todo successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only draft operations can be set to todo.')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function todo(string $id)
     {
@@ -133,7 +133,7 @@ class DeliveryController extends OperationController
     #[Endpoint('Validate delivery', 'Validate delivery and complete stock moves')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery validated successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be validated.')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function validateTransfer(string $id)
     {
@@ -152,7 +152,7 @@ class DeliveryController extends OperationController
     #[Endpoint('Cancel delivery', 'Cancel delivery and related moves')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery canceled successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only non-done and non-canceled operations can be canceled.')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function cancelTransfer(string $id)
     {
@@ -171,7 +171,7 @@ class DeliveryController extends OperationController
     #[Endpoint('Return delivery', 'Create a return operation from this delivery')]
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery return created successfully.'])]
-    #[Response(status: 422, description: 'Invalid state transition')]
+    #[Response(status: 422, description: 'Only done operations can be returned.')]
     #[Response(status: 404, description: 'Delivery not found')]
     public function returnTransfer(string $id)
     {
