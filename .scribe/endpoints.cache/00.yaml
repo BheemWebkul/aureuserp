@@ -3572,7 +3572,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"company_id":855,"country_id":326,"country_group_id":null,"creator_id":1,"name":"voluptatem qui","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},{"id":null,"company_id":856,"country_id":327,"country_group_id":null,"creator_id":1,"name":"repellat ea","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"company_id":1003,"country_id":336,"country_group_id":null,"creator_id":1,"name":"ipsa accusamus","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},{"id":null,"company_id":1004,"country_id":337,"country_group_id":null,"creator_id":1,"name":"illo eum","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -3839,7 +3839,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"company_id":857,"country_id":328,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position created successfully."}'
+        content: '{"data":{"id":null,"company_id":1005,"country_id":338,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position created successfully."}'
         headers: []
         description: ''
       -
@@ -3916,7 +3916,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"company_id":858,"country_id":329,"country_group_id":null,"creator_id":1,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"company_id":1006,"country_id":339,"country_group_id":null,"creator_id":1,"name":"aut adipisci","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -
@@ -4202,7 +4202,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"company_id":859,"country_id":330,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position updated successfully."}'
+        content: '{"data":{"id":null,"company_id":1007,"country_id":340,"country_group_id":null,"creator_id":1,"name":"eius et","zip_from":null,"zip_to":null,"foreign_vat":null,"notes":null,"auto_reply":false,"vat_required":false,"sort":0,"created_at":null,"updated_at":null},"message":"Fiscal position updated successfully."}'
         headers: []
         description: ''
       -
@@ -4411,7 +4411,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":202,"loss_account_id":203,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"name":"enim non","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":204,"loss_account_id":205,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":222,"loss_account_id":223,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"name":"enim non","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":224,"loss_account_id":225,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -4535,7 +4535,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":206,"loss_account_id":207,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding created successfully."}'
+        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":226,"loss_account_id":227,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding created successfully."}'
         headers: []
         description: ''
       -
@@ -4612,7 +4612,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":208,"loss_account_id":209,"creator_id":1,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"name":"aut adipisci","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":228,"loss_account_id":229,"creator_id":1,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -
@@ -4755,7 +4755,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":210,"loss_account_id":211,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding updated successfully."}'
+        content: '{"data":{"id":null,"name":"architecto eius","strategy":"biggest_tax","rounding_method":"HALF-UP","rounding":0.05,"profit_account_id":230,"loss_account_id":231,"creator_id":1,"created_at":null,"updated_at":null},"message":"Cash rounding updated successfully."}'
         headers: []
         description: ''
       -
@@ -5873,7 +5873,7 @@ endpoints:
         name: 'invoice_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -5930,7 +5930,7 @@ endpoints:
         name: 'refund_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -5960,7 +5960,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: true
+          use_in_tax_closing: false
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -5971,7 +5971,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: false
+          use_in_tax_closing: true
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -6423,7 +6423,7 @@ endpoints:
         name: 'invoice_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -6480,7 +6480,7 @@ endpoints:
         name: 'refund_repartition_lines[].use_in_tax_closing'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -6510,7 +6510,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: false
+          use_in_tax_closing: true
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -6521,7 +6521,7 @@ endpoints:
           repartition_type: base
           factor_percent: null
           account_id: null
-          use_in_tax_closing: true
+          use_in_tax_closing: false
         -
           repartition_type: tax
           factor_percent: 100.0
@@ -13816,7 +13816,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-25T13:34:40'
+        example: '2026-02-25T14:51:25'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -13825,7 +13825,7 @@ endpoints:
     cleanBodyParameters:
       reason: b
       journal_id: 16
-      date: '2026-02-25T13:34:40'
+      date: '2026-02-25T14:51:25'
     fileParameters: []
     responses:
       -
@@ -16921,7 +16921,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-25T13:34:40'
+        example: '2026-02-25T14:51:25'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -16930,7 +16930,7 @@ endpoints:
     cleanBodyParameters:
       reason: b
       journal_id: 16
-      date: '2026-02-25T13:34:40'
+      date: '2026-02-25T14:51:25'
     fileParameters: []
     responses:
       -

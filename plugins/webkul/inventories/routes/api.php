@@ -10,9 +10,11 @@ use Webkul\Inventory\Http\Controllers\API\V1\OperationTypeController;
 use Webkul\Inventory\Http\Controllers\API\V1\PackageController;
 use Webkul\Inventory\Http\Controllers\API\V1\PackageTypeController;
 use Webkul\Inventory\Http\Controllers\API\V1\ProductController;
+use Webkul\Inventory\Http\Controllers\API\V1\QuantityController;
 use Webkul\Inventory\Http\Controllers\API\V1\ReceiptController;
 use Webkul\Inventory\Http\Controllers\API\V1\RouteController;
 use Webkul\Inventory\Http\Controllers\API\V1\RuleController;
+use Webkul\Inventory\Http\Controllers\API\V1\ScrapController;
 use Webkul\Inventory\Http\Controllers\API\V1\StorageCategoryController;
 use Webkul\Inventory\Http\Controllers\API\V1\TagController;
 use Webkul\Inventory\Http\Controllers\API\V1\WarehouseController;
@@ -29,6 +31,7 @@ Route::name('admin.api.v1.inventories.')->prefix('admin/api/v1/inventories')->mi
     Route::softDeletableApiResource('products', ProductController::class);
     Route::apiResource('packages', PackageController::class);
     Route::apiResource('lots', LotController::class);
+
     Route::apiResource('receipts', ReceiptController::class);
     Route::post('receipts/{id}/check-availability', [ReceiptController::class, 'checkAvailability'])->name('receipts.check-availability');
     Route::post('receipts/{id}/todo', [ReceiptController::class, 'todo'])->name('receipts.todo');
@@ -56,4 +59,11 @@ Route::name('admin.api.v1.inventories.')->prefix('admin/api/v1/inventories')->mi
     Route::post('dropships/{id}/validate', [DropshipController::class, 'validateTransfer'])->name('dropships.validate');
     Route::post('dropships/{id}/cancel', [DropshipController::class, 'cancelTransfer'])->name('dropships.cancel');
     Route::post('dropships/{id}/return', [DropshipController::class, 'returnTransfer'])->name('dropships.return');
+
+    Route::apiResource('quantities', QuantityController::class)->except(['destroy']);
+    Route::post('quantities/{id}/apply', [QuantityController::class, 'apply'])->name('quantities.apply');
+    Route::post('quantities/{id}/clear', [QuantityController::class, 'clear'])->name('quantities.clear');
+
+    Route::apiResource('scraps', ScrapController::class);
+    Route::post('scraps/{id}/validate', [ScrapController::class, 'validateScrap'])->name('scraps.validate');
 });
