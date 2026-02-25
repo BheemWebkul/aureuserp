@@ -3,7 +3,7 @@
 namespace Webkul\Inventory\Http\Resources\V1;
 
 use Illuminate\Http\Request;
-use Webkul\Account\Http\Resources\V1\ProductResource as BaseProductResource;
+use Webkul\Product\Http\Resources\V1\ProductResource as BaseProductResource;
 use Webkul\Security\Http\Resources\V1\UserResource;
 
 class ProductResource extends BaseProductResource

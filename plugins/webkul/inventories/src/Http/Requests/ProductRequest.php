@@ -3,7 +3,7 @@
 namespace Webkul\Inventory\Http\Requests;
 
 use Illuminate\Validation\Rule;
-use Webkul\Account\Http\Requests\ProductRequest as BaseProductRequest;
+use Webkul\Product\Http\Requests\ProductRequest as BaseProductRequest;
 use Webkul\Inventory\Enums\ProductTracking;
 
 class ProductRequest extends BaseProductRequest
