@@ -121,6 +121,7 @@ class TaskController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> stage, project, milestone, partner, parent, company, creator, subTasks, users, tags', required: false, example: 'stage,tags')]
     #[ResponseFromApiResource(TaskResource::class, Task::class)]
     #[Response(status: 404, description: 'Task not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $task = QueryBuilder::for(Task::where('id', $id))
@@ -137,6 +138,7 @@ class TaskController extends Controller
     #[ResponseFromApiResource(TaskResource::class, Task::class, additional: ['message' => 'Task updated successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"title": ["The title field is required."]}}')]
     #[Response(status: 404, description: 'Task not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(TaskRequest $request, string $id)
     {
         $task = Task::findOrFail($id);
@@ -182,6 +184,7 @@ class TaskController extends Controller
     #[UrlParam('id', 'integer', 'The task ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Task deleted successfully', content: '{"message":"Task deleted successfully."}')]
     #[Response(status: 404, description: 'Task not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $task = Task::findOrFail($id);
@@ -199,6 +202,7 @@ class TaskController extends Controller
     #[UrlParam('id', 'integer', 'The task ID', required: true, example: 1)]
     #[ResponseFromApiResource(TaskResource::class, Task::class, additional: ['message' => 'Task restored successfully.'])]
     #[Response(status: 404, description: 'Task not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $task = Task::withTrashed()->findOrFail($id);
@@ -215,6 +219,7 @@ class TaskController extends Controller
     #[UrlParam('id', 'integer', 'The task ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Task permanently deleted', content: '{"message":"Task permanently deleted."}')]
     #[Response(status: 404, description: 'Task not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $task = Task::withTrashed()->findOrFail($id);

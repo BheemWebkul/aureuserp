@@ -40,6 +40,7 @@ class WarehouseController extends Controller
     #[QueryParam('filter[partner_address_id]', 'string', 'Filter by partner address IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(WarehouseResource::class, Warehouse::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Warehouse::class);
@@ -62,6 +63,7 @@ class WarehouseController extends Controller
     #[Endpoint('Create warehouse', 'Create a new warehouse')]
     #[ResponseFromApiResource(WarehouseResource::class, Warehouse::class, status: 201, additional: ['message' => 'Warehouse created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(WarehouseRequest $request)
     {
         Gate::authorize('create', Warehouse::class);
@@ -87,6 +89,7 @@ class WarehouseController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> company, partnerAddress, creator, locations, supplierWarehouses, routes', required: false, example: 'company,locations')]
     #[ResponseFromApiResource(WarehouseResource::class, Warehouse::class)]
     #[Response(status: 404, description: 'Warehouse not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $warehouse = QueryBuilder::for(Warehouse::where('id', $id))
@@ -103,6 +106,7 @@ class WarehouseController extends Controller
     #[ResponseFromApiResource(WarehouseResource::class, Warehouse::class, additional: ['message' => 'Warehouse updated successfully.'])]
     #[Response(status: 404, description: 'Warehouse not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(WarehouseRequest $request, string $id)
     {
         $warehouse = Warehouse::findOrFail($id);
@@ -127,6 +131,7 @@ class WarehouseController extends Controller
     #[UrlParam('id', 'integer', 'The warehouse ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Warehouse deleted successfully', content: '{"message":"Warehouse deleted successfully."}')]
     #[Response(status: 404, description: 'Warehouse not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $warehouse = Warehouse::findOrFail($id);
@@ -144,6 +149,7 @@ class WarehouseController extends Controller
     #[UrlParam('id', 'integer', 'The warehouse ID', required: true, example: 1)]
     #[ResponseFromApiResource(WarehouseResource::class, Warehouse::class, additional: ['message' => 'Warehouse restored successfully.'])]
     #[Response(status: 404, description: 'Warehouse not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $warehouse = Warehouse::withTrashed()->findOrFail($id);
@@ -160,6 +166,7 @@ class WarehouseController extends Controller
     #[UrlParam('id', 'integer', 'The warehouse ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Warehouse permanently deleted successfully', content: '{"message":"Warehouse permanently deleted successfully."}')]
     #[Response(status: 404, description: 'Warehouse not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $warehouse = Warehouse::withTrashed()->findOrFail($id);

@@ -42,6 +42,7 @@ class RouteController extends Controller
     #[QueryParam('filter[packaging_selectable]', 'string', 'Filter by packaging selectable state', required: false, example: '0')]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(RouteResource::class, Route::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Route::class);
@@ -66,6 +67,7 @@ class RouteController extends Controller
     #[Endpoint('Create route', 'Create a new route')]
     #[ResponseFromApiResource(RouteResource::class, Route::class, status: 201, additional: ['message' => 'Route created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(RouteRequest $request)
     {
         Gate::authorize('create', Route::class);
@@ -91,6 +93,7 @@ class RouteController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> suppliedWarehouse, supplierWarehouse, warehouses, company, creator, rules', required: false, example: 'company,rules')]
     #[ResponseFromApiResource(RouteResource::class, Route::class)]
     #[Response(status: 404, description: 'Route not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $route = QueryBuilder::for(Route::where('id', $id))
@@ -107,6 +110,7 @@ class RouteController extends Controller
     #[ResponseFromApiResource(RouteResource::class, Route::class, additional: ['message' => 'Route updated successfully.'])]
     #[Response(status: 404, description: 'Route not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(RouteRequest $request, string $id)
     {
         $route = Route::findOrFail($id);
@@ -131,6 +135,7 @@ class RouteController extends Controller
     #[UrlParam('id', 'integer', 'The route ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Route deleted successfully', content: '{"message":"Route deleted successfully."}')]
     #[Response(status: 404, description: 'Route not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $route = Route::findOrFail($id);
@@ -148,6 +153,7 @@ class RouteController extends Controller
     #[UrlParam('id', 'integer', 'The route ID', required: true, example: 1)]
     #[ResponseFromApiResource(RouteResource::class, Route::class, additional: ['message' => 'Route restored successfully.'])]
     #[Response(status: 404, description: 'Route not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $route = Route::withTrashed()->findOrFail($id);
@@ -164,6 +170,7 @@ class RouteController extends Controller
     #[UrlParam('id', 'integer', 'The route ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Route permanently deleted successfully', content: '{"message":"Route permanently deleted successfully."}')]
     #[Response(status: 404, description: 'Route not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $route = Route::withTrashed()->findOrFail($id);

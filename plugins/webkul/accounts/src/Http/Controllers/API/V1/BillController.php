@@ -260,6 +260,7 @@ class BillController extends Controller
     #[ResponseFromApiResource(MoveResource::class, Bill::class, additional: ['message' => 'Bill confirmed successfully.'])]
     #[Response(status: 422, description: 'Only draft bills can be confirmed.', content: '{"message": "Only draft bills can be confirmed."}')]
     #[Response(status: 404, description: 'Bill not found', content: '{"message": "Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function confirm(string $id)
     {
         $invoice = Bill::where('move_type', MoveType::IN_INVOICE)->findOrFail($id);

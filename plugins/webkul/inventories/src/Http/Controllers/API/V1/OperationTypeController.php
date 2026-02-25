@@ -40,6 +40,7 @@ class OperationTypeController extends Controller
     #[QueryParam('filter[company_id]', 'string', 'Filter by company IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(OperationTypeResource::class, OperationType::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', OperationType::class);
@@ -62,6 +63,7 @@ class OperationTypeController extends Controller
     #[Endpoint('Create operation type', 'Create a new operation type')]
     #[ResponseFromApiResource(OperationTypeResource::class, OperationType::class, status: 201, additional: ['message' => 'Operation type created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(OperationTypeRequest $request)
     {
         Gate::authorize('create', OperationType::class);
@@ -79,6 +81,7 @@ class OperationTypeController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> returnOperationType, sourceLocation, destinationLocation, warehouse, company, creator', required: false, example: 'warehouse,company')]
     #[ResponseFromApiResource(OperationTypeResource::class, OperationType::class)]
     #[Response(status: 404, description: 'Operation type not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $operationType = QueryBuilder::for(OperationType::where('id', $id))
@@ -95,6 +98,7 @@ class OperationTypeController extends Controller
     #[ResponseFromApiResource(OperationTypeResource::class, OperationType::class, additional: ['message' => 'Operation type updated successfully.'])]
     #[Response(status: 404, description: 'Operation type not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(OperationTypeRequest $request, string $id)
     {
         $operationType = OperationType::findOrFail($id);
@@ -111,6 +115,7 @@ class OperationTypeController extends Controller
     #[UrlParam('id', 'integer', 'The operation type ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Operation type deleted successfully', content: '{"message":"Operation type deleted successfully."}')]
     #[Response(status: 404, description: 'Operation type not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $operationType = OperationType::findOrFail($id);
@@ -128,6 +133,7 @@ class OperationTypeController extends Controller
     #[UrlParam('id', 'integer', 'The operation type ID', required: true, example: 1)]
     #[ResponseFromApiResource(OperationTypeResource::class, OperationType::class, additional: ['message' => 'Operation type restored successfully.'])]
     #[Response(status: 404, description: 'Operation type not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $operationType = OperationType::withTrashed()->findOrFail($id);
@@ -144,6 +150,7 @@ class OperationTypeController extends Controller
     #[UrlParam('id', 'integer', 'The operation type ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Operation type permanently deleted successfully', content: '{"message":"Operation type permanently deleted successfully."}')]
     #[Response(status: 404, description: 'Operation type not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $operationType = OperationType::withTrashed()->findOrFail($id);

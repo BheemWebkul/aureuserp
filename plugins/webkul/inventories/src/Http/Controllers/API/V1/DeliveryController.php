@@ -34,6 +34,7 @@ class DeliveryController extends OperationController
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[QueryParam('page', 'int', 'Page number', required: false, example: 1)]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Delivery::class);
@@ -44,6 +45,7 @@ class DeliveryController extends OperationController
     #[Endpoint('Create delivery', 'Create a new delivery')]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, status: 201, additional: ['message' => 'Delivery created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(OperationRequest $request)
     {
         Gate::authorize('create', Delivery::class);
@@ -56,6 +58,7 @@ class DeliveryController extends OperationController
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include', required: false, example: 'operationType,moves')]
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class)]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $delivery = $this->findOperationForShow($id);
@@ -70,6 +73,7 @@ class DeliveryController extends OperationController
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery updated successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(OperationRequest $request, string $id)
     {
         $delivery = $this->findOperationById($id);
@@ -83,6 +87,7 @@ class DeliveryController extends OperationController
     #[UrlParam('id', 'integer', 'The delivery ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Delivery deleted successfully', content: '{"message":"Delivery deleted successfully."}')]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $delivery = $this->findOperationById($id);
@@ -97,6 +102,7 @@ class DeliveryController extends OperationController
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery availability checked successfully.'])]
     #[Response(status: 422, description: 'Only confirmed or assigned operations can check availability.')]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function checkAvailability(string $id)
     {
         $delivery = $this->findOperationById($id);
@@ -116,6 +122,7 @@ class DeliveryController extends OperationController
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery set to todo successfully.'])]
     #[Response(status: 422, description: 'Only draft operations can be set to todo.')]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function todo(string $id)
     {
         $delivery = $this->findOperationById($id);
@@ -135,6 +142,7 @@ class DeliveryController extends OperationController
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery validated successfully.'])]
     #[Response(status: 422, description: 'Only non-done and non-canceled operations can be validated.')]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function validateTransfer(string $id)
     {
         $delivery = $this->findOperationById($id);
@@ -154,6 +162,7 @@ class DeliveryController extends OperationController
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery canceled successfully.'])]
     #[Response(status: 422, description: 'Only non-done and non-canceled operations can be canceled.')]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancelTransfer(string $id)
     {
         $delivery = $this->findOperationById($id);
@@ -173,6 +182,7 @@ class DeliveryController extends OperationController
     #[ResponseFromApiResource(DeliveryResource::class, Delivery::class, additional: ['message' => 'Delivery return created successfully.'])]
     #[Response(status: 422, description: 'Only done operations can be returned.')]
     #[Response(status: 404, description: 'Delivery not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function returnTransfer(string $id)
     {
         $delivery = $this->findOperationById($id);

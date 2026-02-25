@@ -41,6 +41,7 @@ class LotController extends Controller
     #[QueryParam('filter[company_id]', 'string', 'Filter by company IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(LotResource::class, Lot::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Lot::class);
@@ -64,6 +65,7 @@ class LotController extends Controller
     #[Endpoint('Create lot', 'Create a new lot')]
     #[ResponseFromApiResource(LotResource::class, Lot::class, status: 201, additional: ['message' => 'Lot created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(LotRequest $request)
     {
         Gate::authorize('create', Lot::class);
@@ -81,6 +83,7 @@ class LotController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> product, uom, location, company, creator, quantities', required: false, example: 'product,location')]
     #[ResponseFromApiResource(LotResource::class, Lot::class)]
     #[Response(status: 404, description: 'Lot not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $lot = QueryBuilder::for(Lot::where('id', $id))
@@ -97,6 +100,7 @@ class LotController extends Controller
     #[ResponseFromApiResource(LotResource::class, Lot::class, additional: ['message' => 'Lot updated successfully.'])]
     #[Response(status: 404, description: 'Lot not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(LotRequest $request, string $id)
     {
         $lot = Lot::findOrFail($id);
@@ -113,6 +117,7 @@ class LotController extends Controller
     #[UrlParam('id', 'integer', 'The lot ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Lot deleted successfully', content: '{"message":"Lot deleted successfully."}')]
     #[Response(status: 404, description: 'Lot not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $lot = Lot::findOrFail($id);

@@ -44,6 +44,7 @@ class LocationController extends Controller
     #[QueryParam('filter[company_id]', 'string', 'Filter by company IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(LocationResource::class, Location::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Location::class);
@@ -73,6 +74,7 @@ class LocationController extends Controller
     #[Endpoint('Create location', 'Create a new location')]
     #[ResponseFromApiResource(LocationResource::class, Location::class, status: 201, additional: ['message' => 'Location created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(LocationRequest $request)
     {
         Gate::authorize('create', Location::class);
@@ -90,6 +92,7 @@ class LocationController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> parent, children, storageCategory, warehouse, company, creator', required: false, example: 'parent,company')]
     #[ResponseFromApiResource(LocationResource::class, Location::class)]
     #[Response(status: 404, description: 'Location not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $location = QueryBuilder::for(Location::where('id', $id))
@@ -106,6 +109,7 @@ class LocationController extends Controller
     #[ResponseFromApiResource(LocationResource::class, Location::class, additional: ['message' => 'Location updated successfully.'])]
     #[Response(status: 404, description: 'Location not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(LocationRequest $request, string $id)
     {
         $location = Location::findOrFail($id);
@@ -122,6 +126,7 @@ class LocationController extends Controller
     #[UrlParam('id', 'integer', 'The location ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Location deleted successfully', content: '{"message":"Location deleted successfully."}')]
     #[Response(status: 404, description: 'Location not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $location = Location::findOrFail($id);
@@ -139,6 +144,7 @@ class LocationController extends Controller
     #[UrlParam('id', 'integer', 'The location ID', required: true, example: 1)]
     #[ResponseFromApiResource(LocationResource::class, Location::class, additional: ['message' => 'Location restored successfully.'])]
     #[Response(status: 404, description: 'Location not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $location = Location::withTrashed()->findOrFail($id);
@@ -155,6 +161,7 @@ class LocationController extends Controller
     #[UrlParam('id', 'integer', 'The location ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Location permanently deleted successfully', content: '{"message":"Location permanently deleted successfully."}')]
     #[Response(status: 404, description: 'Location not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $location = Location::withTrashed()->findOrFail($id);

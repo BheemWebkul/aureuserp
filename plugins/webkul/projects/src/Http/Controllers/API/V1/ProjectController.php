@@ -150,6 +150,7 @@ class ProjectController extends Controller
     #[UrlParam('id', 'integer', 'The project ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Project deleted successfully', content: '{"message":"Project deleted successfully."}')]
     #[Response(status: 404, description: 'Project not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $project = Project::findOrFail($id);
@@ -167,6 +168,7 @@ class ProjectController extends Controller
     #[UrlParam('id', 'integer', 'The project ID', required: true, example: 1)]
     #[ResponseFromApiResource(ProjectResource::class, Project::class, additional: ['message' => 'Project restored successfully.'])]
     #[Response(status: 404, description: 'Project not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $project = Project::withTrashed()->findOrFail($id);
@@ -183,6 +185,7 @@ class ProjectController extends Controller
     #[UrlParam('id', 'integer', 'The project ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Project permanently deleted', content: '{"message":"Project permanently deleted."}')]
     #[Response(status: 404, description: 'Project not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $project = Project::withTrashed()->findOrFail($id);

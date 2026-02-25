@@ -35,6 +35,7 @@ class PackageTypeController extends Controller
     #[QueryParam('filter[company_id]', 'string', 'Filter by company IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(PackageTypeResource::class, PackageType::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', PackageType::class);
@@ -56,6 +57,7 @@ class PackageTypeController extends Controller
     #[Endpoint('Create package type', 'Create a new package type')]
     #[ResponseFromApiResource(PackageTypeResource::class, PackageType::class, status: 201, additional: ['message' => 'Package type created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(PackageTypeRequest $request)
     {
         Gate::authorize('create', PackageType::class);
@@ -73,6 +75,7 @@ class PackageTypeController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> company, creator', required: false, example: 'company')]
     #[ResponseFromApiResource(PackageTypeResource::class, PackageType::class)]
     #[Response(status: 404, description: 'Package type not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $packageType = QueryBuilder::for(PackageType::where('id', $id))
@@ -89,6 +92,7 @@ class PackageTypeController extends Controller
     #[ResponseFromApiResource(PackageTypeResource::class, PackageType::class, additional: ['message' => 'Package type updated successfully.'])]
     #[Response(status: 404, description: 'Package type not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(PackageTypeRequest $request, string $id)
     {
         $packageType = PackageType::findOrFail($id);
@@ -105,6 +109,7 @@ class PackageTypeController extends Controller
     #[UrlParam('id', 'integer', 'The package type ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Package type deleted successfully', content: '{"message":"Package type deleted successfully."}')]
     #[Response(status: 404, description: 'Package type not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $packageType = PackageType::findOrFail($id);

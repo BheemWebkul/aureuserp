@@ -34,6 +34,7 @@ class TaskStageController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> project, user, creator, company, tasks', required: false, example: 'project')]
     #[QueryParam('filter[trashed]', 'string', 'Filter by trashed status. </br></br><b>Available options:</b> with, only', required: false, example: 'with')]
     #[ResponseFromApiResource(TaskStageResource::class, TaskStage::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', TaskStage::class);
@@ -59,6 +60,7 @@ class TaskStageController extends Controller
 
     #[Endpoint('Create task stage', 'Create a new task stage')]
     #[ResponseFromApiResource(TaskStageResource::class, TaskStage::class, status: 201, additional: ['message' => 'Task stage created successfully.'])]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(TaskStageRequest $request)
     {
         Gate::authorize('create', TaskStage::class);
@@ -76,6 +78,7 @@ class TaskStageController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> project, user, creator, company, tasks', required: false, example: 'tasks')]
     #[ResponseFromApiResource(TaskStageResource::class, TaskStage::class)]
     #[Response(status: 404, description: 'Task stage not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $stage = QueryBuilder::for(TaskStage::where('id', $id))
@@ -90,6 +93,7 @@ class TaskStageController extends Controller
     #[Endpoint('Update task stage', 'Update an existing task stage')]
     #[UrlParam('id', 'integer', 'The task stage ID', required: true, example: 1)]
     #[ResponseFromApiResource(TaskStageResource::class, TaskStage::class, additional: ['message' => 'Task stage updated successfully.'])]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(TaskStageRequest $request, string $id)
     {
         $stage = TaskStage::findOrFail($id);
@@ -105,6 +109,7 @@ class TaskStageController extends Controller
     #[Endpoint('Delete task stage', 'Soft delete a task stage')]
     #[UrlParam('id', 'integer', 'The task stage ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Task stage deleted successfully', content: '{"message":"Task stage deleted successfully."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $stage = TaskStage::findOrFail($id);
@@ -121,6 +126,7 @@ class TaskStageController extends Controller
     #[Endpoint('Restore task stage', 'Restore a soft-deleted task stage')]
     #[UrlParam('id', 'integer', 'The task stage ID', required: true, example: 1)]
     #[ResponseFromApiResource(TaskStageResource::class, TaskStage::class, additional: ['message' => 'Task stage restored successfully.'])]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $stage = TaskStage::withTrashed()->findOrFail($id);
@@ -136,6 +142,7 @@ class TaskStageController extends Controller
     #[Endpoint('Force delete task stage', 'Permanently delete a task stage')]
     #[UrlParam('id', 'integer', 'The task stage ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Task stage permanently deleted', content: '{"message":"Task stage permanently deleted."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $stage = TaskStage::withTrashed()->findOrFail($id);

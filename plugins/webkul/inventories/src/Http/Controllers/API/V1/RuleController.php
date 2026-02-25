@@ -45,6 +45,7 @@ class RuleController extends Controller
     #[QueryParam('filter[operation_type_id]', 'string', 'Filter by operation type IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(RuleResource::class, Rule::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Rule::class);
@@ -70,6 +71,7 @@ class RuleController extends Controller
     #[Endpoint('Create rule', 'Create a new rule')]
     #[ResponseFromApiResource(RuleResource::class, Rule::class, status: 201, additional: ['message' => 'Rule created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(RuleRequest $request)
     {
         Gate::authorize('create', Rule::class);
@@ -87,6 +89,7 @@ class RuleController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> sourceLocation, destinationLocation, route, operationType, partnerAddress, warehouse, propagateWarehouse, company, creator', required: false, example: 'route,sourceLocation')]
     #[ResponseFromApiResource(RuleResource::class, Rule::class)]
     #[Response(status: 404, description: 'Rule not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $rule = QueryBuilder::for(Rule::where('id', $id))
@@ -103,6 +106,7 @@ class RuleController extends Controller
     #[ResponseFromApiResource(RuleResource::class, Rule::class, additional: ['message' => 'Rule updated successfully.'])]
     #[Response(status: 404, description: 'Rule not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(RuleRequest $request, string $id)
     {
         $rule = Rule::findOrFail($id);
@@ -119,6 +123,7 @@ class RuleController extends Controller
     #[UrlParam('id', 'integer', 'The rule ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Rule deleted successfully', content: '{"message":"Rule deleted successfully."}')]
     #[Response(status: 404, description: 'Rule not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $rule = Rule::findOrFail($id);
@@ -136,6 +141,7 @@ class RuleController extends Controller
     #[UrlParam('id', 'integer', 'The rule ID', required: true, example: 1)]
     #[ResponseFromApiResource(RuleResource::class, Rule::class, additional: ['message' => 'Rule restored successfully.'])]
     #[Response(status: 404, description: 'Rule not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $rule = Rule::withTrashed()->findOrFail($id);
@@ -152,6 +158,7 @@ class RuleController extends Controller
     #[UrlParam('id', 'integer', 'The rule ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Rule permanently deleted successfully', content: '{"message":"Rule permanently deleted successfully."}')]
     #[Response(status: 404, description: 'Rule not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $rule = Rule::withTrashed()->findOrFail($id);

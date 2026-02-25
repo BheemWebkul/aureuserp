@@ -51,6 +51,7 @@ class QuantityController extends Controller
     #[QueryParam('filter[inventory_quantity_set]', 'string', 'Filter by inventory quantity set (0 or 1)', required: false, example: '1')]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-updated_at')]
     #[ResponseFromApiResource(ProductQuantityResource::class, ProductQuantity::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', ProductQuantity::class);
@@ -89,6 +90,7 @@ class QuantityController extends Controller
     #[Endpoint('Create quantity', 'Create a new product quantity count')]
     #[ResponseFromApiResource(ProductQuantityResource::class, ProductQuantity::class, status: 201, additional: ['message' => 'Quantity created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"location_id": ["The location id field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(ProductQuantityRequest $request)
     {
         Gate::authorize('create', ProductQuantity::class);
@@ -121,6 +123,7 @@ class QuantityController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> product, location, storageCategory, lot, package, partner, user, company, creator', required: false, example: 'product,location')]
     #[ResponseFromApiResource(ProductQuantityResource::class, ProductQuantity::class)]
     #[Response(status: 404, description: 'Quantity not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         Gate::authorize('viewAny', ProductQuantity::class);
@@ -137,6 +140,7 @@ class QuantityController extends Controller
     #[ResponseFromApiResource(ProductQuantityResource::class, ProductQuantity::class, additional: ['message' => 'Quantity updated successfully.'])]
     #[Response(status: 404, description: 'Quantity not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"counted_quantity": ["The counted quantity field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(ProductQuantityRequest $request, string $id)
     {
         Gate::authorize('create', ProductQuantity::class);
@@ -160,6 +164,7 @@ class QuantityController extends Controller
     #[ResponseFromApiResource(ProductQuantityResource::class, ProductQuantity::class, additional: ['message' => 'Quantity applied successfully.'])]
     #[Response(status: 404, description: 'Quantity not found')]
     #[Response(status: 422, description: 'Quantity is not marked for inventory adjustment.')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function apply(string $id)
     {
         Gate::authorize('create', ProductQuantity::class);
@@ -224,6 +229,7 @@ class QuantityController extends Controller
     #[ResponseFromApiResource(ProductQuantityResource::class, ProductQuantity::class, additional: ['message' => 'Quantity cleared successfully.'])]
     #[Response(status: 404, description: 'Quantity not found')]
     #[Response(status: 422, description: 'Quantity is not marked for inventory adjustment.')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function clear(string $id)
     {
         Gate::authorize('create', ProductQuantity::class);

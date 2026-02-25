@@ -53,6 +53,7 @@ class ProductController extends Controller
     #[QueryParam('filter[trashed]', 'string', 'Filter by trashed status ("with" or "only")', required: false, example: 'with')]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(ProductResource::class, Product::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Product::class);
@@ -80,6 +81,7 @@ class ProductController extends Controller
     #[Endpoint('Create product', 'Create a new inventory product')]
     #[ResponseFromApiResource(ProductResource::class, Product::class, status: 201, additional: ['message' => 'Product created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(ProductRequest $request)
     {
         Gate::authorize('create', Product::class);
@@ -110,6 +112,7 @@ class ProductController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> parent, variants, uom, uomPO, category, attributes, attribute_values, tags, company, creator, propertyAccountIncome, propertyAccountExpense, routes, responsible', required: false, example: 'category,tags,routes')]
     #[ResponseFromApiResource(ProductResource::class, Product::class)]
     #[Response(status: 404, description: 'Product not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $product = QueryBuilder::for(Product::where('id', $id))
@@ -126,6 +129,7 @@ class ProductController extends Controller
     #[ResponseFromApiResource(ProductResource::class, Product::class, additional: ['message' => 'Product updated successfully.'])]
     #[Response(status: 404, description: 'Product not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(ProductRequest $request, string $id)
     {
         $product = Product::findOrFail($id);
@@ -155,6 +159,7 @@ class ProductController extends Controller
     #[UrlParam('id', 'integer', 'The product ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Product deleted successfully', content: '{"message":"Product deleted successfully."}')]
     #[Response(status: 404, description: 'Product not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $product = Product::findOrFail($id);
@@ -172,6 +177,7 @@ class ProductController extends Controller
     #[UrlParam('id', 'integer', 'The product ID', required: true, example: 1)]
     #[ResponseFromApiResource(ProductResource::class, Product::class, additional: ['message' => 'Product restored successfully.'])]
     #[Response(status: 404, description: 'Product not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $product = Product::withTrashed()->findOrFail($id);
@@ -188,6 +194,7 @@ class ProductController extends Controller
     #[UrlParam('id', 'integer', 'The product ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Product permanently deleted successfully', content: '{"message":"Product permanently deleted successfully."}')]
     #[Response(status: 404, description: 'Product not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $product = Product::withTrashed()->findOrFail($id);

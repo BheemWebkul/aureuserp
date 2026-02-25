@@ -34,6 +34,7 @@ class InternalTransferController extends OperationController
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[QueryParam('page', 'int', 'Page number', required: false, example: 1)]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', InternalTransfer::class);
@@ -44,6 +45,7 @@ class InternalTransferController extends OperationController
     #[Endpoint('Create internal transfer', 'Create a new internal transfer')]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, status: 201, additional: ['message' => 'Internal transfer created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(OperationRequest $request)
     {
         Gate::authorize('create', InternalTransfer::class);
@@ -56,6 +58,7 @@ class InternalTransferController extends OperationController
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include', required: false, example: 'operationType,moves')]
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class)]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $internalTransfer = $this->findOperationForShow($id);
@@ -70,6 +73,7 @@ class InternalTransferController extends OperationController
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer updated successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"moves.0.product_id": ["The moves.0.product id field is required."]}}')]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(OperationRequest $request, string $id)
     {
         $internalTransfer = $this->findOperationById($id);
@@ -83,6 +87,7 @@ class InternalTransferController extends OperationController
     #[UrlParam('id', 'integer', 'The internal transfer ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Internal transfer deleted successfully', content: '{"message":"Internal transfer deleted successfully."}')]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
@@ -97,6 +102,7 @@ class InternalTransferController extends OperationController
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer availability checked successfully.'])]
     #[Response(status: 422, description: 'Only confirmed or assigned operations can check availability.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function checkAvailability(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
@@ -116,6 +122,7 @@ class InternalTransferController extends OperationController
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer set to todo successfully.'])]
     #[Response(status: 422, description: 'Only draft operations can be set to todo.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function todo(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
@@ -135,6 +142,7 @@ class InternalTransferController extends OperationController
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer validated successfully.'])]
     #[Response(status: 422, description: 'Only non-done and non-canceled operations can be validated.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function validateTransfer(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
@@ -154,6 +162,7 @@ class InternalTransferController extends OperationController
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer canceled successfully.'])]
     #[Response(status: 422, description: 'Only non-done and non-canceled operations can be canceled.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function cancelTransfer(string $id)
     {
         $internalTransfer = $this->findOperationById($id);
@@ -173,6 +182,7 @@ class InternalTransferController extends OperationController
     #[ResponseFromApiResource(InternalTransferResource::class, InternalTransfer::class, additional: ['message' => 'Internal transfer return created successfully.'])]
     #[Response(status: 422, description: 'Only done operations can be returned.')]
     #[Response(status: 404, description: 'Internal transfer not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function returnTransfer(string $id)
     {
         $internalTransfer = $this->findOperationById($id);

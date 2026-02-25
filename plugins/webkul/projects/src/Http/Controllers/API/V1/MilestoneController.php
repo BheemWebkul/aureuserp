@@ -31,6 +31,7 @@ class MilestoneController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> project, creator', required: false, example: 'project')]
     #[QueryParam('filter[is_completed]', 'string', 'Filter by completion state', required: false, example: '1')]
     #[ResponseFromApiResource(MilestoneResource::class, Milestone::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Milestone::class);
@@ -52,6 +53,7 @@ class MilestoneController extends Controller
 
     #[Endpoint('Create milestone', 'Create a new milestone')]
     #[ResponseFromApiResource(MilestoneResource::class, Milestone::class, status: 201, additional: ['message' => 'Milestone created successfully.'])]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(MilestoneRequest $request)
     {
         Gate::authorize('create', Milestone::class);
@@ -79,6 +81,7 @@ class MilestoneController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> project, creator', required: false, example: 'creator')]
     #[ResponseFromApiResource(MilestoneResource::class, Milestone::class)]
     #[Response(status: 404, description: 'Milestone not found', content: '{"message":"Resource not found."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $milestone = QueryBuilder::for(Milestone::where('id', $id))
@@ -93,6 +96,7 @@ class MilestoneController extends Controller
     #[Endpoint('Update milestone', 'Update an existing milestone')]
     #[UrlParam('id', 'integer', 'The milestone ID', required: true, example: 1)]
     #[ResponseFromApiResource(MilestoneResource::class, Milestone::class, additional: ['message' => 'Milestone updated successfully.'])]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(MilestoneRequest $request, string $id)
     {
         $milestone = Milestone::findOrFail($id);
@@ -120,6 +124,7 @@ class MilestoneController extends Controller
     #[Endpoint('Delete milestone', 'Delete a milestone')]
     #[UrlParam('id', 'integer', 'The milestone ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Milestone deleted successfully', content: '{"message":"Milestone deleted successfully."}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $milestone = Milestone::findOrFail($id);

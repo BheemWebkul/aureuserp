@@ -33,6 +33,7 @@ class TagController extends Controller
     #[QueryParam('filter[color]', 'string', 'Filter by color', required: false, example: '#f97316')]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(TagResource::class, Tag::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Tag::class);
@@ -53,6 +54,7 @@ class TagController extends Controller
     #[Endpoint('Create tag', 'Create a new tag')]
     #[ResponseFromApiResource(TagResource::class, Tag::class, status: 201, additional: ['message' => 'Tag created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(TagRequest $request)
     {
         Gate::authorize('create', Tag::class);
@@ -70,6 +72,7 @@ class TagController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> creator', required: false, example: 'creator')]
     #[ResponseFromApiResource(TagResource::class, Tag::class)]
     #[Response(status: 404, description: 'Tag not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $tag = QueryBuilder::for(Tag::where('id', $id))
@@ -86,6 +89,7 @@ class TagController extends Controller
     #[ResponseFromApiResource(TagResource::class, Tag::class, additional: ['message' => 'Tag updated successfully.'])]
     #[Response(status: 404, description: 'Tag not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(TagRequest $request, string $id)
     {
         $tag = Tag::findOrFail($id);
@@ -102,6 +106,7 @@ class TagController extends Controller
     #[UrlParam('id', 'integer', 'The tag ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Tag deleted successfully', content: '{"message":"Tag deleted successfully."}')]
     #[Response(status: 404, description: 'Tag not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $tag = Tag::findOrFail($id);
@@ -119,6 +124,7 @@ class TagController extends Controller
     #[UrlParam('id', 'integer', 'The tag ID', required: true, example: 1)]
     #[ResponseFromApiResource(TagResource::class, Tag::class, additional: ['message' => 'Tag restored successfully.'])]
     #[Response(status: 404, description: 'Tag not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function restore(string $id)
     {
         $tag = Tag::withTrashed()->findOrFail($id);
@@ -135,6 +141,7 @@ class TagController extends Controller
     #[UrlParam('id', 'integer', 'The tag ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Tag permanently deleted successfully', content: '{"message":"Tag permanently deleted successfully."}')]
     #[Response(status: 404, description: 'Tag not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function forceDestroy(string $id)
     {
         $tag = Tag::withTrashed()->findOrFail($id);

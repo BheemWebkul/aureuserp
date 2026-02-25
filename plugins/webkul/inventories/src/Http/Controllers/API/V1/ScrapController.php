@@ -57,6 +57,7 @@ class ScrapController extends Controller
     #[QueryParam('filter[destination_location_id]', 'string', 'Filter by destination location IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(ScrapResource::class, Scrap::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', Scrap::class);
@@ -87,6 +88,7 @@ class ScrapController extends Controller
     #[Endpoint('Create scrap', 'Create a new scrap')]
     #[ResponseFromApiResource(ScrapResource::class, Scrap::class, status: 201, additional: ['message' => 'Scrap created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"qty": ["The qty field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(ScrapRequest $request)
     {
         Gate::authorize('create', Scrap::class);
@@ -108,6 +110,7 @@ class ScrapController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> product, uom, lot, package, partner, operation, sourceLocation, destinationLocation, company, creator, tags, moves, moveLines', required: false, example: 'product,company')]
     #[ResponseFromApiResource(ScrapResource::class, Scrap::class)]
     #[Response(status: 404, description: 'Scrap not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $scrap = QueryBuilder::for(Scrap::where('id', $id))
@@ -124,6 +127,7 @@ class ScrapController extends Controller
     #[ResponseFromApiResource(ScrapResource::class, Scrap::class, additional: ['message' => 'Scrap updated successfully.'])]
     #[Response(status: 404, description: 'Scrap not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"qty": ["The qty field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(ScrapRequest $request, string $id)
     {
         $scrap = Scrap::findOrFail($id);
@@ -152,6 +156,7 @@ class ScrapController extends Controller
     #[UrlParam('id', 'integer', 'The scrap ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Scrap deleted successfully', content: '{"message":"Scrap deleted successfully."}')]
     #[Response(status: 404, description: 'Scrap not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $scrap = Scrap::findOrFail($id);
@@ -176,6 +181,7 @@ class ScrapController extends Controller
     #[ResponseFromApiResource(ScrapResource::class, Scrap::class, additional: ['message' => 'Scrap validated successfully.'])]
     #[Response(status: 404, description: 'Scrap not found')]
     #[Response(status: 422, description: 'Only draft scraps can be validated.')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function validateScrap(string $id)
     {
         $scrap = Scrap::findOrFail($id);

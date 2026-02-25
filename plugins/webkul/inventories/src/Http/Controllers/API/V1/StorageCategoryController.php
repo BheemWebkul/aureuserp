@@ -36,6 +36,7 @@ class StorageCategoryController extends Controller
     #[QueryParam('filter[company_id]', 'string', 'Filter by company IDs', required: false)]
     #[QueryParam('sort', 'string', 'Sort field', required: false, example: '-created_at')]
     #[ResponseFromApiResource(StorageCategoryResource::class, StorageCategory::class, collection: true, paginate: 10)]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function index()
     {
         Gate::authorize('viewAny', StorageCategory::class);
@@ -57,6 +58,7 @@ class StorageCategoryController extends Controller
     #[Endpoint('Create storage category', 'Create a new storage category')]
     #[ResponseFromApiResource(StorageCategoryResource::class, StorageCategory::class, status: 201, additional: ['message' => 'Storage category created successfully.'])]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function store(StorageCategoryRequest $request)
     {
         Gate::authorize('create', StorageCategory::class);
@@ -74,6 +76,7 @@ class StorageCategoryController extends Controller
     #[QueryParam('include', 'string', 'Comma-separated list of relationships to include. </br></br><b>Available options:</b> company, creator, locations', required: false, example: 'company')]
     #[ResponseFromApiResource(StorageCategoryResource::class, StorageCategory::class)]
     #[Response(status: 404, description: 'Storage category not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function show(string $id)
     {
         $storageCategory = QueryBuilder::for(StorageCategory::where('id', $id))
@@ -90,6 +93,7 @@ class StorageCategoryController extends Controller
     #[ResponseFromApiResource(StorageCategoryResource::class, StorageCategory::class, additional: ['message' => 'Storage category updated successfully.'])]
     #[Response(status: 404, description: 'Storage category not found')]
     #[Response(status: 422, description: 'Validation error', content: '{"message": "The given data was invalid.", "errors": {"name": ["The name field is required."]}}')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function update(StorageCategoryRequest $request, string $id)
     {
         $storageCategory = StorageCategory::findOrFail($id);
@@ -106,6 +110,7 @@ class StorageCategoryController extends Controller
     #[UrlParam('id', 'integer', 'The storage category ID', required: true, example: 1)]
     #[Response(status: 200, description: 'Storage category deleted successfully', content: '{"message":"Storage category deleted successfully."}')]
     #[Response(status: 404, description: 'Storage category not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
     public function destroy(string $id)
     {
         $storageCategory = StorageCategory::findOrFail($id);
