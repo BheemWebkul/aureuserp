@@ -7525,3 +7525,4887 @@ endpoints:
     controller: null
     method: null
     route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: admin/api/v1/inventories/receipts
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'List receipts'
+      description: 'Retrieve a paginated list of receipts'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[id]':
+        custom: []
+        name: 'filter[id]'
+        description: 'Filter by receipt IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[name]':
+        custom: []
+        name: 'filter[name]'
+        description: 'Filter by receipt name'
+        required: false
+        example: WH/IN/0001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[state]':
+        custom: []
+        name: 'filter[state]'
+        description: 'Filter by receipt state'
+        required: false
+        example: draft
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[move_type]':
+        custom: []
+        name: 'filter[move_type]'
+        description: 'Filter by move type'
+        required: false
+        example: direct
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[partner_id]':
+        custom: []
+        name: 'filter[partner_id]'
+        description: 'Filter by partner IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[user_id]':
+        custom: []
+        name: 'filter[user_id]'
+        description: 'Filter by responsible user IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[company_id]':
+        custom: []
+        name: 'filter[company_id]'
+        description: 'Filter by company IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[operation_type_id]':
+        custom: []
+        name: 'filter[operation_type_id]'
+        description: 'Filter by operation type IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      sort:
+        custom: []
+        name: sort
+        description: 'Sort field'
+        required: false
+        example: '-created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      page:
+        custom: []
+        name: page
+        description: 'Page number'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+      'filter[id]': '1,2'
+      'filter[name]': WH/IN/0001
+      'filter[state]': draft
+      'filter[move_type]': direct
+      'filter[partner_id]': '1,2'
+      'filter[user_id]': '1,2'
+      'filter[company_id]': '1,2'
+      'filter[operation_type_id]': '1,2'
+      sort: '-created_at'
+      page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: admin/api/v1/inventories/receipts
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Create receipt'
+      description: 'Create a new receipt'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: true
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: false
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Receipt created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'admin/api/v1/inventories/receipts/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Show receipt'
+      description: 'Retrieve a specific receipt by ID'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'admin/api/v1/inventories/receipts/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Update receipt'
+      description: 'Update an existing receipt'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: true
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Receipt updated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'admin/api/v1/inventories/receipts/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Delete receipt'
+      description: 'Delete a receipt'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"message":"Receipt deleted successfully."}'
+        headers: []
+        description: 'Receipt deleted successfully'
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/receipts/{id}/check-availability'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Check receipt availability'
+      description: 'Compute and refresh receipt availability'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Receipt availability checked successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/receipts/{id}/todo'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Mark receipt as todo'
+      description: 'Reset receipt allocation status'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Receipt set to todo successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/receipts/{id}/validate'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Validate receipt'
+      description: 'Validate receipt and complete stock moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Receipt validated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/receipts/{id}/cancel'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Cancel receipt'
+      description: 'Cancel receipt and related moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Receipt canceled successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/receipts/{id}/return'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Receipts
+      subgroupDescription: 'Manage inventory receipts'
+      title: 'Return receipt'
+      description: 'Create a return operation from this receipt'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The receipt ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Receipt return created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Receipt not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: admin/api/v1/inventories/deliveries
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'List deliveries'
+      description: 'Retrieve a paginated list of deliveries'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[id]':
+        custom: []
+        name: 'filter[id]'
+        description: 'Filter by delivery IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[name]':
+        custom: []
+        name: 'filter[name]'
+        description: 'Filter by delivery name'
+        required: false
+        example: WH/OUT/0001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[state]':
+        custom: []
+        name: 'filter[state]'
+        description: 'Filter by delivery state'
+        required: false
+        example: draft
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[move_type]':
+        custom: []
+        name: 'filter[move_type]'
+        description: 'Filter by move type'
+        required: false
+        example: direct
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[partner_id]':
+        custom: []
+        name: 'filter[partner_id]'
+        description: 'Filter by partner IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[user_id]':
+        custom: []
+        name: 'filter[user_id]'
+        description: 'Filter by responsible user IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[company_id]':
+        custom: []
+        name: 'filter[company_id]'
+        description: 'Filter by company IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[operation_type_id]':
+        custom: []
+        name: 'filter[operation_type_id]'
+        description: 'Filter by operation type IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      sort:
+        custom: []
+        name: sort
+        description: 'Sort field'
+        required: false
+        example: '-created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      page:
+        custom: []
+        name: page
+        description: 'Page number'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+      'filter[id]': '1,2'
+      'filter[name]': WH/OUT/0001
+      'filter[state]': draft
+      'filter[move_type]': direct
+      'filter[partner_id]': '1,2'
+      'filter[user_id]': '1,2'
+      'filter[company_id]': '1,2'
+      'filter[operation_type_id]': '1,2'
+      sort: '-created_at'
+      page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: admin/api/v1/inventories/deliveries
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Create delivery'
+      description: 'Create a new delivery'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: true
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: false
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Delivery created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'admin/api/v1/inventories/deliveries/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Show delivery'
+      description: 'Retrieve a specific delivery by ID'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'admin/api/v1/inventories/deliveries/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Update delivery'
+      description: 'Update an existing delivery'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: true
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Delivery updated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'admin/api/v1/inventories/deliveries/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Delete delivery'
+      description: 'Delete a delivery'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"message":"Delivery deleted successfully."}'
+        headers: []
+        description: 'Delivery deleted successfully'
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/deliveries/{id}/check-availability'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Check delivery availability'
+      description: 'Compute and refresh delivery availability'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Delivery availability checked successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/deliveries/{id}/todo'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Mark delivery as todo'
+      description: 'Reset delivery allocation status'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Delivery set to todo successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/deliveries/{id}/validate'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Validate delivery'
+      description: 'Validate delivery and complete stock moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Delivery validated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/deliveries/{id}/cancel'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Cancel delivery'
+      description: 'Cancel delivery and related moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Delivery canceled successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/deliveries/{id}/return'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Deliveries
+      subgroupDescription: 'Manage inventory deliveries'
+      title: 'Return delivery'
+      description: 'Create a return operation from this delivery'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The delivery ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Delivery return created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Delivery not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: admin/api/v1/inventories/internal-transfers
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'List internal transfers'
+      description: 'Retrieve a paginated list of internal transfers'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[id]':
+        custom: []
+        name: 'filter[id]'
+        description: 'Filter by internal transfer IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[name]':
+        custom: []
+        name: 'filter[name]'
+        description: 'Filter by internal transfer name'
+        required: false
+        example: WH/INT/0001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[state]':
+        custom: []
+        name: 'filter[state]'
+        description: 'Filter by internal transfer state'
+        required: false
+        example: draft
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[move_type]':
+        custom: []
+        name: 'filter[move_type]'
+        description: 'Filter by move type'
+        required: false
+        example: direct
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[partner_id]':
+        custom: []
+        name: 'filter[partner_id]'
+        description: 'Filter by partner IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[user_id]':
+        custom: []
+        name: 'filter[user_id]'
+        description: 'Filter by responsible user IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[company_id]':
+        custom: []
+        name: 'filter[company_id]'
+        description: 'Filter by company IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[operation_type_id]':
+        custom: []
+        name: 'filter[operation_type_id]'
+        description: 'Filter by operation type IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      sort:
+        custom: []
+        name: sort
+        description: 'Sort field'
+        required: false
+        example: '-created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      page:
+        custom: []
+        name: page
+        description: 'Page number'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+      'filter[id]': '1,2'
+      'filter[name]': WH/INT/0001
+      'filter[state]': draft
+      'filter[move_type]': direct
+      'filter[partner_id]': '1,2'
+      'filter[user_id]': '1,2'
+      'filter[company_id]': '1,2'
+      'filter[operation_type_id]': '1,2'
+      sort: '-created_at'
+      page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: admin/api/v1/inventories/internal-transfers
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Create internal transfer'
+      description: 'Create a new internal transfer'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: true
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: false
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Internal transfer created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Show internal transfer'
+      description: 'Retrieve a specific internal transfer by ID'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Update internal transfer'
+      description: 'Update an existing internal transfer'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: false
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Internal transfer updated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Delete internal transfer'
+      description: 'Delete an internal transfer'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"message":"Internal transfer deleted successfully."}'
+        headers: []
+        description: 'Internal transfer deleted successfully'
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}/check-availability'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Check internal transfer availability'
+      description: 'Compute and refresh internal transfer availability'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Internal transfer availability checked successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}/todo'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Mark internal transfer as todo'
+      description: 'Reset internal transfer allocation status'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Internal transfer set to todo successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}/validate'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Validate internal transfer'
+      description: 'Validate internal transfer and complete stock moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Internal transfer validated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}/cancel'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Cancel internal transfer'
+      description: 'Cancel internal transfer and related moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Internal transfer canceled successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/internal-transfers/{id}/return'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: 'Internal Transfers'
+      subgroupDescription: 'Manage inventory internal transfers'
+      title: 'Return internal transfer'
+      description: 'Create a return operation from this internal transfer'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The internal transfer ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Internal transfer return created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Internal transfer not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: admin/api/v1/inventories/dropships
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'List dropships'
+      description: 'Retrieve a paginated list of dropships'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[id]':
+        custom: []
+        name: 'filter[id]'
+        description: 'Filter by dropship IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[name]':
+        custom: []
+        name: 'filter[name]'
+        description: 'Filter by dropship name'
+        required: false
+        example: WH/DS/0001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[state]':
+        custom: []
+        name: 'filter[state]'
+        description: 'Filter by dropship state'
+        required: false
+        example: draft
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[move_type]':
+        custom: []
+        name: 'filter[move_type]'
+        description: 'Filter by move type'
+        required: false
+        example: direct
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[partner_id]':
+        custom: []
+        name: 'filter[partner_id]'
+        description: 'Filter by partner IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[user_id]':
+        custom: []
+        name: 'filter[user_id]'
+        description: 'Filter by responsible user IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[company_id]':
+        custom: []
+        name: 'filter[company_id]'
+        description: 'Filter by company IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[operation_type_id]':
+        custom: []
+        name: 'filter[operation_type_id]'
+        description: 'Filter by operation type IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      sort:
+        custom: []
+        name: sort
+        description: 'Sort field'
+        required: false
+        example: '-created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      page:
+        custom: []
+        name: page
+        description: 'Page number'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+      'filter[id]': '1,2'
+      'filter[name]': WH/DS/0001
+      'filter[state]': draft
+      'filter[move_type]': direct
+      'filter[partner_id]': '1,2'
+      'filter[user_id]': '1,2'
+      'filter[company_id]': '1,2'
+      'filter[operation_type_id]': '1,2'
+      sort: '-created_at'
+      page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: admin/api/v1/inventories/dropships
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Create dropship'
+      description: 'Create a new dropship operation'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: true
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: true
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Dropship created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'admin/api/v1/inventories/dropships/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Show dropship'
+      description: 'Retrieve a specific dropship by ID'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated list of relationships to include'
+        required: false
+        example: 'operationType,moves'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'operationType,moves'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"}}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'admin/api/v1/inventories/dropships/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Update dropship'
+      description: 'Update an existing dropship operation'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      partner_id:
+        custom: []
+        name: partner_id
+        description: 'Partner ID (receive from, contact, or delivery address based on operation type). The <code>id</code> of an existing record in the partners_partners table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      operation_type_id:
+        custom: []
+        name: operation_type_id
+        description: 'Operation type ID. If omitted, the API resolves the default operation type for the resource. The <code>id</code> of an existing record in the inventories_operation_types table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      source_location_id:
+        custom: []
+        name: source_location_id
+        description: 'Source location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      destination_location_id:
+        custom: []
+        name: destination_location_id
+        description: 'Destination location ID. The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Responsible user ID. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      move_type:
+        custom: []
+        name: move_type
+        description: 'Shipping policy.'
+        required: false
+        example: direct
+        type: string
+        enumValues:
+          - direct
+          - one
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scheduled_at:
+        custom: []
+        name: scheduled_at
+        description: 'Scheduled datetime. Must be a valid date.'
+        required: false
+        example: '2026-02-25 10:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      origin:
+        custom: []
+        name: origin
+        description: 'Source document reference. Must not be greater than 255 characters.'
+        required: false
+        example: SO/00001
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Operation note.'
+        required: false
+        example: 'Handle with care.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      moves:
+        custom: []
+        name: moves
+        description: 'Optional operation moves payload.'
+        required: false
+        example:
+          -
+            product_id: 1
+            product_uom_qty: 5
+            uom_id: 1
+            quantity: 0
+            is_picked: false
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].id':
+        custom: []
+        name: 'moves[].id'
+        description: 'The <code>id</code> of an existing record in the inventories_moves table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_id':
+        custom: []
+        name: 'moves[].product_id'
+        description: 'The <code>id</code> of an existing record in the products_products table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].product_uom_qty':
+        custom: []
+        name: 'moves[].product_uom_qty'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'moves[].uom_id':
+        custom: []
+        name: 'moves[].uom_id'
+        description: 'The <code>id</code> of an existing record in the unit_of_measures table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].final_location_id':
+        custom: []
+        name: 'moves[].final_location_id'
+        description: 'The <code>id</code> of an existing record in the inventories_locations table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].description_picking':
+        custom: []
+        name: 'moves[].description_picking'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].scheduled_at':
+        custom: []
+        name: 'moves[].scheduled_at'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].deadline':
+        custom: []
+        name: 'moves[].deadline'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-02-25T11:50:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].product_packaging_id':
+        custom: []
+        name: 'moves[].product_packaging_id'
+        description: 'The <code>id</code> of an existing record in the products_packagings table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].quantity':
+        custom: []
+        name: 'moves[].quantity'
+        description: 'Must be at least 0. Must not be greater than 99999999999.'
+        required: false
+        example: 22
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'moves[].is_picked':
+        custom: []
+        name: 'moves[].is_picked'
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      partner_id: 1
+      operation_type_id: 1
+      source_location_id: 1
+      destination_location_id: 2
+      user_id: 1
+      move_type: direct
+      scheduled_at: '2026-02-25 10:00:00'
+      origin: SO/00001
+      description: 'Handle with care.'
+      moves:
+        -
+          product_id: 1
+          product_uom_qty: 5
+          uom_id: 1
+          quantity: 22
+          is_picked: true
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Dropship updated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+      -
+        custom: []
+        status: 422
+        content: null
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'admin/api/v1/inventories/dropships/{id}'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Delete dropship'
+      description: 'Delete a dropship operation'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"message":"Dropship deleted successfully."}'
+        headers: []
+        description: 'Dropship deleted successfully'
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/dropships/{id}/check-availability'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Check dropship availability'
+      description: 'Compute and refresh dropship availability'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Dropship availability checked successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/dropships/{id}/todo'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Mark dropship as todo'
+      description: 'Reset dropship allocation status'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Dropship set to todo successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/dropships/{id}/validate'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Validate dropship'
+      description: 'Validate dropship and complete stock moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Dropship validated successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/dropships/{id}/cancel'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Cancel dropship'
+      description: 'Cancel dropship and related moves'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Dropship canceled successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'admin/api/v1/inventories/dropships/{id}/return'
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Dropships
+      subgroupDescription: 'Manage inventory dropships'
+      title: 'Return dropship'
+      description: 'Create a return operation from this dropship'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The dropship ID'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"WH\/INT\/1","origin":null,"move_type":"direct","state":"draft","is_favorite":false,"description":null,"has_deadline_issue":false,"is_printed":false,"is_locked":false,"deadline":null,"scheduled_at":"2025-04-10T12:10:18.000000Z","closed_at":null,"created_at":"2025-04-10T12:11:32.000000Z","updated_at":"2025-04-10T12:11:32.000000Z"},"message":"Dropship return created successfully."}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: null
+        headers: []
+        description: 'Dropship not found'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null

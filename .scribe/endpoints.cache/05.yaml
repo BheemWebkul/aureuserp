@@ -148,7 +148,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"sort":933724,"delay":30,"product_name":"nostrum qui commodi","product_code":"SUP-4902","starts_at":"2026-02-11T00:00:00.000000Z","ends_at":"2026-08-01T00:00:00.000000Z","min_qty":35,"price":16.1,"discount":44.27,"product_id":129,"partner_id":1,"currency_id":376,"company_id":519,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"sort":6755897,"delay":28,"product_name":"dolorem aut quis","product_code":"SUP-4297","starts_at":"2026-02-02T00:00:00.000000Z","ends_at":"2026-09-21T00:00:00.000000Z","min_qty":72,"price":123.09,"discount":17.76,"product_id":130,"partner_id":1,"currency_id":377,"company_id":521,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"sort":933724,"delay":30,"product_name":"nostrum qui commodi","product_code":"SUP-4902","starts_at":"2026-02-11T00:00:00.000000Z","ends_at":"2026-08-01T00:00:00.000000Z","min_qty":35,"price":16.1,"discount":44.27,"product_id":194,"partner_id":1,"currency_id":521,"company_id":829,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"sort":6755897,"delay":28,"product_name":"dolorem aut quis","product_code":"SUP-4297","starts_at":"2026-02-02T00:00:00.000000Z","ends_at":"2026-09-21T00:00:00.000000Z","min_qty":72,"price":123.09,"discount":17.76,"product_id":195,"partner_id":1,"currency_id":522,"company_id":831,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -339,7 +339,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"sort":7449171,"delay":7,"product_name":"animi quos velit","product_code":"SUP-9432","starts_at":"2026-02-22T00:00:00.000000Z","ends_at":"2026-05-19T00:00:00.000000Z","min_qty":30,"price":549.73,"discount":15.06,"product_id":131,"partner_id":1,"currency_id":378,"company_id":523,"creator_id":1,"created_at":null,"updated_at":null},"message":"Vendor price list created successfully."}'
+        content: '{"data":{"id":null,"sort":7449171,"delay":7,"product_name":"animi quos velit","product_code":"SUP-9432","starts_at":"2026-02-22T00:00:00.000000Z","ends_at":"2026-05-19T00:00:00.000000Z","min_qty":30,"price":549.73,"discount":15.06,"product_id":196,"partner_id":1,"currency_id":523,"company_id":833,"creator_id":1,"created_at":null,"updated_at":null},"message":"Vendor price list created successfully."}'
         headers: []
         description: ''
       -
@@ -416,7 +416,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"sort":933724,"delay":30,"product_name":"nostrum qui commodi","product_code":"SUP-4902","starts_at":"2026-02-11T00:00:00.000000Z","ends_at":"2026-08-01T00:00:00.000000Z","min_qty":35,"price":16.1,"discount":44.27,"product_id":132,"partner_id":1,"currency_id":379,"company_id":525,"creator_id":1,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"sort":933724,"delay":30,"product_name":"nostrum qui commodi","product_code":"SUP-4902","starts_at":"2026-02-11T00:00:00.000000Z","ends_at":"2026-08-01T00:00:00.000000Z","min_qty":35,"price":16.1,"discount":44.27,"product_id":197,"partner_id":1,"currency_id":524,"company_id":835,"creator_id":1,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -
@@ -626,7 +626,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"sort":7449171,"delay":7,"product_name":"animi quos velit","product_code":"SUP-9432","starts_at":"2026-02-22T00:00:00.000000Z","ends_at":"2026-05-19T00:00:00.000000Z","min_qty":30,"price":549.73,"discount":15.06,"product_id":133,"partner_id":1,"currency_id":380,"company_id":527,"creator_id":1,"created_at":null,"updated_at":null},"message":"Vendor price list updated successfully."}'
+        content: '{"data":{"id":null,"sort":7449171,"delay":7,"product_name":"animi quos velit","product_code":"SUP-9432","starts_at":"2026-02-22T00:00:00.000000Z","ends_at":"2026-05-19T00:00:00.000000Z","min_qty":30,"price":549.73,"discount":15.06,"product_id":198,"partner_id":1,"currency_id":525,"company_id":837,"creator_id":1,"created_at":null,"updated_at":null},"message":"Vendor price list updated successfully."}'
         headers: []
         description: ''
       -
@@ -943,7 +943,7 @@ endpoints:
         name: planned_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T10:35:40'
+        example: '2026-02-25T11:50:59'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1056,7 +1056,7 @@ endpoints:
         name: 'lines[].planned_at'
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-25T10:35:40'
+        example: '2026-02-25T11:50:59'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1169,7 +1169,7 @@ endpoints:
       company_id: 1
       partner_reference: VEN-REF-009
       requisition_id: 5
-      planned_at: '2026-02-25T10:35:40'
+      planned_at: '2026-02-25T11:50:59'
       user_id: 2
       payment_term_id: 4
       incoterm_id: 3
@@ -1403,7 +1403,7 @@ endpoints:
         name: planned_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-25T10:35:40'
+        example: '2026-02-25T11:50:59'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1516,7 +1516,7 @@ endpoints:
         name: 'lines[].planned_at'
         description: 'Must be a valid date.'
         required: true
-        example: '2026-02-25T10:35:40'
+        example: '2026-02-25T11:50:59'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1629,7 +1629,7 @@ endpoints:
       company_id: 1
       partner_reference: VEN-REF-009
       requisition_id: 5
-      planned_at: '2026-02-25T10:35:40'
+      planned_at: '2026-02-25T11:50:59'
       user_id: 2
       payment_term_id: 4
       incoterm_id: 3
@@ -2694,7 +2694,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"name":"PA-4362","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":381,"partner_id":1,"user_id":null,"company_id":528,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},{"id":null,"name":"PA-8748","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":382,"partner_id":1,"user_id":null,"company_id":529,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"name":"PA-9836","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":526,"partner_id":1,"user_id":null,"company_id":838,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},{"id":null,"name":"PA-8144","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":527,"partner_id":1,"user_id":null,"company_id":839,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -2928,7 +2928,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"name":"PA-8806","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":383,"partner_id":1,"user_id":null,"company_id":530,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement created successfully."}'
+        content: '{"data":{"id":null,"name":"PA-8806","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":528,"partner_id":1,"user_id":null,"company_id":840,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement created successfully."}'
         headers: []
         description: ''
       -
@@ -3005,7 +3005,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"PA-2680","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":384,"partner_id":1,"user_id":null,"company_id":531,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null}}'
+        content: '{"data":{"id":null,"name":"PA-2680","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":529,"partner_id":1,"user_id":null,"company_id":841,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null}}'
         headers: []
         description: ''
       -
@@ -3258,7 +3258,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"PA-7365","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":385,"partner_id":1,"user_id":null,"company_id":532,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement updated successfully."}'
+        content: '{"data":{"id":null,"name":"PA-7365","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":530,"partner_id":1,"user_id":null,"company_id":842,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement updated successfully."}'
         headers: []
         description: ''
       -
@@ -3394,7 +3394,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"PA-9724","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":386,"partner_id":1,"user_id":null,"company_id":533,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement restored successfully."}'
+        content: '{"data":{"id":null,"name":"PA-9724","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":531,"partner_id":1,"user_id":null,"company_id":843,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement restored successfully."}'
         headers: []
         description: ''
       -
@@ -3524,7 +3524,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"PA-2949","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":387,"partner_id":1,"user_id":null,"company_id":534,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement confirmed successfully."}'
+        content: '{"data":{"id":null,"name":"PA-2949","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":532,"partner_id":1,"user_id":null,"company_id":844,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement confirmed successfully."}'
         headers: []
         description: ''
       -
@@ -3595,7 +3595,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"PA-7432","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":388,"partner_id":1,"user_id":null,"company_id":535,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement closed successfully."}'
+        content: '{"data":{"id":null,"name":"PA-7432","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":533,"partner_id":1,"user_id":null,"company_id":845,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement closed successfully."}'
         headers: []
         description: ''
       -
@@ -3666,7 +3666,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"name":"PA-6881","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":389,"partner_id":1,"user_id":null,"company_id":536,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement canceled successfully."}'
+        content: '{"data":{"id":null,"name":"PA-6881","type":"blanket_order","state":"draft","reference":null,"starts_at":null,"ends_at":null,"description":null,"currency_id":534,"partner_id":1,"user_id":null,"company_id":846,"creator_id":1,"created_at":null,"updated_at":null,"deleted_at":null},"message":"Purchase agreement canceled successfully."}'
         headers: []
         description: ''
       -
@@ -3795,7 +3795,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"qty":81,"price_unit":973.93,"requisition_id":null,"product_id":134,"uom_id":null,"company_id":null,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"qty":82,"price_unit":463.85,"requisition_id":null,"product_id":135,"uom_id":null,"company_id":null,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":null,"qty":81,"price_unit":973.93,"requisition_id":null,"product_id":199,"uom_id":null,"company_id":null,"creator_id":1,"created_at":null,"updated_at":null},{"id":null,"qty":38,"price_unit":577.11,"requisition_id":null,"product_id":200,"uom_id":null,"company_id":null,"creator_id":1,"created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
       -
@@ -3878,7 +3878,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":null,"qty":81,"price_unit":973.93,"requisition_id":null,"product_id":136,"uom_id":null,"company_id":null,"creator_id":1,"created_at":null,"updated_at":null}}'
+        content: '{"data":{"id":null,"qty":81,"price_unit":973.93,"requisition_id":null,"product_id":201,"uom_id":null,"company_id":null,"creator_id":1,"created_at":null,"updated_at":null}}'
         headers: []
         description: ''
       -

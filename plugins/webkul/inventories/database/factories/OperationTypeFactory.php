@@ -50,28 +50,48 @@ class OperationTypeFactory extends Factory
             'auto_print_reception_report_labels' => false,
             'auto_print_packages'                => false,
             'auto_print_package_label'           => false,
-
-            // Relationships
-            'return_operation_type_id' => null,
-            'source_location_id'       => Location::factory(),
-            'destination_location_id'  => Location::factory(),
-            'warehouse_id'             => Warehouse::factory(),
-            'company_id'               => Company::factory(),
-            'creator_id'               => User::query()->value('id') ?? User::factory(),
+            'return_operation_type_id'           => null,
+            'source_location_id'                 => Location::factory(),
+            'destination_location_id'            => Location::factory(),
+            'warehouse_id'                       => Warehouse::factory(),
+            'company_id'                         => Company::factory(),
+            'creator_id'                         => User::query()->value('id') ?? User::factory(),
         ];
     }
 
     public function receipt(): static
     {
         return $this->state(fn (array $attributes) => [
-            'type' => OperationTypeEnum::INCOMING,
+            'type'                    => OperationTypeEnum::INCOMING,
+            'source_location_id'      => Location::factory()->supplier(),
+            'destination_location_id' => Location::factory()->internal(),
+        ]);
+    }
+
+    public function internal(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'type'                    => OperationTypeEnum::OUTGOING,
+            'source_location_id'      => Location::factory()->internal(),
+            'destination_location_id' => Location::factory()->internal(),
         ]);
     }
 
     public function delivery(): static
     {
         return $this->state(fn (array $attributes) => [
-            'type' => OperationTypeEnum::OUTGOING,
+            'type'                    => OperationTypeEnum::OUTGOING,
+            'source_location_id'      => Location::factory()->internal(),
+            'destination_location_id' => Location::factory()->customer(),
+        ]);
+    }
+
+    public function dropship(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'type'                    => OperationTypeEnum::DROPSHIP,
+            'source_location_id'      => Location::factory()->supplier(),
+            'destination_location_id' => Location::factory()->customer(),
         ]);
     }
 
