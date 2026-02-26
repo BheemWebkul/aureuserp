@@ -44,7 +44,6 @@ class OperationFactory extends Factory
             'partner_id'              => null,
             'company_id'              => Company::factory(),
             'creator_id'              => User::query()->value('id') ?? User::factory(),
-            'sale_order_id'           => null,
         ];
     }
 
