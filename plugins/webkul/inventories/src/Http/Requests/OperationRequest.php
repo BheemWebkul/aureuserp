@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use Webkul\Inventory\Enums\MoveType;
 use Webkul\Inventory\Enums\OperationType as OperationTypeEnum;
 use Webkul\Inventory\Models\OperationType;
+use Webkul\Product\Models\Product;
 
 class OperationRequest extends FormRequest
 {
@@ -48,6 +49,30 @@ class OperationRequest extends FormRequest
     public function withValidator($validator): void
     {
         $validator->after(function ($validator): void {
+            $moves = $this->input('moves', []);
+            $productIds = collect($moves)->pluck('product_id')->filter()->unique();
+
+            if ($productIds->isNotEmpty()) {
+                $configurableProducts = Product::query()
+                    ->whereIn('id', $productIds)
+                    ->where('is_configurable', true)
+                    ->get(['id', 'name'])
+                    ->keyBy('id');
+
+                if ($configurableProducts->isNotEmpty()) {
+                    foreach ($moves as $index => $move) {
+                        if (isset($move['product_id']) && isset($configurableProducts[$move['product_id']])) {
+                            $product = $configurableProducts[$move['product_id']];
+
+                            $validator->errors()->add(
+                                "moves.{$index}.product_id",
+                                "The product '{$product->name}' is configurable and cannot be used in operations. Please select a product variant instead."
+                            );
+                        }
+                    }
+                }
+            }
+
             $requiredType = $this->operationType();
 
             if (! $requiredType) {

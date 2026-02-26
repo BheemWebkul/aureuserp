@@ -8333,7 +8333,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8344,7 +8344,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8377,7 +8377,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -8399,7 +8399,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: false
+          is_picked: true
     fileParameters: []
     responses:
       -
@@ -8731,7 +8731,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8742,7 +8742,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -9644,7 +9644,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -9655,7 +9655,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -9688,7 +9688,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -9710,7 +9710,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: true
+          is_picked: false
     fileParameters: []
     responses:
       -
@@ -10042,7 +10042,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -10053,7 +10053,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -10086,7 +10086,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -10108,7 +10108,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: false
+          is_picked: true
     fileParameters: []
     responses:
       -
@@ -10955,7 +10955,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -10966,7 +10966,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11353,7 +11353,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11364,7 +11364,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -12266,7 +12266,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -12277,7 +12277,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -12664,7 +12664,7 @@ endpoints:
         name: 'moves[].scheduled_at'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -12675,7 +12675,7 @@ endpoints:
         name: 'moves[].deadline'
         description: 'Must be a valid date.'
         required: false
-        example: '2026-02-26T05:51:36'
+        example: '2026-02-26T07:08:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -12708,7 +12708,7 @@ endpoints:
         name: 'moves[].is_picked'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -12730,7 +12730,7 @@ endpoints:
           product_uom_qty: 5
           uom_id: 1
           quantity: 22
-          is_picked: true
+          is_picked: false
     fileParameters: []
     responses:
       -
@@ -13366,7 +13366,7 @@ endpoints:
       product_id:
         custom: []
         name: product_id
-        description: 'Product ID. The <code>id</code> of an existing record in the products_products table.'
+        description: 'Product ID. Configurable products are not allowed; pass a variant product ID instead. The <code>id</code> of an existing record in the products_products table.'
         required: true
         example: 1
         type: integer
@@ -13388,7 +13388,7 @@ endpoints:
       lot_id:
         custom: []
         name: lot_id
-        description: 'Lot ID. The <code>id</code> of an existing record in the inventories_lots table.'
+        description: 'Lot ID. Required for lot/serial tracked products and must belong to the selected product. The <code>id</code> of an existing record in the inventories_lots table.'
         required: false
         example: 1
         type: integer
@@ -13399,7 +13399,7 @@ endpoints:
       package_id:
         custom: []
         name: package_id
-        description: 'Package ID. The <code>id</code> of an existing record in the inventories_packages table.'
+        description: 'Package ID. Must belong to the selected location. The <code>id</code> of an existing record in the inventories_packages table.'
         required: false
         example: 1
         type: integer
@@ -13443,7 +13443,7 @@ endpoints:
       counted_quantity:
         custom: []
         name: counted_quantity
-        description: 'Counted quantity entered during inventory adjustment. Must be at least 0. Must not be greater than 99999999999.'
+        description: 'Counted quantity entered during inventory adjustment. For serial-tracked products, this must be 0 or 1. Must be at least 0. Must not be greater than 99999999999.'
         required: true
         example: 25.0
         type: number
@@ -14610,6 +14610,185 @@ endpoints:
         content: null
         headers: []
         description: 'Only draft scraps can be validated.'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: admin/api/v1/inventories/moves
+    metadata:
+      custom: []
+      groupName: 'Inventory API Management'
+      groupDescription: ''
+      subgroup: Moves
+      subgroupDescription: 'Manage inventory move lines'
+      title: 'List moves'
+      description: 'Retrieve a paginated list of move lines with reusable relation filters'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      include:
+        custom: []
+        name: include
+        description: 'Comma-separated relationships to include'
+        required: false
+        example: 'move,operation,product'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[id]':
+        custom: []
+        name: 'filter[id]'
+        description: 'Filter by move line IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[move_id]':
+        custom: []
+        name: 'filter[move_id]'
+        description: 'Filter by move IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[operation_id]':
+        custom: []
+        name: 'filter[operation_id]'
+        description: 'Filter by operation IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[product_id]':
+        custom: []
+        name: 'filter[product_id]'
+        description: 'Filter by product IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[lot_id]':
+        custom: []
+        name: 'filter[lot_id]'
+        description: 'Filter by lot IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[package_id]':
+        custom: []
+        name: 'filter[package_id]'
+        description: 'Filter by package IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[scrap_id]':
+        custom: []
+        name: 'filter[scrap_id]'
+        description: 'Filter by scrap IDs (through move)'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[warehouse_id]':
+        custom: []
+        name: 'filter[warehouse_id]'
+        description: 'Filter by warehouse IDs (through move)'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'filter[location_id]':
+        custom: []
+        name: 'filter[location_id]'
+        description: 'Filter by source/destination location IDs'
+        required: false
+        example: '1,2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      sort:
+        custom: []
+        name: sort
+        description: 'Sort field'
+        required: false
+        example: '-created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      include: 'move,operation,product'
+      'filter[id]': '1,2'
+      'filter[move_id]': '1,2'
+      'filter[operation_id]': '1,2'
+      'filter[product_id]': '1,2'
+      'filter[lot_id]': '1,2'
+      'filter[package_id]': '1,2'
+      'filter[scrap_id]': '1,2'
+      'filter[warehouse_id]': '1,2'
+      'filter[location_id]': '1,2'
+      sort: '-created_at'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"lot_name":null,"state":"assigned","reference":"Central Open Warehouse\/IN\/2","picking_description":"Flim Rocket Mini Projector - Standard Fixed Lens","qty":1000,"uom_qty":1000,"is_picked":false,"scheduled_at":"2025-04-10T12:26:29.000000Z","move_id":2,"operation_id":2,"product_id":7,"uom_id":1,"package_id":null,"result_package_id":null,"lot_id":null,"partner_id":null,"source_location_id":4,"destination_location_id":36,"company_id":1,"creator_id":1,"created_at":"2025-04-10T12:28:00.000000Z","updated_at":"2025-04-10T12:28:00.000000Z"},{"id":1,"lot_name":null,"state":"assigned","reference":"Central Open Warehouse\/IN\/2","picking_description":"Flim Rocket Mini Projector - Standard Fixed Lens","qty":1000,"uom_qty":1000,"is_picked":false,"scheduled_at":"2025-04-10T12:26:29.000000Z","move_id":2,"operation_id":2,"product_id":7,"uom_id":1,"package_id":null,"result_package_id":null,"lot_id":null,"partner_id":null,"source_location_id":4,"destination_location_id":36,"company_id":1,"creator_id":1,"created_at":"2025-04-10T12:28:00.000000Z","updated_at":"2025-04-10T12:28:00.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"\/?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: '{"message": "Unauthenticated."}'
+        headers: []
+        description: Unauthenticated
     responseFields: []
     auth:
       - headers
