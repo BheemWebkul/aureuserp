@@ -94,3 +94,50 @@ it('returns an empty list for purchase orders without receipts', function () {
         ->assertOk()
         ->assertJsonCount(0, 'data');
 });
+
+it('filters purchase order receipts by state when inventories plugin is installed', function () {
+    actingAsPurchaseOrderReceiptApiUser(['view_purchase_purchase::order']);
+
+    $order = Order::factory()->create();
+
+    if (! Package::isPluginInstalled('inventories')) {
+        $this->getJson(purchaseOrderReceiptRoute($order->id))
+            ->assertOk()
+            ->assertJsonCount(0, 'data');
+
+        return;
+    }
+
+    $confirmedOperation = Operation::factory()->confirmed()->create(['company_id' => $order->company_id]);
+    $doneOperation = Operation::factory()->done()->create(['company_id' => $order->company_id]);
+
+    $order->operations()->attach([$confirmedOperation->id, $doneOperation->id]);
+
+    $response = $this->getJson(purchaseOrderReceiptRoute($order->id).'?filter[state]=confirmed')
+        ->assertOk();
+
+    $states = collect($response->json('data'))->pluck('state')->unique()->values()->all();
+
+    expect($states)->toBe(['confirmed']);
+});
+
+it('includes operation type relationship for purchase order receipts', function () {
+    actingAsPurchaseOrderReceiptApiUser(['view_purchase_purchase::order']);
+
+    $order = Order::factory()->create();
+
+    if (! Package::isPluginInstalled('inventories')) {
+        $this->getJson(purchaseOrderReceiptRoute($order->id).'?include=operationType')
+            ->assertOk()
+            ->assertJsonCount(0, 'data');
+
+        return;
+    }
+
+    $operation = Operation::factory()->create(['company_id' => $order->company_id]);
+    $order->operations()->attach($operation->id);
+
+    $this->getJson(purchaseOrderReceiptRoute($order->id).'?include=operationType')
+        ->assertOk()
+        ->assertJsonPath('data.0.operation_type.id', fn ($id) => is_int($id));
+});

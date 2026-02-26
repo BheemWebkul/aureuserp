@@ -125,3 +125,27 @@ it('filters order invoices by state', function () {
 
     expect($states)->toBe(['draft']);
 });
+
+it('sorts order invoices by id descending', function () {
+    actingAsSalesOrderInvoiceApiUser(['view_sale_order']);
+
+    [$order] = createOrderWithInvoices();
+
+    $response = $this->getJson(salesOrderInvoiceRoute('index', $order->id).'?sort=-id')
+        ->assertOk();
+
+    $ids = collect($response->json('data'))->pluck('id')->values()->all();
+    $sortedIds = collect($ids)->sortDesc()->values()->all();
+
+    expect($ids)->toBe($sortedIds);
+});
+
+it('includes company relationship for order invoices', function () {
+    actingAsSalesOrderInvoiceApiUser(['view_sale_order']);
+
+    [$order] = createOrderWithInvoices();
+
+    $this->getJson(salesOrderInvoiceRoute('index', $order->id).'?include=company')
+        ->assertOk()
+        ->assertJsonPath('data.0.company.id', fn ($id) => is_int($id));
+});

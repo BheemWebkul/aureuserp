@@ -113,3 +113,42 @@ it('returns not found when line does not belong to the order', function () {
     $this->getJson(salesOrderLineRoute('show', $firstOrder->id, $foreignLine->id))
         ->assertNotFound();
 });
+
+it('filters order lines by product id', function () {
+    $order = createSalesOrderWithLines(2);
+    $matchingLine = $order->lines()->firstOrFail();
+
+    actingAsSalesOrderLineApiUser(['view_sale_order']);
+
+    $response = $this->getJson(
+        salesOrderLineRoute('index', $order->id).'?filter[product_id]='.$matchingLine->product_id
+    )->assertOk();
+
+    $productIds = collect($response->json('data'))->pluck('product_id')->unique()->values()->all();
+
+    expect($productIds)->toBe([$matchingLine->product_id]);
+});
+
+it('sorts order lines by id descending', function () {
+    $order = createSalesOrderWithLines(2);
+
+    actingAsSalesOrderLineApiUser(['view_sale_order']);
+
+    $response = $this->getJson(salesOrderLineRoute('index', $order->id).'?sort=-id')
+        ->assertOk();
+
+    $ids = collect($response->json('data'))->pluck('id')->values()->all();
+    $sortedIds = collect($ids)->sortDesc()->values()->all();
+
+    expect($ids)->toBe($sortedIds);
+});
+
+it('includes related product for order lines', function () {
+    $order = createSalesOrderWithLines(1);
+
+    actingAsSalesOrderLineApiUser(['view_sale_order']);
+
+    $this->getJson(salesOrderLineRoute('index', $order->id).'?include=product')
+        ->assertOk()
+        ->assertJsonPath('data.0.product.id', fn ($id) => is_int($id));
+});

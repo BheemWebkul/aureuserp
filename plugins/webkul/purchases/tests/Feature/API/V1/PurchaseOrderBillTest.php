@@ -90,3 +90,39 @@ it('does not return bills from other purchase orders', function () {
         ->toContain($orderBill->id)
         ->not->toContain($otherOrderBill->id);
 });
+
+it('filters purchase order bills by state', function () {
+    actingAsPurchaseOrderBillApiUser(['view_purchase_purchase::order']);
+
+    $order = Order::factory()->create();
+
+    $draftBill = Move::factory()->vendorBill()->create([
+        'company_id' => $order->company_id,
+        'state'      => 'draft',
+    ]);
+    $postedBill = Move::factory()->vendorBill()->create([
+        'company_id' => $order->company_id,
+        'state'      => 'posted',
+    ]);
+
+    $order->accountMoves()->attach([$draftBill->id, $postedBill->id]);
+
+    $response = $this->getJson(purchaseOrderBillRoute($order->id).'?filter[state]=draft')
+        ->assertOk();
+
+    $states = collect($response->json('data'))->pluck('state')->unique()->values()->all();
+
+    expect($states)->toBe(['draft']);
+});
+
+it('includes company relationship for purchase order bills', function () {
+    actingAsPurchaseOrderBillApiUser(['view_purchase_purchase::order']);
+
+    $order = Order::factory()->create();
+    $bill = Move::factory()->vendorBill()->create(['company_id' => $order->company_id]);
+    $order->accountMoves()->attach($bill->id);
+
+    $this->getJson(purchaseOrderBillRoute($order->id).'?include=company')
+        ->assertOk()
+        ->assertJsonPath('data.0.company.id', fn ($id) => is_int($id));
+});

@@ -117,3 +117,42 @@ it('returns 404 for a non-existent purchase order line', function () {
     $this->getJson(purchaseOrderLineRoute('show', $order->id, 999999))
         ->assertNotFound();
 });
+
+it('filters purchase order lines by product id', function () {
+    actingAsPurchaseOrderLineApiUser(['view_purchase_purchase::order']);
+
+    $order = createPurchaseOrderWithLines(2);
+    $matchingLine = $order->lines()->firstOrFail();
+
+    $response = $this->getJson(
+        purchaseOrderLineRoute('index', $order->id).'?filter[product_id]='.$matchingLine->product_id
+    )->assertOk();
+
+    $productIds = collect($response->json('data'))->pluck('product_id')->unique()->values()->all();
+
+    expect($productIds)->toBe([$matchingLine->product_id]);
+});
+
+it('sorts purchase order lines by id descending', function () {
+    actingAsPurchaseOrderLineApiUser(['view_purchase_purchase::order']);
+
+    $order = createPurchaseOrderWithLines(2);
+
+    $response = $this->getJson(purchaseOrderLineRoute('index', $order->id).'?sort=-id')
+        ->assertOk();
+
+    $ids = collect($response->json('data'))->pluck('id')->values()->all();
+    $sortedIds = collect($ids)->sortDesc()->values()->all();
+
+    expect($ids)->toBe($sortedIds);
+});
+
+it('includes related product for purchase order lines', function () {
+    actingAsPurchaseOrderLineApiUser(['view_purchase_purchase::order']);
+
+    $order = createPurchaseOrderWithLines(1);
+
+    $this->getJson(purchaseOrderLineRoute('index', $order->id).'?include=product')
+        ->assertOk()
+        ->assertJsonPath('data.0.product.id', fn ($id) => is_int($id));
+});

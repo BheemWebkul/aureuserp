@@ -114,3 +114,42 @@ it('returns 404 for a non-existent agreement line', function () {
     $this->getJson(purchaseAgreementLineRoute('show', $agreement->id, 999999))
         ->assertNotFound();
 });
+
+it('filters purchase agreement lines by product id', function () {
+    actingAsPurchaseAgreementLineApiUser(['view_purchase_purchase::agreement']);
+
+    $agreement = createAgreementWithLines(2);
+    $matchingLine = $agreement->lines()->firstOrFail();
+
+    $response = $this->getJson(
+        purchaseAgreementLineRoute('index', $agreement->id).'?filter[product_id]='.$matchingLine->product_id
+    )->assertOk();
+
+    $productIds = collect($response->json('data'))->pluck('product_id')->unique()->values()->all();
+
+    expect($productIds)->toBe([$matchingLine->product_id]);
+});
+
+it('sorts purchase agreement lines by id descending', function () {
+    actingAsPurchaseAgreementLineApiUser(['view_purchase_purchase::agreement']);
+
+    $agreement = createAgreementWithLines(2);
+
+    $response = $this->getJson(purchaseAgreementLineRoute('index', $agreement->id).'?sort=-id')
+        ->assertOk();
+
+    $ids = collect($response->json('data'))->pluck('id')->values()->all();
+    $sortedIds = collect($ids)->sortDesc()->values()->all();
+
+    expect($ids)->toBe($sortedIds);
+});
+
+it('includes related product for purchase agreement lines', function () {
+    actingAsPurchaseAgreementLineApiUser(['view_purchase_purchase::agreement']);
+
+    $agreement = createAgreementWithLines(1);
+
+    $this->getJson(purchaseAgreementLineRoute('index', $agreement->id).'?include=product')
+        ->assertOk()
+        ->assertJsonPath('data.0.product.id', fn ($id) => is_int($id));
+});

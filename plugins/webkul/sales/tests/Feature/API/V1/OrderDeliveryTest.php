@@ -102,3 +102,50 @@ it('does not return deliveries from other orders', function () {
 
     expect($returnedIds->intersect($otherOrderDeliveryIds))->toHaveCount(0);
 });
+
+it('filters deliveries by state when inventories plugin is installed', function () {
+    actingAsSalesOrderDeliveryApiUser(['view_sale_order']);
+
+    $order = createOrderWithDeliveries(0);
+
+    if (! Package::isPluginInstalled('inventories')) {
+        $this->getJson(salesOrderDeliveryRoute('index', $order->id))
+            ->assertOk()
+            ->assertJsonCount(0, 'data');
+
+        return;
+    }
+
+    Operation::factory()->confirmed()->create([
+        'sale_order_id' => $order->id,
+        'company_id'    => $order->company_id,
+    ]);
+    Operation::factory()->done()->create([
+        'sale_order_id' => $order->id,
+        'company_id'    => $order->company_id,
+    ]);
+
+    $response = $this->getJson(salesOrderDeliveryRoute('index', $order->id).'?filter[state]=confirmed')
+        ->assertOk();
+
+    $states = collect($response->json('data'))->pluck('state')->unique()->values()->all();
+
+    expect($states)->toBe(['confirmed']);
+});
+
+it('includes operation type for deliveries when requested', function () {
+    actingAsSalesOrderDeliveryApiUser(['view_sale_order']);
+
+    $order = createOrderWithDeliveries(1);
+
+    $response = $this->getJson(salesOrderDeliveryRoute('index', $order->id).'?include=operationType')
+        ->assertOk();
+
+    if (! Package::isPluginInstalled('inventories')) {
+        $response->assertJsonCount(0, 'data');
+
+        return;
+    }
+
+    $response->assertJsonPath('data.0.operation_type.id', fn ($id) => is_int($id));
+});
