@@ -1,6 +1,7 @@
 <?php
 
 use Webkul\Purchase\Filament\Admin\Clusters\Configurations;
+use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\CurrencyResource;
 use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\PackagingResource;
 use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductAttributeResource;
 use Webkul\Purchase\Filament\Admin\Clusters\Configurations\Resources\ProductCategoryResource;
@@ -12,19 +13,28 @@ use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\PurchaseOrderResour
 use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource;
 use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource;
 use Webkul\Purchase\Filament\Admin\Clusters\Products;
+use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource;
+use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\OrderResource as ResourcesOrderResource;
+use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource as ResourcesPurchaseOrderResource;
+use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\QuotationResource as ResourcesQuotationResource;
 
 return [
     'resources' => [
         'manage' => [
-            QuotationResource::class                => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            OrderResource::class                    => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            PurchaseOrderResource::class            => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            PurchaseAgreementResource::class        => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            VendorResource::class                   => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            VendorPriceResource::class              => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ProductCategoryResource::class          => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ProductAttributeResource::class         => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            PackagingResource::class                => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            QuotationResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            OrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            PurchaseOrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            PurchaseAgreementResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
+            VendorResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
+            VendorPriceResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
+            ProductCategoryResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            ProductAttributeResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
+            PackagingResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
+            CurrencyResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            ProductResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
+            ResourcesOrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            ResourcesPurchaseOrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            ResourcesQuotationResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
         ],
         'exclude' => [
             OrderResource::class,
