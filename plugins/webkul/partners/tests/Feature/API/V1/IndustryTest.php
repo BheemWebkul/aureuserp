@@ -55,6 +55,14 @@ it('creates an industry with valid payload', function () {
         ->assertJsonPath('data.name', $payload['name']);
 });
 
+it('validates required fields when creating an industry', function () {
+    actingAsIndustryApiUser(['create_partner_industry']);
+
+    $this->postJson(industryRoute('store'), [])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['name']);
+});
+
 it('shows an industry for authorized users', function () {
     actingAsIndustryApiUser(['view_partner_industry']);
 
@@ -63,6 +71,13 @@ it('shows an industry for authorized users', function () {
     $this->getJson(industryRoute('show', $industry))
         ->assertOk()
         ->assertJsonPath('data.id', $industry->id);
+});
+
+it('returns 404 for a non-existent industry', function () {
+    actingAsIndustryApiUser(['view_partner_industry']);
+
+    $this->getJson(industryRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates an industry for authorized users', function () {

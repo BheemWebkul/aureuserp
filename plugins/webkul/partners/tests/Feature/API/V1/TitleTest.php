@@ -55,12 +55,26 @@ it('creates a title with valid payload', function () {
         ->assertJsonPath('data.name', $payload['name']);
 });
 
+it('validates required fields when creating a title', function () {
+    actingAsTitleApiUser(['create_partner_title']);
+
+    $this->postJson(titleRoute('store'), [])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['name']);
+});
+
 it('forbids showing title because policy has no view ability', function () {
     actingAsTitleApiUser(['view_any_partner_title']);
 
     $title = Title::factory()->create();
 
     $this->getJson(titleRoute('show', $title))->assertForbidden();
+});
+
+it('returns 404 for a non-existent title', function () {
+    actingAsTitleApiUser(['view_any_partner_title']);
+
+    $this->getJson(titleRoute('show', 999999))->assertNotFound();
 });
 
 it('updates a title for authorized users', function () {

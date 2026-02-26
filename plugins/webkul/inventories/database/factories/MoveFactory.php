@@ -64,8 +64,6 @@ class MoveFactory extends Factory
             'scrap_id'                => null,
             'company_id'              => Company::factory(),
             'creator_id'              => User::query()->value('id') ?? User::factory(),
-            'purchase_order_line_id'  => null,
-            'sale_order_line_id'      => null,
         ];
     }
 

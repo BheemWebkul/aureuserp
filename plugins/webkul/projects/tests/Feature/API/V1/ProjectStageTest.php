@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Webkul\Project\Models\ProjectStage;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
@@ -57,7 +56,7 @@ it('lists project stages for authorized users', function () {
     // Verify our test stages are in the response
     $responseData = $response->json('data');
     $responseIds = collect($responseData)->pluck('id')->toArray();
-    
+
     expect($responseIds)->toContain($stages[0]->id, $stages[1]->id);
 });
 
@@ -94,6 +93,13 @@ it('shows a project stage for authorized users', function () {
     $this->getJson(projectStageRoute('show', $stage))
         ->assertOk()
         ->assertJsonPath('data.id', $stage->id);
+});
+
+it('returns 404 for a non-existent project stage', function () {
+    actingAsProjectStageApiUser(['view_project_project::stage']);
+
+    $this->getJson(projectStageRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates a project stage for authorized users', function () {

@@ -55,7 +55,7 @@ it('lists uom categories for authorized users', function () {
     // Verify our test categories are in the response
     $responseData = $response->json('data');
     $responseIds = collect($responseData)->pluck('id')->toArray();
-    
+
     expect($responseIds)->toContain($categories[0]->id, $categories[1]->id);
 });
 
@@ -91,6 +91,13 @@ it('shows a uom category for authorized users', function () {
         ->assertOk()
         ->assertJsonPath('data.id', $category->id)
         ->assertJsonStructure(['data' => UOM_CATEGORY_JSON_STRUCTURE]);
+});
+
+it('returns 404 for a non-existent uom category', function () {
+    actingAsUomCategoryApiUser(['view_support_u::o::m::category']);
+
+    $this->getJson(uomCategoryRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates a uom category for authorized users', function () {

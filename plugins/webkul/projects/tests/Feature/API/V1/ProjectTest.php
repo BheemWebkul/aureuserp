@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Webkul\Project\Models\Project;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
@@ -95,6 +94,13 @@ it('shows a project for authorized users', function () {
     $this->getJson(projectRoute('show', $project))
         ->assertOk()
         ->assertJsonPath('data.id', $project->id);
+});
+
+it('returns 404 for a non-existent project', function () {
+    actingAsProjectApiUser(['view_project_project']);
+
+    $this->getJson(projectRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates a project for authorized users', function () {

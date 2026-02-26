@@ -1,5 +1,7 @@
 <?php
 
+use Webkul\Inventory\Models\Operation;
+use Webkul\PluginManager\Package;
 use Webkul\Purchase\Models\Order;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
@@ -50,10 +52,30 @@ it('lists purchase order receipts for authorized users (empty when inventories n
     actingAsPurchaseOrderReceiptApiUser(['view_purchase_purchase::order']);
 
     $order = Order::factory()->create();
+    $otherOrder = Order::factory()->create();
 
-    $this->getJson(purchaseOrderReceiptRoute($order->id))
+    if (Package::isPluginInstalled('inventories')) {
+        $operation = Operation::factory()->create(['company_id' => $order->company_id]);
+        $order->operations()->attach($operation->id);
+
+        $otherOrderOperation = Operation::factory()->create(['company_id' => $otherOrder->company_id]);
+        $otherOrder->operations()->attach($otherOrderOperation->id);
+    }
+
+    $response = $this->getJson(purchaseOrderReceiptRoute($order->id))
         ->assertOk()
         ->assertJsonStructure(['data']);
+
+    if (! Package::isPluginInstalled('inventories')) {
+        $response->assertJsonCount(0, 'data');
+
+        return;
+    }
+
+    $returnedIds = collect($response->json('data'))->pluck('id');
+    $otherOrderOperationIds = $otherOrder->operations()->pluck('id');
+
+    expect($returnedIds->intersect($otherOrderOperationIds))->toHaveCount(0);
 });
 
 it('returns 404 for a non-existent purchase order when listing receipts', function () {
@@ -61,4 +83,14 @@ it('returns 404 for a non-existent purchase order when listing receipts', functi
 
     $this->getJson(purchaseOrderReceiptRoute(999999))
         ->assertNotFound();
+});
+
+it('returns an empty list for purchase orders without receipts', function () {
+    actingAsPurchaseOrderReceiptApiUser(['view_purchase_purchase::order']);
+
+    $order = Order::factory()->create();
+
+    $this->getJson(purchaseOrderReceiptRoute($order->id))
+        ->assertOk()
+        ->assertJsonCount(0, 'data');
 });

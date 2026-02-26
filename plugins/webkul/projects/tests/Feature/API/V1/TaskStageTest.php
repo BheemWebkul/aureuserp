@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Webkul\Project\Models\TaskStage;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
@@ -92,6 +91,13 @@ it('shows a task stage for authorized users', function () {
     $this->getJson(taskStageRoute('show', $stage))
         ->assertOk()
         ->assertJsonPath('data.id', $stage->id);
+});
+
+it('returns 404 for a non-existent task stage', function () {
+    actingAsTaskStageApiUser(['view_project_task::stage']);
+
+    $this->getJson(taskStageRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates a task stage for authorized users', function () {

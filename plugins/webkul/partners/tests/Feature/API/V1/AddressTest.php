@@ -89,6 +89,24 @@ it('creates an address for authorized users', function () {
         ->assertJsonPath('message', 'Address created successfully.');
 });
 
+it('validates required fields when creating an address', function (string $field) {
+    actingAsAddressApiUser(['update_partner_partner']);
+    $partner = createParentPartner();
+
+    $payload = Partner::factory()->make([
+        'sub_type'    => AddressType::INVOICE,
+        'name'        => fake()->name(),
+        'company_id'  => null,
+        'title_id'    => null,
+        'industry_id' => null,
+    ])->toArray();
+    unset($payload[$field]);
+
+    $this->postJson(addressRoute('store', $partner), $payload)
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors([$field]);
+})->with(['sub_type', 'name']);
+
 it('shows an address for authorized users', function () {
     actingAsAddressApiUser(['view_partner_partner']);
     $partner = createParentPartner();
@@ -97,6 +115,14 @@ it('shows an address for authorized users', function () {
     $this->getJson(addressRoute('show', $partner, $address))
         ->assertOk()
         ->assertJsonPath('data.id', $address->id);
+});
+
+it('returns 404 for a non-existent address', function () {
+    actingAsAddressApiUser(['view_partner_partner']);
+    $partner = createParentPartner();
+
+    $this->getJson(addressRoute('show', $partner, 999999))
+        ->assertNotFound();
 });
 
 it('updates an address for authorized users', function () {

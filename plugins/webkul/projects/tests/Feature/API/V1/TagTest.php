@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Webkul\Project\Models\Tag;
 
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
@@ -76,6 +75,13 @@ it('shows a tag for authorized users', function () {
     $this->getJson(projectsTagRoute('show', $tag))
         ->assertOk()
         ->assertJsonPath('data.id', $tag->id);
+});
+
+it('returns 404 for a non-existent tag', function () {
+    SecurityHelper::actingAsTagApiUser(['view_project_tag'], true);
+
+    $this->getJson(projectsTagRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates a tag for authorized users', function () {

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Facades\Schema;
 use Webkul\Project\Models\Task;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
@@ -114,6 +113,13 @@ it('shows a task for authorized users', function () {
     $this->getJson(taskRoute('show', $task))
         ->assertOk()
         ->assertJsonPath('data.id', $task->id);
+});
+
+it('returns 404 for a non-existent task', function () {
+    actingAsTaskApiUser(['view_project_task']);
+
+    $this->getJson(taskRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates a task for authorized users', function () {

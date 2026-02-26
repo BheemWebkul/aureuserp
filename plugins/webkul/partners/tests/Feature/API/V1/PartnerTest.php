@@ -85,6 +85,17 @@ it('creates a partner with valid payload', function () {
         ->assertJsonPath('data.name', $payload['name']);
 });
 
+it('validates required fields when creating a partner', function (string $field) {
+    actingAsPartnerApiUser(['create_partner_partner']);
+
+    $payload = partnerPayload();
+    unset($payload[$field]);
+
+    $this->postJson(partnerRoute('store'), $payload)
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors([$field]);
+})->with(['account_type', 'name']);
+
 it('shows a partner for authorized users', function () {
     actingAsPartnerApiUser(['view_partner_partner']);
 
@@ -93,6 +104,13 @@ it('shows a partner for authorized users', function () {
     $this->getJson(partnerRoute('show', $partner))
         ->assertOk()
         ->assertJsonPath('data.id', $partner->id);
+});
+
+it('returns 404 for a non-existent partner', function () {
+    actingAsPartnerApiUser(['view_partner_partner']);
+
+    $this->getJson(partnerRoute('show', 999999))
+        ->assertNotFound();
 });
 
 it('updates a partner for authorized users', function () {

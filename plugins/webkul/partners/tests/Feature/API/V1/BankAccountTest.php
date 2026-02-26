@@ -84,6 +84,22 @@ it('creates a bank account for authorized users', function () {
         ->assertJsonPath('message', 'Bank account created successfully.');
 });
 
+it('validates required fields when creating a bank account', function (string $field) {
+    actingAsBankAccountApiUser(['update_partner_partner']);
+    $partner = createBankPartner();
+    $bank = Bank::factory()->create();
+
+    $payload = BankAccount::factory()->make([
+        'bank_id'    => $bank->id,
+        'partner_id' => $partner->id,
+    ])->toArray();
+    unset($payload[$field]);
+
+    $this->postJson(bankAccountRoute('store', $partner), $payload)
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors([$field]);
+})->with(['account_number', 'can_send_money', 'bank_id']);
+
 it('shows a bank account for authorized users', function () {
     actingAsBankAccountApiUser(['view_partner_partner']);
     $partner = createBankPartner();
@@ -92,6 +108,14 @@ it('shows a bank account for authorized users', function () {
     $this->getJson(bankAccountRoute('show', $partner, $bankAccount))
         ->assertOk()
         ->assertJsonPath('data.id', $bankAccount->id);
+});
+
+it('returns 404 for a non-existent bank account', function () {
+    actingAsBankAccountApiUser(['view_partner_partner']);
+    $partner = createBankPartner();
+
+    $this->getJson(bankAccountRoute('show', $partner, 999999))
+        ->assertNotFound();
 });
 
 it('updates a bank account for authorized users', function () {

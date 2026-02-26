@@ -1,5 +1,7 @@
 <?php
 
+use Webkul\Inventory\Models\Operation;
+use Webkul\PluginManager\Package;
 use Webkul\Sale\Models\Order;
 
 require_once __DIR__.'/../../../../../support/tests/Helpers/SecurityHelper.php';
@@ -29,7 +31,18 @@ function salesOrderDeliveryRoute(string $action, mixed $order): string
 
 function createOrderWithDeliveries(int $deliveryCount = 2): Order
 {
-    return Order::factory()->create();
+    $order = Order::factory()->create();
+
+    if (! Package::isPluginInstalled('inventories')) {
+        return $order;
+    }
+
+    Operation::factory()->count($deliveryCount)->create([
+        'sale_order_id' => $order->id,
+        'company_id'    => $order->company_id,
+    ]);
+
+    return $order->refresh();
 }
 
 it('requires authentication to list order deliveries', function () {
@@ -53,9 +66,13 @@ it('lists order deliveries for authorized users', function () {
 
     actingAsSalesOrderDeliveryApiUser(['view_sale_order']);
 
-    $this->getJson(salesOrderDeliveryRoute('index', $order->id))
+    $response = $this->getJson(salesOrderDeliveryRoute('index', $order->id))
         ->assertOk()
         ->assertJsonStructure(['data']);
+
+    if (! Package::isPluginInstalled('inventories')) {
+        $response->assertJsonCount(0, 'data');
+    }
 });
 
 it('returns 404 for a non-existent order when listing deliveries', function () {
@@ -63,4 +80,25 @@ it('returns 404 for a non-existent order when listing deliveries', function () {
 
     $this->getJson(salesOrderDeliveryRoute('index', 999999))
         ->assertNotFound();
+});
+
+it('does not return deliveries from other orders', function () {
+    actingAsSalesOrderDeliveryApiUser(['view_sale_order']);
+
+    $order = createOrderWithDeliveries(1);
+    $otherOrder = createOrderWithDeliveries(2);
+
+    $response = $this->getJson(salesOrderDeliveryRoute('index', $order->id))
+        ->assertOk();
+
+    if (! Package::isPluginInstalled('inventories')) {
+        $response->assertJsonCount(0, 'data');
+
+        return;
+    }
+
+    $otherOrderDeliveryIds = $otherOrder->operations()->pluck('id');
+    $returnedIds = collect($response->json('data'))->pluck('id');
+
+    expect($returnedIds->intersect($otherOrderDeliveryIds))->toHaveCount(0);
 });

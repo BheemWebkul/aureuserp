@@ -71,6 +71,13 @@ it('shows a tag for authorized users', function () {
         ->assertJsonPath('data.id', $tag->id);
 });
 
+it('returns 404 for a non-existent tag', function () {
+    SecurityHelper::actingAsTagApiUser(['view_partner_tag']);
+
+    $this->getJson(partnersTagRoute('show', 999999))
+        ->assertNotFound();
+});
+
 it('updates a tag for authorized users', function () {
     SecurityHelper::actingAsTagApiUser(['update_partner_tag']);
 

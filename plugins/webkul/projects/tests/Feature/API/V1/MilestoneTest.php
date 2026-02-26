@@ -93,6 +93,13 @@ it('shows a milestone for authorized users', function () {
         ->assertJsonPath('data.id', $milestone->id);
 });
 
+it('returns 404 for a non-existent milestone', function () {
+    actingAsMilestoneApiUser(['view_project_milestone']);
+
+    $this->getJson(milestoneRoute('show', 999999))
+        ->assertNotFound();
+});
+
 it('updates a milestone for authorized users', function () {
     actingAsMilestoneApiUser(['update_project_milestone']);
 

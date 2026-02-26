@@ -140,6 +140,15 @@ it('shows a uom for authorized users', function () {
         ->assertJsonStructure(['data' => UOM_JSON_STRUCTURE]);
 });
 
+it('returns 404 for a non-existent uom', function () {
+    actingAsUomApiUser(['view_support_u::o::m::category']);
+
+    $category = UOMCategory::factory()->create();
+
+    $this->getJson(uomRoute('show', $category, 999999))
+        ->assertNotFound();
+});
+
 it('updates a uom for authorized users', function () {
     actingAsUomApiUser(['update_support_u::o::m::category']);
 

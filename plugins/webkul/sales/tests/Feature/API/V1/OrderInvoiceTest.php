@@ -84,3 +84,44 @@ it('returns 404 for a non-existent order when listing invoices', function () {
     $this->getJson(salesOrderInvoiceRoute('index', 999999))
         ->assertNotFound();
 });
+
+it('does not return invoices linked to other orders', function () {
+    actingAsSalesOrderInvoiceApiUser(['view_sale_order']);
+
+    [$order] = createOrderWithInvoices();
+    [$otherOrder, $otherOrderInvoice] = createOrderWithInvoices();
+
+    $response = $this->getJson(salesOrderInvoiceRoute('index', $order->id))
+        ->assertOk();
+
+    $returnedIds = collect($response->json('data'))->pluck('id');
+
+    expect($returnedIds)
+        ->not->toContain($otherOrderInvoice->id)
+        ->and($otherOrder->id)->not->toBe($order->id);
+});
+
+it('filters order invoices by state', function () {
+    actingAsSalesOrderInvoiceApiUser(['view_sale_order']);
+
+    $order = Order::factory()->create();
+
+    $draftInvoice = Move::factory()->invoice()->create([
+        'company_id' => $order->company_id,
+        'state'      => 'draft',
+    ]);
+
+    $postedInvoice = Move::factory()->invoice()->create([
+        'company_id' => $order->company_id,
+        'state'      => 'posted',
+    ]);
+
+    $order->accountMoves()->attach([$draftInvoice->id, $postedInvoice->id]);
+
+    $response = $this->getJson(salesOrderInvoiceRoute('index', $order->id).'?filter[state]=draft')
+        ->assertOk();
+
+    $states = collect($response->json('data'))->pluck('state')->unique()->values()->all();
+
+    expect($states)->toBe(['draft']);
+});

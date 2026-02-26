@@ -107,6 +107,13 @@ it('shows a bank for authorized users', function () {
         ->assertJsonStructure(['data' => BANK_JSON_STRUCTURE]);
 });
 
+it('returns 404 for a non-existent bank', function () {
+    actingAsBankApiUser(['view_support_acbank']);
+
+    $this->getJson(bankRoute('show', 999999))
+        ->assertNotFound();
+});
+
 it('updates a bank for authorized users', function () {
     actingAsBankApiUser(['update_support_bank']);
 

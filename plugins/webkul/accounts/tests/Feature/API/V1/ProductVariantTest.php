@@ -93,10 +93,10 @@ it('lists product variants for authenticated users', function () {
 it('only returns variants belonging to the given parent product', function () {
     actingAsProductVariantApiUser();
 
-    $parent      = createVariantParent();
+    $parent = createVariantParent();
     $otherParent = createVariantParent();
 
-    $ownVariant   = createVariant($parent);
+    $ownVariant = createVariant($parent);
     $otherVariant = createVariant($otherParent);
 
     $response = $this->getJson(productVariantRoute('index', $parent))
@@ -125,7 +125,7 @@ it('syncs product variants for authenticated users', function () {
 it('shows a product variant for authenticated users', function () {
     actingAsProductVariantApiUser();
 
-    $parent  = createVariantParent();
+    $parent = createVariantParent();
     $variant = createVariant($parent);
 
     $this->getJson(productVariantRoute('show', $parent, $variant))
@@ -138,9 +138,9 @@ it('shows a product variant for authenticated users', function () {
 it('returns 404 for a variant not belonging to the given parent', function () {
     actingAsProductVariantApiUser();
 
-    $parent      = createVariantParent();
+    $parent = createVariantParent();
     $otherParent = createVariantParent();
-    $variant     = createVariant($otherParent);
+    $variant = createVariant($otherParent);
 
     $this->getJson(productVariantRoute('show', $parent, $variant))
         ->assertNotFound();
@@ -149,8 +149,8 @@ it('returns 404 for a variant not belonging to the given parent', function () {
 it('shows account-specific fields on a product variant', function () {
     actingAsProductVariantApiUser();
 
-    $parent  = createVariantParent();
-    $income  = Account::factory()->create();
+    $parent = createVariantParent();
+    $income = Account::factory()->create();
     $expense = Account::factory()->create();
 
     $variant = Product::factory()->create([
@@ -176,7 +176,7 @@ it('shows account-specific fields on a product variant', function () {
 it('updates a product variant name', function () {
     actingAsProductVariantApiUser();
 
-    $parent  = createVariantParent();
+    $parent = createVariantParent();
     $variant = createVariant($parent);
 
     $this->patchJson(productVariantRoute('update', $parent, $variant), ['name' => 'Updated Variant'])
@@ -190,12 +190,25 @@ it('updates a product variant name', function () {
     ]);
 });
 
+it('validates update payload for a product variant', function () {
+    actingAsProductVariantApiUser();
+
+    $parent = createVariantParent();
+    $variant = createVariant($parent);
+
+    $this->patchJson(productVariantRoute('update', $parent, $variant), [
+        'name' => ['invalid'],
+    ])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['name']);
+});
+
 it('updates account-specific fields on a product variant', function () {
     actingAsProductVariantApiUser();
 
-    $parent  = createVariantParent();
+    $parent = createVariantParent();
     $variant = createVariant($parent);
-    $income  = Account::factory()->create();
+    $income = Account::factory()->create();
     $expense = Account::factory()->create();
 
     $this->patchJson(productVariantRoute('update', $parent, $variant), [
@@ -227,7 +240,7 @@ it('updates account-specific fields on a product variant', function () {
 it('soft deletes a product variant', function () {
     actingAsProductVariantApiUser();
 
-    $parent  = createVariantParent();
+    $parent = createVariantParent();
     $variant = createVariant($parent);
 
     $this->deleteJson(productVariantRoute('destroy', $parent, $variant))
@@ -242,7 +255,7 @@ it('soft deletes a product variant', function () {
 it('restores a soft-deleted product variant', function () {
     actingAsProductVariantApiUser();
 
-    $parent  = createVariantParent();
+    $parent = createVariantParent();
     $variant = createVariant($parent);
     $variant->delete();
 
@@ -261,7 +274,7 @@ it('restores a soft-deleted product variant', function () {
 it('permanently deletes a product variant', function () {
     actingAsProductVariantApiUser();
 
-    $parent  = createVariantParent();
+    $parent = createVariantParent();
     $variant = createVariant($parent);
     $variant->delete();
 

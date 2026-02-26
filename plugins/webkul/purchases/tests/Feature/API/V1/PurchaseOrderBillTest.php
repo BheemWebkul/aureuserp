@@ -1,5 +1,7 @@
 <?php
 
+use Webkul\Account\Enums\MoveType;
+use Webkul\Account\Models\Move;
 use Webkul\Purchase\Models\Order;
 use Webkul\Security\Enums\PermissionType;
 use Webkul\Security\Models\User;
@@ -50,9 +52,14 @@ it('lists purchase order bills for authorized users', function () {
     actingAsPurchaseOrderBillApiUser(['view_purchase_purchase::order']);
 
     $order = Order::factory()->create();
+    $bill = Move::factory()->vendorBill()->create(['company_id' => $order->company_id]);
+    $order->accountMoves()->attach($bill->id);
 
     $this->getJson(purchaseOrderBillRoute($order->id))
         ->assertOk()
+        ->assertJsonCount(1, 'data')
+        ->assertJsonPath('data.0.id', $bill->id)
+        ->assertJsonPath('data.0.move_type', MoveType::IN_INVOICE->value)
         ->assertJsonStructure(['data']);
 });
 
@@ -61,4 +68,25 @@ it('returns 404 for a non-existent purchase order when listing bills', function 
 
     $this->getJson(purchaseOrderBillRoute(999999))
         ->assertNotFound();
+});
+
+it('does not return bills from other purchase orders', function () {
+    actingAsPurchaseOrderBillApiUser(['view_purchase_purchase::order']);
+
+    $order = Order::factory()->create();
+    $orderBill = Move::factory()->vendorBill()->create(['company_id' => $order->company_id]);
+    $order->accountMoves()->attach($orderBill->id);
+
+    $otherOrder = Order::factory()->create();
+    $otherOrderBill = Move::factory()->vendorBill()->create(['company_id' => $otherOrder->company_id]);
+    $otherOrder->accountMoves()->attach($otherOrderBill->id);
+
+    $response = $this->getJson(purchaseOrderBillRoute($order->id))
+        ->assertOk();
+
+    $returnedIds = collect($response->json('data'))->pluck('id');
+
+    expect($returnedIds)
+        ->toContain($orderBill->id)
+        ->not->toContain($otherOrderBill->id);
 });
