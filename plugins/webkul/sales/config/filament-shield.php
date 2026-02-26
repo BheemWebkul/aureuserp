@@ -19,23 +19,30 @@ use Webkul\Sale\Filament\Clusters\ToInvoice;
 use Webkul\Sale\Filament\Clusters\ToInvoice\Resources\OrderToInvoiceResource;
 use Webkul\Sale\Filament\Clusters\ToInvoice\Resources\OrderToUpsellResource;
 
+$permissions = [
+    'BASIC' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+    'REORDER' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
+    'SOFT_DELETE' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any'],
+    'FULL' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
+];
+
 return [
     'resources' => [
         'manage' => [
-            QuotationResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            OrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            OrderToInvoiceResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            OrderToUpsellResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            CustomerResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            ProductResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            ActivityPlanResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            ActivityTypeResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            TeamResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            ProductCategoryResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ProductAttributeResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            TagResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            PackagingResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            CurrencyResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            QuotationResource::class => $permissions['SOFT_DELETE'],
+            OrderResource::class => $permissions['SOFT_DELETE'],
+            OrderToInvoiceResource::class => $permissions['SOFT_DELETE'],
+            OrderToUpsellResource::class => $permissions['SOFT_DELETE'],
+            CustomerResource::class => $permissions['SOFT_DELETE'],
+            ProductResource::class => $permissions['FULL'],
+            ActivityPlanResource::class => $permissions['SOFT_DELETE'],
+            ActivityTypeResource::class => $permissions['FULL'],
+            TeamResource::class => $permissions['FULL'],
+            ProductCategoryResource::class => $permissions['BASIC'],
+            ProductAttributeResource::class => $permissions['FULL'],
+            TagResource::class => $permissions['BASIC'],
+            PackagingResource::class => $permissions['REORDER'],
+            CurrencyResource::class => $permissions['BASIC'],
         ],
         'exclude' => [],
     ],

@@ -23,40 +23,47 @@ use Webkul\Accounting\Filament\Clusters\Customers\Resources\PaymentResource;
 use Webkul\Accounting\Filament\Clusters\Customers\Resources\ProductResource;
 use Webkul\Accounting\Filament\Clusters\Vendors;
 use Webkul\Accounting\Filament\Clusters\Vendors\Resources\BillResource;
-use Webkul\Accounting\Filament\Clusters\Vendors\Resources\PaymentResource as ResourcesPaymentResource;
-use Webkul\Accounting\Filament\Clusters\Vendors\Resources\ProductResource as ResourcesProductResource;
+use Webkul\Accounting\Filament\Clusters\Vendors\Resources\PaymentResource as AccountingPaymentResource;
+use Webkul\Accounting\Filament\Clusters\Vendors\Resources\ProductResource as AccountingProductResource;
 use Webkul\Accounting\Filament\Clusters\Vendors\Resources\RefundResource;
 use Webkul\Accounting\Filament\Clusters\Vendors\Resources\VendorResource;
 use Webkul\Accounting\Filament\Widgets\JournalChartsWidget;
 
+$permissions = [
+    'BASIC' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+    'REORDER' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
+    'SOFT_DELETE' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any'],
+    'FULL' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
+];
+
 return [
     'resources' => [
         'manage' => [
-            JournalEntryResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            JournalItemResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            AccountResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            CashRoundingResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            CurrencyResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            FiscalPositionResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            IncotermResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any'],
-            JournalResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            PaymentTermResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            ProductAttributeResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            ProductCategoryResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            TaxGroupResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            TaxResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            CreditNoteResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            CustomerResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any'],
-            InvoiceResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            PaymentResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ProductResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            BillResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            RefundResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            VendorResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any'],
+            JournalEntryResource::class => $permissions['REORDER'],
+            JournalItemResource::class => $permissions['REORDER'],
+            AccountResource::class => $permissions['BASIC'],
+            CashRoundingResource::class => $permissions['BASIC'],
+            CurrencyResource::class => $permissions['BASIC'],
+            FiscalPositionResource::class => $permissions['REORDER'],
+            IncotermResource::class => $permissions['SOFT_DELETE'],
+            JournalResource::class => $permissions['REORDER'],
+            PaymentTermResource::class => $permissions['FULL'],
+            ProductAttributeResource::class => $permissions['FULL'],
+            ProductCategoryResource::class => $permissions['BASIC'],
+            TaxGroupResource::class => $permissions['REORDER'],
+            TaxResource::class => $permissions['REORDER'],
+            CreditNoteResource::class => $permissions['REORDER'],
+            CustomerResource::class => $permissions['SOFT_DELETE'],
+            InvoiceResource::class => $permissions['REORDER'],
+            PaymentResource::class => $permissions['BASIC'],
+            ProductResource::class => $permissions['FULL'],
+            BillResource::class => $permissions['REORDER'],
+            RefundResource::class => $permissions['REORDER'],
+            VendorResource::class => $permissions['SOFT_DELETE'],
         ],
         'exclude' => [
-            ResourcesProductResource::class,
-            ResourcesPaymentResource::class,
+            AccountingProductResource::class,
+            AccountingPaymentResource::class,
         ],
     ],
 

@@ -14,27 +14,34 @@ use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\QuotationResource;
 use Webkul\Purchase\Filament\Admin\Clusters\Orders\Resources\VendorResource;
 use Webkul\Purchase\Filament\Admin\Clusters\Products;
 use Webkul\Purchase\Filament\Admin\Clusters\Products\Resources\ProductResource;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\OrderResource as ResourcesOrderResource;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource as ResourcesPurchaseOrderResource;
-use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\QuotationResource as ResourcesQuotationResource;
+use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\OrderResource as AccountOrderResource;
+use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\PurchaseOrderResource as AccountPurchaseOrderResource;
+use Webkul\Purchase\Filament\Customer\Clusters\Account\Resources\QuotationResource as AccountQuotationResource;
+
+$permissions = [
+    'BASIC' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+    'REORDER' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
+    'SOFT_DELETE' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any'],
+    'FULL' => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
+];
 
 return [
     'resources' => [
         'manage' => [
-            QuotationResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            OrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            PurchaseOrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            PurchaseAgreementResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            VendorResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any'],
-            VendorPriceResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            ProductCategoryResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ProductAttributeResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'restore', 'delete_any', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            PackagingResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'reorder'],
-            CurrencyResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ProductResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any', 'restore', 'force_delete', 'force_delete_any', 'restore_any', 'reorder'],
-            ResourcesOrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ResourcesPurchaseOrderResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
-            ResourcesQuotationResource::class => ['view_any', 'view', 'create', 'update', 'delete', 'delete_any'],
+            QuotationResource::class => $permissions['BASIC'],
+            OrderResource::class => $permissions['BASIC'],
+            PurchaseOrderResource::class => $permissions['BASIC'],
+            PurchaseAgreementResource::class => $permissions['SOFT_DELETE'],
+            VendorResource::class => $permissions['SOFT_DELETE'],
+            VendorPriceResource::class => $permissions['REORDER'],
+            ProductCategoryResource::class => $permissions['BASIC'],
+            ProductAttributeResource::class => $permissions['FULL'],
+            PackagingResource::class => $permissions['REORDER'],
+            CurrencyResource::class => $permissions['BASIC'],
+            ProductResource::class => $permissions['FULL'],
+            AccountOrderResource::class => $permissions['BASIC'],
+            AccountPurchaseOrderResource::class => $permissions['BASIC'],
+            AccountQuotationResource::class => $permissions['BASIC'],
         ],
         'exclude' => [
             OrderResource::class,
