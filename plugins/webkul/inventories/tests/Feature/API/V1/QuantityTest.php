@@ -109,7 +109,7 @@ it('filters quantities by product_id', function () {
     ProductQuantity::factory()->create(['product_id' => $product->id]);
     ProductQuantity::factory()->count(2)->create();
 
-    $response = $this->getJson(inventoryQuantityRoute('index')."?filter[product_id]={$product->id}")
+    $response = $this->getJson(inventoryQuantityRoute('index')."?filter[product_id]={$product->id}&include=product")
         ->assertOk();
 
     $productIds = collect($response->json('data'))

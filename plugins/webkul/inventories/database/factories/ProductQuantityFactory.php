@@ -29,7 +29,7 @@ class ProductQuantityFactory extends Factory
             'inventory_diff_quantity' => 0.0,
             'inventory_quantity_set'  => false,
             'scheduled_at'            => null,
-            'incoming_at'             => null,
+            'incoming_at'             => now(),
 
             // Relationships
             'product_id'          => Product::factory(),
