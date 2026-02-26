@@ -38,7 +38,7 @@ class TableViewFactory extends Factory
     public function withIcon(): static
     {
         return $this->state(fn (array $attributes) => [
-            'icon'  => fake()->word(2, true),
+            'icon'  => fake()->words(2, true),
             'color' => fake()->hexColor(),
         ]);
     }
