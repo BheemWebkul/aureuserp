@@ -60,7 +60,7 @@ Route::name('admin.api.v1.inventories.')->prefix('admin/api/v1/inventories')->mi
     Route::post('dropships/{id}/cancel', [DropshipController::class, 'cancelTransfer'])->name('dropships.cancel');
     Route::post('dropships/{id}/return', [DropshipController::class, 'returnTransfer'])->name('dropships.return');
 
-    Route::apiResource('quantities', QuantityController::class)->except(['destroy']);
+    Route::apiResource('quantities', QuantityController::class);
     Route::post('quantities/{id}/apply', [QuantityController::class, 'apply'])->name('quantities.apply');
     Route::post('quantities/{id}/clear', [QuantityController::class, 'clear'])->name('quantities.clear');
 

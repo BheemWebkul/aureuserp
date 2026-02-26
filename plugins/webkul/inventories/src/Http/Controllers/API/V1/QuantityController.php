@@ -250,6 +250,24 @@ class QuantityController extends Controller
             ->additional(['message' => 'Quantity cleared successfully.']);
     }
 
+    #[Endpoint('Delete quantity', 'Delete a quantity')]
+    #[UrlParam('id', 'integer', 'The quantity ID', required: true, example: 1)]
+    #[Response(status: 200, description: 'Quantity deleted successfully', content: '{"message":"Quantity deleted successfully."}')]
+    #[Response(status: 404, description: 'Quantity not found')]
+    #[Response(status: 401, description: 'Unauthenticated', content: '{"message": "Unauthenticated."}')]
+    public function destroy(string $id)
+    {
+        $quantity = ProductQuantity::findOrFail($id);
+
+        Gate::authorize('delete', $quantity);
+
+        $quantity->delete();
+
+        return response()->json([
+            'message' => 'Quantity deleted successfully.',
+        ]);
+    }
+
     protected function preparePayload(array $data): array
     {
         $product = Product::query()->findOrFail($data['product_id']);
