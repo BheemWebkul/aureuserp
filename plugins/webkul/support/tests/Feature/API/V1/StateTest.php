@@ -19,7 +19,7 @@ beforeEach(function () {
 });
 afterEach(fn () => SecurityHelper::restoreUserEvents());
 
-function actingAsStateApiUser(array $permissions = []): void
+function actingWithStatePermissions(array $permissions): void
 {
     SecurityHelper::authenticateWithPermissions($permissions);
 }
@@ -36,8 +36,15 @@ it('requires authentication to list states', function () {
         ->assertUnauthorized();
 });
 
-it('lists states for authenticated users', function () {
-    actingAsStateApiUser();
+it('forbids listing states without permission', function () {
+    actingWithStatePermissions([]);
+
+    $this->getJson(stateRoute('index'))
+        ->assertForbidden();
+});
+
+it('lists states for authorized users', function () {
+    actingWithStatePermissions(['view_any_support_state']);
 
     $response = $this->getJson(stateRoute('index'))
         ->assertOk()
@@ -48,7 +55,7 @@ it('lists states for authenticated users', function () {
 });
 
 it('creates a state with valid payload', function () {
-    actingAsStateApiUser();
+    actingWithStatePermissions(['create_support_state']);
 
     $payload = State::factory()->make()->toArray();
 
@@ -63,8 +70,17 @@ it('creates a state with valid payload', function () {
     ]);
 });
 
+it('forbids creating a state without permission', function () {
+    actingWithStatePermissions([]);
+
+    $payload = State::factory()->make()->toArray();
+
+    $this->postJson(stateRoute('store'), $payload)
+        ->assertForbidden();
+});
+
 it('validates required fields when creating a state', function (string $field) {
-    actingAsStateApiUser();
+    actingWithStatePermissions(['create_support_state']);
 
     $payload = State::factory()->make()->toArray();
     unset($payload[$field]);
@@ -74,8 +90,8 @@ it('validates required fields when creating a state', function (string $field) {
         ->assertJsonValidationErrors([$field]);
 })->with(['name', 'country_id']);
 
-it('shows a state for authenticated users', function () {
-    actingAsStateApiUser();
+it('shows a state for authorized users', function () {
+    actingWithStatePermissions(['view_support_state']);
 
     $state = State::factory()->create();
 
@@ -85,15 +101,24 @@ it('shows a state for authenticated users', function () {
         ->assertJsonStructure(['data' => STATE_JSON_STRUCTURE]);
 });
 
+it('forbids showing a state without permission', function () {
+    actingWithStatePermissions([]);
+
+    $state = State::factory()->create();
+
+    $this->getJson(stateRoute('show', $state))
+        ->assertForbidden();
+});
+
 it('returns 404 for non-existent state', function () {
-    actingAsStateApiUser();
+    actingWithStatePermissions(['view_support_state']);
 
     $this->getJson(stateRoute('show', 999999))
         ->assertNotFound();
 });
 
-it('updates a state for authenticated users', function () {
-    actingAsStateApiUser();
+it('updates a state for authorized users', function () {
+    actingWithStatePermissions(['update_support_state']);
 
     $state = State::factory()->create();
     $country = Country::factory()->create();
@@ -113,8 +138,21 @@ it('updates a state for authenticated users', function () {
     ]);
 });
 
-it('deletes a state for authenticated users', function () {
-    actingAsStateApiUser();
+it('forbids updating a state without permission', function () {
+    actingWithStatePermissions([]);
+
+    $state = State::factory()->create();
+    $country = Country::factory()->create();
+
+    $this->patchJson(stateRoute('update', $state), [
+        'name'       => 'Updated State Name',
+        'country_id' => $country->id,
+    ])
+        ->assertForbidden();
+});
+
+it('deletes a state for authorized users', function () {
+    actingWithStatePermissions(['delete_support_state']);
 
     $state = State::factory()->create();
 
@@ -125,4 +163,13 @@ it('deletes a state for authenticated users', function () {
     $this->assertDatabaseMissing('states', [
         'id' => $state->id,
     ]);
+});
+
+it('forbids deleting a state without permission', function () {
+    actingWithStatePermissions([]);
+
+    $state = State::factory()->create();
+
+    $this->deleteJson(stateRoute('destroy', $state))
+        ->assertForbidden();
 });

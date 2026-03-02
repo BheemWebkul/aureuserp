@@ -21,7 +21,7 @@ beforeEach(function () {
 });
 afterEach(fn () => SecurityHelper::restoreUserEvents());
 
-function actingAsCountryApiUser(array $permissions = []): void
+function actingWithCountryPermissions(array $permissions): void
 {
     SecurityHelper::authenticateWithPermissions($permissions);
 }
@@ -38,8 +38,15 @@ it('requires authentication to list countries', function () {
         ->assertUnauthorized();
 });
 
-it('lists countries for authenticated users', function () {
-    actingAsCountryApiUser();
+it('forbids listing countries without permission', function () {
+    actingWithCountryPermissions([]);
+
+    $this->getJson(countryRoute('index'))
+        ->assertForbidden();
+});
+
+it('lists countries for authorized users', function () {
+    actingWithCountryPermissions(['view_any_support_country']);
 
     $response = $this->getJson(countryRoute('index'))
         ->assertOk()
@@ -49,8 +56,8 @@ it('lists countries for authenticated users', function () {
     expect($response->json('data'))->not->toBeEmpty();
 });
 
-it('shows a country for authenticated users', function () {
-    actingAsCountryApiUser();
+it('shows a country for authorized users', function () {
+    actingWithCountryPermissions(['view_support_country']);
 
     $country = Country::factory()->create();
 
@@ -60,8 +67,17 @@ it('shows a country for authenticated users', function () {
         ->assertJsonStructure(['data' => COUNTRY_JSON_STRUCTURE]);
 });
 
+it('forbids showing a country without permission', function () {
+    actingWithCountryPermissions([]);
+
+    $country = Country::factory()->create();
+
+    $this->getJson(countryRoute('show', $country))
+        ->assertForbidden();
+});
+
 it('returns 404 for non-existent country', function () {
-    actingAsCountryApiUser();
+    actingWithCountryPermissions(['view_support_country']);
 
     $this->getJson(countryRoute('show', 999999))
         ->assertNotFound();
